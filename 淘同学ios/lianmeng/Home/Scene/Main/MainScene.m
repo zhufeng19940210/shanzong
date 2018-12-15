@@ -8,10 +8,14 @@
 #import "MainSceneModel.h"
 #import <EasyIOS/EasyIOS.h>
 #import "SearchView.h"
+#import "GoodsListModel.h"
+#import <MJExtension.h>
+#import "BannerListModel.h"
 @interface MainScene ()
 @property(nonatomic,retain)GoodsCollectionView *collectionView;
 @property(nonatomic,retain)MainSceneModel *sceneModel;
 @property(nonatomic,retain)SearchView *searchView;
+@property(nonatomic,strong)GoodsListModel *model;
 @end
 @implementation MainScene
 
@@ -30,18 +34,7 @@
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.edges.equalTo(self.view);
     }];
-    _collectionView.contentInset = UIEdgeInsetsMake(kStatusBarAndNavigationBarHeight, 0, kBottomSafeHeight+49.0f, 0);
     
-    _searchView = [[SearchView alloc]init];
-    [self.view addSubview:_searchView];
-    
-    _collectionView.animationDelegate = _searchView;
-    
-    [_searchView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.top.left.right.equalTo(self.view);
-        make.height.equalTo(@(kStatusBarAndNavigationBarHeight));
-    }];
-
     [self.view layoutIfNeeded];
     [self.view setNeedsLayout];
     
@@ -67,34 +60,73 @@
         self.sceneModel.likeRequest.requestNeedActive = YES;
     }];
     
-    
     [[RACObserve(self.sceneModel, dataModel)
-      filter:^BOOL(GoodsListModel* value) {
+      filter:^BOOL(NSDictionary* value) {
           return value !=nil;
       }]
-     subscribeNext:^(GoodsListModel* value) {
+     subscribeNext:^(NSDictionary* value) {
          @strongify(self);
-         if (value.currentPage == 1) {
-             [self.sceneModel.likeArray removeAllObjects];
-             self.sceneModel.likeArray = [NSMutableArray array];
+         NSDictionary *categoryItemList1  =  value[@"categoryItemList1"];
+         NSDictionary *categoryItemList2  =  value[@"categoryItemList2"];
+         NSDictionary *categoryItemList3   =  value[@"categoryItemList3"];
+         NSDictionary *itemlistDic=value[@"itemlist"];
+         if (categoryItemList1) {
+             if ([categoryItemList1[@"currentPage"] intValue] == 1) {
+                 [self.sceneModel.studentArray removeAllObjects];
+                 self.sceneModel.studentArray = [NSMutableArray array];
+             }
+             if ([categoryItemList1[@"list"] count] >0) {
+                   [self.sceneModel.studentArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList1[@"list"]]];
+             }
          }
-         if([value.list count]>0){
-             [self.sceneModel.likeArray addObjectsFromArray:value.list];
+         if (categoryItemList2) {
+             if ([categoryItemList2[@"currentPage"] intValue] ==1) {
+                 [self.sceneModel.ninetonineArray removeAllObjects];
+                 self.sceneModel.ninetonineArray = [NSMutableArray array];
+             }
+             if ([categoryItemList2[@"list"] count] >0) {
+                  [self.sceneModel.ninetonineArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList2[@"list"]]];
+             }
          }
-         self.sceneModel.likeRequest.page = @(value.currentPage);
-         [self.collectionView reloadGoodsData:self.sceneModel.likeArray];
-         [self.collectionView endAllRefreshingWithIntEnd:value.totalPage <= value.currentPage];
+         if ([categoryItemList3[@"currentPage"] intValue] == 1) {
+             [self.sceneModel.recommandArray removeAllObjects];
+             self.sceneModel.recommandArray = [NSMutableArray array];
+             if ([categoryItemList3[@"list"] count] >0) {
+                  [self.sceneModel.recommandArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList3[@"list"]]];
+             }
+         }
+         if (itemlistDic) {
+             if ([itemlistDic[@"currentPage"] intValue] == 1) {
+                 [self.sceneModel.likeArray removeAllObjects];
+                  self.sceneModel.likeArray = [NSMutableArray array];
+             }
+             if ([itemlistDic[@"list"] count] >0) {
+                [self.sceneModel.likeArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:itemlistDic[@"list"]]];
+             }
+             self.sceneModel.likeRequest.page = itemlistDic[@"currentPage"];
+             NSLog(@"self.sceneModel.likeRequest.page:%@",self.sceneModel.likeRequest.page);
+         }
+         [self.collectionView reloadGoodsDataStudentArray:self.sceneModel.studentArray withNineArray:self.sceneModel.ninetonineArray withRecommandArray:self.sceneModel.recommandArray withItemList:self.sceneModel.likeArray];
+         [self.collectionView endAllRefreshingWithIntEnd:itemlistDic[@"totalPage"] <= itemlistDic[@"currentPage"]];
      }];
-    
-    [[RACObserve(self.sceneModel, bannerModel)
-      filter:^BOOL(BannerListModel* value) {
+    [[RACObserve(self.sceneModel, banaerModel)
+      filter:^BOOL(NSMutableArray* value) {
           return value !=nil;
       }]
-     subscribeNext:^(BannerListModel* value) {
+     subscribeNext:^(NSMutableArray* value) {
          @strongify(self);
-         [self.collectionView reloadBannerData:value.list];
+         [self.sceneModel.firstArray removeAllObjects];
+         [self.sceneModel.secdonArray removeAllObjects];
+         [self.sceneModel.thirdArray removeAllObjects];
+         self.sceneModel.firstArray = [NSMutableArray array];
+         self.sceneModel.secdonArray = [NSMutableArray array];
+         self.sceneModel.thirdArray  = [NSMutableArray array];
+         self.sceneModel.firstArray = [BannerModel mj_objectArrayWithKeyValuesArray:value[0]];
+         self.sceneModel.secdonArray = [BannerModel mj_objectArrayWithKeyValuesArray:value[1]];
+         self.sceneModel.thirdArray  = [BannerModel mj_objectArrayWithKeyValuesArray:value[2]];
+         [self.collectionView reloadBannerData:self.sceneModel.firstArray];
+         [self.collectionView reloadBannerWitthSecondArray:self.sceneModel.secdonArray withThirdArray:self.sceneModel.thirdArray];
      }];
-    
     [[RACObserve(self.sceneModel.likeRequest, state)
       filter:^BOOL(NSNumber *state) {
           @strongify(self);
@@ -102,21 +134,11 @@
       }]
      subscribeNext:^(id x) {
          @strongify(self);
-         self.sceneModel.likeRequest.page = self.sceneModel.dataModel?@(self.sceneModel.dataModel.currentPage):@(1);
-         [self.collectionView endAllRefreshingWithIntEnd:self.sceneModel.dataModel.currentPage >= self.sceneModel.dataModel.totalPage];
+         self.sceneModel.likeRequest.page = self.sceneModel.dataModel?@([self.sceneModel.dataModel[@"currentPage"] integerValue]):@(1);
+         [self.collectionView endAllRefreshingWithIntEnd:self.sceneModel.dataModel[@"currentPage"] >= self.sceneModel.dataModel[@"totalPage"]];
      }];
     [self.collectionView triggerPullToRefresh];
-
 }
-
-//-(UIStatusBarStyle)preferredStatusBarStyle{
-//    if(_collectionView && _collectionView.contentOffset.y >= 150.0f){
-//        return UIStatusBarStyleDefault;
-//    }else{
-//        return UIStatusBarStyleLightContent;
-//    }
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

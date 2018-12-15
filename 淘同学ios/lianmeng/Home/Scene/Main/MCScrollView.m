@@ -30,6 +30,7 @@
 
 @implementation MCScrollView
 
+
 //frameSize
 -(instancetype)initWIthFrame:(CGRect)frameSize
 {
@@ -57,6 +58,7 @@
 }
 
 -(void)reloadImages:(NSArray *)imageArray{
+    NSLog(@"imageArray.count:%lu",(unsigned long)imageArray.count);
     showImages = [NSArray arrayWithArray:imageArray];
     pageCtrl.numberOfPages = (int)imageArray.count;
     [self refreshScrollView];
@@ -96,13 +98,12 @@
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.userInteractionEnabled = YES;
         
-        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageViewClick:)];
         [imageView addGestureRecognizer:tap];
         //加载图片数据
         NSString *url = [curImages safeObjectAtIndex:i];
         [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_image"]];
-        imageView.contentMode = UIViewContentModeScaleToFill;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.layer.masksToBounds = YES;
 
         imageView.frame = CGRectMake(i*[UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, showFrame.size.height);

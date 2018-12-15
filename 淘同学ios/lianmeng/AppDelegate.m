@@ -30,21 +30,17 @@
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-
 @interface AppDelegate ()<JPUSHRegisterDelegate>
-
 @end
-
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [Action actionConfigScheme:@"https" host:@"www.taotongxue.cn" client:@"lianmeng-ios"
+    ///www.taotongxue.cn
+    ///47.110.40.176:8888/
+    [Action actionConfigScheme:@"http" host:@"47.110.40.176:8888/" client:@"lianmeng-ios"
                        codeKey:@"status" rightCode:200 msgKey:@"msg"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     UIViewController *vc = [[TabBarController alloc]init];
     self.window.rootViewController = vc;
     @weakify(vc);

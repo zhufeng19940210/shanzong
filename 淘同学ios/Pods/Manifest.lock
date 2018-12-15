@@ -58,6 +58,7 @@ PODS:
   - JSONModel (1.7.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
+  - MJExtension (3.0.15.1)
   - mtop (2.0.3):
     - SecurityGuardSDK
     - SGMain
@@ -98,6 +99,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JPush
   - Masonry
+  - MJExtension
   - PBJVideoPlayer
   - RegExCategories
   - UMCCommon
@@ -128,6 +130,7 @@ SPEC REPOS:
     - JSONModel
     - Masonry
     - MBProgressHUD
+    - MJExtension
     - PBJVideoPlayer
     - ReactiveCocoa
     - RegExCategories
@@ -164,6 +167,7 @@ SPEC CHECKSUMS:
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   mtop: 1513ec32f69174bd7c95a07d393f26ef1cad3af7
   PBJVideoPlayer: b2f79c2139e4a74711bc900dd879cee4e7ccfef6
   ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
@@ -179,6 +183,6 @@ SPEC CHECKSUMS:
   UMCShare: aa233aecad67979930fe43f3a2f676023b669439
   UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
 
-PODFILE CHECKSUM: af2d4f1bb14a4687d62e5ecdd24a7800447aafde
+PODFILE CHECKSUM: fd617c14460208bf4a7b70b8e296211691a22543
 
 COCOAPODS: 1.5.3

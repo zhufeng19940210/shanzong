@@ -6,6 +6,6 @@
 #import "GoodsListModel.h"
 typedef void(^ProductTypeBlock)(GoodsModel *typeModel);
 @interface ConetentScrollCell : UICollectionViewCell
-@property (nonatomic,strong)NSMutableArray *productTypeArray;
+@property (nonatomic,strong)NSArray *productTypeArray;
 @property (nonatomic,copy)ProductTypeBlock producttypeblock;
 @end

@@ -12,7 +12,7 @@
 #import "MomentScene.h"
 #import "NoticeScene.h"
 #import "MineScene.h"
-
+#import "HomeListVC.h"
 #import "UserCenter.h"
 #import "WechatLoginScene.h"
 #import "LMNavigationController.h"
@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[MainScene alloc] init]];
+    _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[HomeListVC alloc] init]];
     _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[MomentScene alloc]init]];
     _messageNavController = [[LMNavigationController alloc]initWithRootViewController:[[NoticeScene alloc] init]];
     _mineNavController = [[LMNavigationController alloc]initWithRootViewController:[[MineScene alloc] init]];
@@ -40,18 +40,18 @@
     NSDictionary *tabConfig = @{UITabNormalTextColor:[UIColor blackColor],
                                 UITabSelectedTextColor:[UIColor redColor],
                                 UITabItemsImageArray:@[
-                                        @{UITabItemsSelectedImage:@"main-s",
-                                          UITabItemsNormalImage:@"main"},
-                                        @{UITabItemsSelectedImage:@"moment-s",
-                                          UITabItemsNormalImage:@"moment"},
-                                        @{UITabItemsSelectedImage:@"message-s",
-                                          UITabItemsNormalImage:@"message"},
-                                        @{UITabItemsSelectedImage:@"mine-s",
-                                          UITabItemsNormalImage:@"mine"}]
+                                        @{UITabItemsSelectedImage:@"zf_home_sel",
+                                          UITabItemsNormalImage:@"zf_home_sel"},
+                                        @{UITabItemsSelectedImage:@"zf_sort_sel",
+                                          UITabItemsNormalImage:@"zf_sort_nor"},
+                                        @{UITabItemsSelectedImage:@"zf_send_sel",
+                                          UITabItemsNormalImage:@"zf_send_nor"},
+                                        @{UITabItemsSelectedImage:@"zf_mine_sel",
+                                          UITabItemsNormalImage:@"zf_mine_nor"}]
                                 };
     [self setTabBarItemsAttributes:tabConfig];
     
-    NSArray *titles = @[@"首页",@"发圈",@"消息",@"我的"];
+    NSArray *titles = @[@"首页",@"分类",@"同学圈",@"我的"];
     NSUInteger i = 0;
     for (UITabBarItem *item in self.tabBar.items) {
         [item setTitle:[titles objectAtIndex:i]];

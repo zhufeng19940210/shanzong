@@ -30,7 +30,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, 170.0f)];
+        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, frame.size.width, 170.0f)];
         _imageView.clipsToBounds = YES;
         [self addSubview:_imageView];
         

@@ -30,13 +30,22 @@
       }]
      subscribeNext:^(NSNumber *state) {
          @strongify(self);
-         NSError *error;
-         NSLog(@"likeRequest.data:%@",self.likeRequest.output);
-         self.dataModel = [[GoodsListModel alloc] initWithDictionary:[self.likeRequest.output objectForKey:@"data"] error:&error];//Model的ORM操作，dictionary to object
+  //       NSError *error;
+ //        NSLog(@"likeRequest.data:%@",self.likeRequest.output);
+//         NSDictionary *categoryItemList1  = self.likeRequest.output[@"data"][@"categoryItemList1"];
+//         NSDictionary *categoryItemList2 = self.likeRequest.output[@"data"][@"categoryItemList2"];
+//         NSDictionary *categoryItemList3  = self.likeRequest.output[@"data"][@"categoryItemList3"];
+//         NSDictionary *itemlistDic = self.likeRequest.output[@"data"][@"itemlist"];
+//         NSLog(@"categoryItemList1:%@",categoryItemList1);
+//         NSLog(@"categoryItemList2:%@",categoryItemList2);
+//         NSLog(@"categoryItemList3:%@",categoryItemList3);
+//         NSLog(@"itemlistDic:%@",itemlistDic);
+         //self.dataModel = [[GoodsListModel alloc] initWithDictionary:[self.likeRequest.output objectForKey:@"data"][@"itemlist"] error:&error];//Model的ORM操作，dictionary to object
+         self.dataModel = self.likeRequest.output[@"data"];
      }];
     
     
-    _bannerModel = nil;
+    _banaerModel = nil;
     _bannerRequest = [BannerRequest RequestWithBlock:^{
         @strongify(self);
         [self SEND_IQ_ACTION:self.bannerRequest];
@@ -49,9 +58,12 @@
       }]
      subscribeNext:^(NSNumber *state) {
          @strongify(self);
-         NSError *error;
+         //NSError *error;
          NSLog(@"self.bannerRequest.output:%@",self.bannerRequest.output);
-         self.bannerModel = [[BannerListModel alloc] initWithDictionary:@{@"list":[self.bannerRequest.output objectForKey:@"data"]} error:&error];//Model的ORM操作，dictionary to object
+         self.banaerModel = self.bannerRequest.output[@"data"];
+         NSLog(@"self.banaerModel:%@",self.banaerModel);
+//         self.bannerModel = [[BannerListModel alloc] initWithDictionary:@{@"list":[self.bannerRequest.output objectForKey:@"data"]} error:&error];//Model的ORM操作，dictionary to object
+         
      }];
 }
 @end

@@ -15,7 +15,7 @@ pod 'IQKeyboardManager'
 pod 'JPush'
 pod 'PBJVideoPlayer'
 #pod 'EasyIOS-Extention', '~> 1.2'
-
 pod 'AlibcTradeSDK'
 pod 'Crontab-IOS'
+pod 'MJExtension'
 end

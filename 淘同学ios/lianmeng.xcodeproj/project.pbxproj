@@ -167,11 +167,19 @@
 		9E6B5FE84DEA8CED03EE4DA5 /* libPods-lianmeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF510DCDCD6900E55137A1B0 /* libPods-lianmeng.a */; };
 		F0506C3721C09BB800BB5D82 /* SecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0506C3621C09BB800BB5D82 /* SecondView.m */; };
 		F0785F8D21C39628003A181A /* HomeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0785F8C21C39628003A181A /* HomeListVC.m */; };
+		F0A252EA21C4E8AC000439B1 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252DA21C4E8AC000439B1 /* UIView+ZJFrame.m */; };
+		F0A252EB21C4E8AC000439B1 /* ZJTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252DF21C4E8AC000439B1 /* ZJTitleView.m */; };
+		F0A252EC21C4E8AC000439B1 /* UIViewController+ZJScrollPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E021C4E8AC000439B1 /* UIViewController+ZJScrollPageController.m */; };
+		F0A252ED21C4E8AC000439B1 /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E321C4E8AC000439B1 /* ZJContentView.m */; };
+		F0A252EE21C4E8AC000439B1 /* ZJCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E421C4E8AC000439B1 /* ZJCollectionView.m */; };
+		F0A252EF21C4E8AC000439B1 /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E521C4E8AC000439B1 /* ZJSegmentStyle.m */; };
+		F0A252F021C4E8AC000439B1 /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E621C4E8AC000439B1 /* ZJScrollSegmentView.m */; };
+		F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E721C4E8AC000439B1 /* ZJScrollPageView.m */; };
+		F0A252F421C554A5000439B1 /* OtherScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252F321C554A5000439B1 /* OtherScene.m */; };
 		F0FCAB4F21C378BB00788559 /* HeaderTtileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */; };
 		F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */; };
 		F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */; };
 		F0FCAB5721C37C6C00788559 /* AdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5521C37C6C00788559 /* AdCell.m */; };
-		F0FCAB5821C37C6C00788559 /* AdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FCAB5621C37C6C00788559 /* AdCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,6 +497,25 @@
 		F0506C3621C09BB800BB5D82 /* SecondView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondView.m; sourceTree = "<group>"; };
 		F0785F8B21C39628003A181A /* HomeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListVC.h; sourceTree = "<group>"; };
 		F0785F8C21C39628003A181A /* HomeListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeListVC.m; sourceTree = "<group>"; };
+		F0A252D921C4E8AC000439B1 /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
+		F0A252DA21C4E8AC000439B1 /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
+		F0A252DB21C4E8AC000439B1 /* ZJCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCollectionView.h; sourceTree = "<group>"; };
+		F0A252DC21C4E8AC000439B1 /* ZJScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollSegmentView.h; sourceTree = "<group>"; };
+		F0A252DD21C4E8AC000439B1 /* ZJScrollPageViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageViewDelegate.h; sourceTree = "<group>"; };
+		F0A252DE21C4E8AC000439B1 /* ZJSegmentStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSegmentStyle.h; sourceTree = "<group>"; };
+		F0A252DF21C4E8AC000439B1 /* ZJTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTitleView.m; sourceTree = "<group>"; };
+		F0A252E021C4E8AC000439B1 /* UIViewController+ZJScrollPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJScrollPageController.m"; sourceTree = "<group>"; };
+		F0A252E121C4E8AC000439B1 /* ZJScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageView.h; sourceTree = "<group>"; };
+		F0A252E221C4E8AC000439B1 /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
+		F0A252E321C4E8AC000439B1 /* ZJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJContentView.m; sourceTree = "<group>"; };
+		F0A252E421C4E8AC000439B1 /* ZJCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCollectionView.m; sourceTree = "<group>"; };
+		F0A252E521C4E8AC000439B1 /* ZJSegmentStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSegmentStyle.m; sourceTree = "<group>"; };
+		F0A252E621C4E8AC000439B1 /* ZJScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollSegmentView.m; sourceTree = "<group>"; };
+		F0A252E721C4E8AC000439B1 /* ZJScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollPageView.m; sourceTree = "<group>"; };
+		F0A252E821C4E8AC000439B1 /* UIViewController+ZJScrollPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJScrollPageController.h"; sourceTree = "<group>"; };
+		F0A252E921C4E8AC000439B1 /* ZJTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleView.h; sourceTree = "<group>"; };
+		F0A252F221C554A5000439B1 /* OtherScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherScene.h; sourceTree = "<group>"; };
+		F0A252F321C554A5000439B1 /* OtherScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherScene.m; sourceTree = "<group>"; };
 		F0FCAB4C21C378BB00788559 /* HeaderTtileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderTtileCell.h; sourceTree = "<group>"; };
 		F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderTtileCell.m; sourceTree = "<group>"; };
 		F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTtileCell.xib; sourceTree = "<group>"; };
@@ -496,7 +523,6 @@
 		F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConetentScrollCell.m; sourceTree = "<group>"; };
 		F0FCAB5421C37C6C00788559 /* AdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdCell.h; sourceTree = "<group>"; };
 		F0FCAB5521C37C6C00788559 /* AdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdCell.m; sourceTree = "<group>"; };
-		F0FCAB5621C37C6C00788559 /* AdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,7 +583,6 @@
 				F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */,
 				F0FCAB5421C37C6C00788559 /* AdCell.h */,
 				F0FCAB5521C37C6C00788559 /* AdCell.m */,
-				F0FCAB5621C37C6C00788559 /* AdCell.xib */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -1073,6 +1098,7 @@
 		5BCDE71D20BD329300087B39 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				F0A252D821C4E8AC000439B1 /* ZJScrollPageView */,
 				5BDD0E5C21134DC000DD2AEA /* QRReader */,
 				5B29A53D20ECC33B00903E89 /* jd */,
 				5B07512E20C7EC2F002261EA /* MRImgShowView.h */,
@@ -1099,6 +1125,8 @@
 				5B07511920C786B4002261EA /* GoodsCollectionView.m */,
 				F0785F8B21C39628003A181A /* HomeListVC.h */,
 				F0785F8C21C39628003A181A /* HomeListVC.m */,
+				F0A252F221C554A5000439B1 /* OtherScene.h */,
+				F0A252F321C554A5000439B1 /* OtherScene.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1224,6 +1252,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F0A252D821C4E8AC000439B1 /* ZJScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				F0A252D921C4E8AC000439B1 /* ZJContentView.h */,
+				F0A252DA21C4E8AC000439B1 /* UIView+ZJFrame.m */,
+				F0A252DB21C4E8AC000439B1 /* ZJCollectionView.h */,
+				F0A252DC21C4E8AC000439B1 /* ZJScrollSegmentView.h */,
+				F0A252DD21C4E8AC000439B1 /* ZJScrollPageViewDelegate.h */,
+				F0A252DE21C4E8AC000439B1 /* ZJSegmentStyle.h */,
+				F0A252DF21C4E8AC000439B1 /* ZJTitleView.m */,
+				F0A252E021C4E8AC000439B1 /* UIViewController+ZJScrollPageController.m */,
+				F0A252E121C4E8AC000439B1 /* ZJScrollPageView.h */,
+				F0A252E221C4E8AC000439B1 /* UIView+ZJFrame.h */,
+				F0A252E321C4E8AC000439B1 /* ZJContentView.m */,
+				F0A252E421C4E8AC000439B1 /* ZJCollectionView.m */,
+				F0A252E521C4E8AC000439B1 /* ZJSegmentStyle.m */,
+				F0A252E621C4E8AC000439B1 /* ZJScrollSegmentView.m */,
+				F0A252E721C4E8AC000439B1 /* ZJScrollPageView.m */,
+				F0A252E821C4E8AC000439B1 /* UIViewController+ZJScrollPageController.h */,
+				F0A252E921C4E8AC000439B1 /* ZJTitleView.h */,
+			);
+			path = ZJScrollPageView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1289,7 +1341,6 @@
 				F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */,
 				5BBD27B120E3E2C900EC7D3A /* yw_1222.jpg in Resources */,
 				5B29A54020ECC34300903E89 /* JDSDK.bundle in Resources */,
-				F0FCAB5821C37C6C00788559 /* AdCell.xib in Resources */,
 				5B79C80820C1388500286BC1 /* README.md in Resources */,
 				5BCDE70A20BD248E00087B39 /* Assets.xcassets in Resources */,
 				5B79C80B20C1388500286BC1 /* LICENSE in Resources */,
@@ -1368,10 +1419,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */,
 				5BDD0E5721109FEA00DD2AEA /* XianShiCell.m in Sources */,
 				5B29A4FA20E9279F00903E89 /* OrderNoticeListReuest.m in Sources */,
 				5B1D536C20D79A2C0065400E /* VideoController.m in Sources */,
 				5BBD27AF20E3CC9500EC7D3A /* ShareBottomView.m in Sources */,
+				F0A252EC21C4E8AC000439B1 /* UIViewController+ZJScrollPageController.m in Sources */,
 				5B07516120CA196C002261EA /* ShareDetailView.m in Sources */,
 				5B07512A20C7C2F6002261EA /* MomentListModel.m in Sources */,
 				5B58E3C920D762CB00B034AD /* GoodsSearchRequest.m in Sources */,
@@ -1395,6 +1448,7 @@
 				5BBD27A520E35FDA00EC7D3A /* FansListScene.m in Sources */,
 				5BCDE73320BD340100087B39 /* LMNavigationController.m in Sources */,
 				5B1D537920DA59950065400E /* MineHeaderView.m in Sources */,
+				F0A252F421C554A5000439B1 /* OtherScene.m in Sources */,
 				5B07514820C837C5002261EA /* MainSceneModel.m in Sources */,
 				5B42B17920D11204008AD151 /* SearchListScene.m in Sources */,
 				5B79C81720C3AF4000286BC1 /* SlideBar.m in Sources */,
@@ -1404,6 +1458,7 @@
 				5B07515E20C93AC7002261EA /* ImageShowCell.m in Sources */,
 				5B29A50320E928B000903E89 /* OrderNoticeListModel.m in Sources */,
 				5B29A4FD20E9282200903E89 /* SystemNoticeListRequest.m in Sources */,
+				F0A252EB21C4E8AC000439B1 /* ZJTitleView.m in Sources */,
 				5BDD0E5F21134DC900DD2AEA /* QRReaderViewController.m in Sources */,
 				5B6503F020E5330200603F74 /* UserFansListSceneModel.m in Sources */,
 				5B07515120C8D1ED002261EA /* BannerListModel.m in Sources */,
@@ -1415,6 +1470,7 @@
 				5B42B18420D213CD008AD151 /* TabView.m in Sources */,
 				5BCDE74020BD361000087B39 /* UserCenter.m in Sources */,
 				5B07511720C77FE7002261EA /* UIView+MCExtension.m in Sources */,
+				F0A252F021C4E8AC000439B1 /* ZJScrollSegmentView.m in Sources */,
 				5BCDCB692116F680005F46DF /* CardCodeRequest.m in Sources */,
 				5B6503ED20E5320100603F74 /* UserFansListRequest.m in Sources */,
 				F0FCAB4F21C378BB00788559 /* HeaderTtileCell.m in Sources */,
@@ -1430,9 +1486,11 @@
 				5B07515820C91CAC002261EA /* ShareScene.m in Sources */,
 				5B463A6720DF4A7A0078D720 /* FansScene.m in Sources */,
 				5B463A6D20DF4ACC0078D720 /* FansSummaryView.m in Sources */,
+				F0A252EA21C4E8AC000439B1 /* UIView+ZJFrame.m in Sources */,
 				5B22E4E720E5E00500D4AD2B /* OrderScrollView.m in Sources */,
 				5BCDE72A20BD339100087B39 /* MomentScene.m in Sources */,
 				5B42B18120D11750008AD151 /* TaoBaoNavView.m in Sources */,
+				F0A252EE21C4E8AC000439B1 /* ZJCollectionView.m in Sources */,
 				5B42B15C20CE7006008AD151 /* DetailBottomView.m in Sources */,
 				5B1D538D20DDDD0D0065400E /* ProfitScene.m in Sources */,
 				5BBD279320E2720D00EC7D3A /* UserCashRequest.m in Sources */,
@@ -1469,6 +1527,7 @@
 				5BCDCB662116F246005F46DF /* FindSplashRequest.m in Sources */,
 				5B07513C20C82A08002261EA /* LikeView.m in Sources */,
 				5BCDE71020BD248E00087B39 /* main.m in Sources */,
+				F0A252ED21C4E8AC000439B1 /* ZJContentView.m in Sources */,
 				5B1D538320DCEC1F0065400E /* RankScene.m in Sources */,
 				5B1D538620DCF3A40065400E /* RankScrollView.m in Sources */,
 				5B1D536620D787FB0065400E /* CategoryListRequest.m in Sources */,
@@ -1497,6 +1556,7 @@
 				5B58E3C320D69C4B00B034AD /* SortView.m in Sources */,
 				5B1D537620DA49100065400E /* FavBottomView.m in Sources */,
 				5BDD0E62211356A400DD2AEA /* ShareUrlRequest.m in Sources */,
+				F0A252EF21C4E8AC000439B1 /* ZJSegmentStyle.m in Sources */,
 				5B42B16D20D001A7008AD151 /* SearchNavBar.m in Sources */,
 				5B79C80C20C1388500286BC1 /* CircleTransView.m in Sources */,
 				5B463A5D20DE898D0078D720 /* OrderScene.m in Sources */,

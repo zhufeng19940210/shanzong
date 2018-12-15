@@ -7,5 +7,6 @@
 @interface GoodsCollectionView : UICollectionView
 @property(nonatomic,weak)id<SearchViewAnimation> animationDelegate;
 -(void)reloadBannerData:(NSArray *)bannerList;
--(void)reloadGoodsData:(NSArray *)array;
+-(void)reloadBannerWitthSecondArray:(NSArray *)secondArray withThirdArray:(NSArray *)thirdArray;
+-(void)reloadGoodsDataStudentArray:(NSArray *)studentarray withNineArray:(NSArray *)nineArray withRecommandArray:(NSArray *)recommandArray withItemList:(NSArray *)itmeArray;
 @end

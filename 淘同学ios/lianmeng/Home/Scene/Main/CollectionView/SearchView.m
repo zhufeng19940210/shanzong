@@ -25,35 +25,33 @@
         self.backgroundColor = [UIColor redColor];
         //扫描button
         _scanButton =[[UIButton alloc]init];
-        [_scanButton setImage:[UIImage imageNamed:@"fav2"] forState:UIControlStateNormal];
+        [_scanButton setImage:[UIImage imageNamed:@"zf_scan"] forState:UIControlStateNormal];
         [self addSubview:_scanButton];
         ///消息button
         _favButton = [[UIButton alloc]init];
-        [_favButton setImage:[UIImage imageNamed:@"fav2"] forState:UIControlStateNormal];
+        [_favButton setImage:[UIImage imageNamed:@"zf_message"] forState:UIControlStateNormal];
         [self addSubview:_favButton];
         
         _bgView = [[UIView alloc]init];
         _bgView.backgroundColor = [UIColor whiteColor];
-        _bgView.layer.cornerRadius = 14.0f;
+        _bgView.layer.cornerRadius = 5.0f;
         _bgView.layer.borderColor = [UIColor colorWithString:@"#888888"].CGColor;
         [self addSubview:_bgView];
-        
         
         _iconImage = [[UIImageView alloc]init];
         [_iconImage setImage:[UIImage imageNamed:@"sousuo"]];
         [_bgView addSubview:_iconImage];
         
-        
         _placeHolderLabel = [[UILabel alloc]init];
-        _placeHolderLabel.text = @"粘贴宝贝标题，先领券，再购物";
+        _placeHolderLabel.text = @"输入产品名称进行搜索";
         _placeHolderLabel.textColor = [UIColor colorWithString:@"#888888"];
         _placeHolderLabel.font = [UIFont systemFontOfSize:12.0f];
         [_bgView addSubview:_placeHolderLabel];
         
         [self loadAutoLayout];
         
-        [_bgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSearch)]];
-        [_favButton addTarget:self action:@selector(showFav) forControlEvents:UIControlEventTouchUpInside];
+        [_bgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionSearch)]];
+        [_favButton addTarget:self action:@selector(actionMessage) forControlEvents:UIControlEventTouchUpInside];
         [_scanButton addTarget:self action:@selector(actionScan) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -75,14 +73,23 @@
         make.height.equalTo(@28.0f);
         make.bottom.equalTo(self).offset(-10.0f);
         make.left.equalTo(self).offset(20.0f);
-        make.right.equalTo(self.favButton.mas_left).offset(-20.0f);
+        make.right.equalTo(self.favButton.mas_left).offset(-25.0f);
     }];
     
+    [_scanButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bgView);
+        make.right.equalTo(self).offset(-20.0f);
+       // make.height.equalTo(@44);
+       // make.width.equalTo(@44);
+    }];
     
     [_favButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.bgView);
-        make.right.equalTo(self).offset(-20.0f);
+        make.right.equalTo(self.scanButton.mas_left).offset(-15.0f);
+       // make.width.equalTo(@44);
+       // make.height.equalTo(@44);
     }];
+    
 }
 
 -(void)animationWithPercent:(CGFloat)percent{
@@ -96,22 +103,35 @@
     }
     
     [[[URLNavigation navigation] currentViewController] setNeedsStatusBarAppearanceUpdate];
-    
 }
 
 -(void)showFav{
-    FavScene *scene = [[FavScene alloc]init];
-    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+//    FavScene *scene = [[FavScene alloc]init];
+//    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
 }
 -(void)showSearch{
-    SearchScene *scene = [[SearchScene alloc]init];
-    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+//    SearchScene *scene = [[SearchScene alloc]init];
+//    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
 }
-
+-(void)actionSearch
+{
+    NSLog(@"搜索");
+    if (self.searchblock) {
+        self.searchblock();
+    }
+}
+-(void)actionMessage
+{
+    NSLog(@"消息");
+    if (self.messageblock) {
+        self.messageblock();
+    }
+}
 -(void)actionScan
 {
-    NSLog(@"");
-    
+    NSLog(@"扫描");
+    if (self.scanblock) {
+        self.scanblock();
+    }
 }
-
 @end
