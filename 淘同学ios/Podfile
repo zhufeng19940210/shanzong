@@ -1,0 +1,21 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, "8.0"
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git'
+
+target "lianmeng" do
+#pod 'StyledPageControl', '~> 1.0'
+pod 'EasyIOS', :git=>'https://github.com/zhuchaowe/EasyIOS.git'
+pod 'Masonry'
+pod 'UMCCommon'
+pod 'UMCShare/Social/ReducedWeChat'
+pod 'RegExCategories'
+pod 'IQKeyboardManager'
+pod 'JPush'
+pod 'PBJVideoPlayer'
+#pod 'EasyIOS-Extention', '~> 1.2'
+
+pod 'AlibcTradeSDK'
+pod 'Crontab-IOS'
+end

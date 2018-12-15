@@ -1,0 +1,184 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - AlibabaAuthSDK (1.1.0.32):
+    - BCUserTrack
+    - mtop
+    - SecurityGuardSDK
+    - SGMain
+    - SGSecurityBody
+  - AlibcLinkPartnerSDK (1.1.1.2):
+    - UTDID
+  - AlibcTradeSDK (3.1.1.206):
+    - AlibabaAuthSDK
+    - AlibcLinkPartnerSDK
+    - AlipaySDK (= 2.0.0-bc)
+    - BCUserTrack
+    - mtop
+    - SecurityGuardSDK
+    - SGMain
+    - TUnionTradeSDK
+  - AlipaySDK (2.0.0-bc)
+  - BCUserTrack (5.1.0.9):
+    - UTDID
+  - Crontab-IOS (1.0)
+  - EasyIOS (2.3):
+    - EasyIOS/Easy (= 2.3)
+  - EasyIOS/Easy (2.3):
+    - AFNetworking
+    - FLKAutoLayout (= 0.1.1)
+    - FontIcon
+    - GCDObjC
+    - JSONModel
+    - MBProgressHUD
+    - ReactiveCocoa (= 2.4.4)
+    - SDWebImage
+    - SharkORM
+    - TMCache
+  - FLKAutoLayout (0.1.1)
+  - FontIcon (1.0)
+  - GCDObjC (0.3.0)
+  - IQKeyboardManager (6.1.1)
+  - JCore (1.2.1)
+  - JPush (3.1.0):
+    - JCore (~> 1.2.0)
+  - JSONModel (1.7.0)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.1.0)
+  - mtop (2.0.3):
+    - SecurityGuardSDK
+    - SGMain
+    - SGSecurityBody
+  - PBJVideoPlayer (0.3.2)
+  - ReactiveCocoa (2.4.4):
+    - ReactiveCocoa/UI (= 2.4.4)
+  - ReactiveCocoa/Core (2.4.4):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.4.4)
+  - ReactiveCocoa/UI (2.4.4):
+    - ReactiveCocoa/Core
+  - RegExCategories (1.0)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - SecurityGuardSDK (5.1.94)
+  - SGMain (5.1.94):
+    - SecurityGuardSDK (= 5.1.94)
+  - SGSecurityBody (5.1.29):
+    - SecurityGuardSDK (>= 5.1.94)
+    - SGMain (>= 5.1.94)
+  - SharkORM (2.1.3)
+  - TMCache (2.1.0)
+  - TUnionTradeSDK (1.3.3)
+  - UMCCommon (1.5.2)
+  - UMCShare/Core (6.9.4):
+    - UMCCommon
+  - UMCShare/Social/ReducedWeChat (6.9.4):
+    - UMCCommon
+    - UMCShare/Core
+  - UTDID (1.1.0.16)
+
+DEPENDENCIES:
+  - AlibcTradeSDK
+  - Crontab-IOS
+  - EasyIOS (from `https://github.com/zhuchaowe/EasyIOS.git`)
+  - IQKeyboardManager
+  - JPush
+  - Masonry
+  - PBJVideoPlayer
+  - RegExCategories
+  - UMCCommon
+  - UMCShare/Social/ReducedWeChat
+
+SPEC REPOS:
+  http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git:
+    - AlibabaAuthSDK
+    - AlibcLinkPartnerSDK
+    - AlibcTradeSDK
+    - AlipaySDK
+    - BCUserTrack
+    - mtop
+    - SecurityGuardSDK
+    - SGMain
+    - SGSecurityBody
+    - TUnionTradeSDK
+    - UTDID
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Crontab-IOS
+    - FLKAutoLayout
+    - FontIcon
+    - GCDObjC
+    - IQKeyboardManager
+    - JCore
+    - JPush
+    - JSONModel
+    - Masonry
+    - MBProgressHUD
+    - PBJVideoPlayer
+    - ReactiveCocoa
+    - RegExCategories
+    - SDWebImage
+    - SharkORM
+    - TMCache
+    - UMCCommon
+    - UMCShare
+
+EXTERNAL SOURCES:
+  EasyIOS:
+    :git: https://github.com/zhuchaowe/EasyIOS.git
+
+CHECKOUT OPTIONS:
+  EasyIOS:
+    :commit: 738bcd00fb3dc8fa123d1c98a21a9d5fa7e2e035
+    :git: https://github.com/zhuchaowe/EasyIOS.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AlibabaAuthSDK: b5d7c1964f195c1182d9410e3158c469d25876fa
+  AlibcLinkPartnerSDK: 3308e1bccf0776a28bb697f0da6e1befe029ee12
+  AlibcTradeSDK: 7a17d15eb13182a6e96aeab0c73b6d4d2bc5b00a
+  AlipaySDK: a40a4099b24328d90d7ba4fb67f6ce753d7fa2c7
+  BCUserTrack: 684f468b8143be7a2ed10a8c449fd959b2a3a099
+  Crontab-IOS: d5b5413323fd9e08684fae6b0b1e8bf62539347e
+  EasyIOS: 9fdcb7b036b685a729d56d8f8232061dd62f8696
+  FLKAutoLayout: 95b12c5cd9652100235140b68652f063f7437851
+  FontIcon: 24a07541244227b865e689217efd7d049ba7cc43
+  GCDObjC: 0c31898f34d8605196ac0343c65b496609d7dee6
+  IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
+  JCore: 467b5b56bd367c548f88ee1b5794d94ee07ab319
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  mtop: 1513ec32f69174bd7c95a07d393f26ef1cad3af7
+  PBJVideoPlayer: b2f79c2139e4a74711bc900dd879cee4e7ccfef6
+  ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SecurityGuardSDK: 05f6d782189160f2b23b731eed5cb314ce584855
+  SGMain: 8a3008d8a709259d4868f78ae3265659e58e4416
+  SGSecurityBody: 098c981416d0f04faa605642e2da3bb556419f73
+  SharkORM: 0dd55f13d82ab4c68f7c54012211c6a34a9f0001
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+  TUnionTradeSDK: 4d49ba32bb2a87dd3fcc644a80b0cd0d706a1e0b
+  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
+  UMCShare: aa233aecad67979930fe43f3a2f676023b669439
+  UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
+
+PODFILE CHECKSUM: af2d4f1bb14a4687d62e5ecdd24a7800447aafde
+
+COCOAPODS: 1.5.3
