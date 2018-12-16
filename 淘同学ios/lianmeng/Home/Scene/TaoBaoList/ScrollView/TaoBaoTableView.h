@@ -17,5 +17,5 @@
 @interface TaoBaoTableView : UITableView
 @property(nonatomic,retain)TaoBaoItemListSceneModel *sceneModel;
 @property(nonatomic,weak)id<TaoBaoViewScrolling> scrollingDelegate;
--(void)startRAC:(NSUInteger)index;
+-(void)startRAC:(NSUInteger)index withMain:(BOOL)isMain;
 @end

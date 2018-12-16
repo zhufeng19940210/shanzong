@@ -176,6 +176,9 @@
 		F0A252F021C4E8AC000439B1 /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E621C4E8AC000439B1 /* ZJScrollSegmentView.m */; };
 		F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E721C4E8AC000439B1 /* ZJScrollPageView.m */; };
 		F0A252F421C554A5000439B1 /* OtherScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252F321C554A5000439B1 /* OtherScene.m */; };
+		F0F2E86B21C6901B00EFDA17 /* SortSceence.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E86A21C6901B00EFDA17 /* SortSceence.m */; };
+		F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */ = {isa = PBXBuildFile; fileRef = F0F2E87021C6949A00EFDA17 /* MainItem.json */; };
+		F0F2E87421C6953B00EFDA17 /* MainItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E87321C6953B00EFDA17 /* MainItemModel.m */; };
 		F0FCAB4F21C378BB00788559 /* HeaderTtileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */; };
 		F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */; };
 		F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */; };
@@ -516,6 +519,11 @@
 		F0A252E921C4E8AC000439B1 /* ZJTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleView.h; sourceTree = "<group>"; };
 		F0A252F221C554A5000439B1 /* OtherScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherScene.h; sourceTree = "<group>"; };
 		F0A252F321C554A5000439B1 /* OtherScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherScene.m; sourceTree = "<group>"; };
+		F0F2E86921C6901B00EFDA17 /* SortSceence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortSceence.h; sourceTree = "<group>"; };
+		F0F2E86A21C6901B00EFDA17 /* SortSceence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortSceence.m; sourceTree = "<group>"; };
+		F0F2E87021C6949A00EFDA17 /* MainItem.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainItem.json; sourceTree = "<group>"; };
+		F0F2E87221C6953B00EFDA17 /* MainItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemModel.h; sourceTree = "<group>"; };
+		F0F2E87321C6953B00EFDA17 /* MainItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemModel.m; sourceTree = "<group>"; };
 		F0FCAB4C21C378BB00788559 /* HeaderTtileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderTtileCell.h; sourceTree = "<group>"; };
 		F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderTtileCell.m; sourceTree = "<group>"; };
 		F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTtileCell.xib; sourceTree = "<group>"; };
@@ -886,6 +894,7 @@
 		5BCDE6F320BD248B00087B39 = {
 			isa = PBXGroup;
 			children = (
+				F0F2E87021C6949A00EFDA17 /* MainItem.json */,
 				5BBD27B020E3E2C900EC7D3A /* yw_1222.jpg */,
 				5BCDE6FE20BD248B00087B39 /* lianmeng */,
 				5BCDE6FD20BD248B00087B39 /* Products */,
@@ -994,6 +1003,8 @@
 				5BDD0E53211043B900DD2AEA /* TimeSegModel.m */,
 				5BDD0E632115645F00DD2AEA /* ShareDataModel.h */,
 				5BDD0E642115645F00DD2AEA /* ShareDataModel.m */,
+				F0F2E87221C6953B00EFDA17 /* MainItemModel.h */,
+				F0F2E87321C6953B00EFDA17 /* MainItemModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1064,6 +1075,7 @@
 		5BCDE71B20BD329300087B39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				F0F2E86821C68FF700EFDA17 /* Sort */,
 				5BCDCB602115B41A005F46DF /* welcome */,
 				5BDD0E452110303400DD2AEA /* xianshi */,
 				5B1D536D20D940DA0065400E /* Fav */,
@@ -1276,6 +1288,15 @@
 			path = ZJScrollPageView;
 			sourceTree = "<group>";
 		};
+		F0F2E86821C68FF700EFDA17 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				F0F2E86921C6901B00EFDA17 /* SortSceence.h */,
+				F0F2E86A21C6901B00EFDA17 /* SortSceence.m */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1340,6 +1361,7 @@
 				5BCDE74520BD399D00087B39 /* Launch Screen.storyboard in Resources */,
 				F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */,
 				5BBD27B120E3E2C900EC7D3A /* yw_1222.jpg in Resources */,
+				F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */,
 				5B29A54020ECC34300903E89 /* JDSDK.bundle in Resources */,
 				5B79C80820C1388500286BC1 /* README.md in Resources */,
 				5BCDE70A20BD248E00087B39 /* Assets.xcassets in Resources */,
@@ -1439,6 +1461,7 @@
 				5B79C80D20C1388500286BC1 /* CircleView.m in Sources */,
 				5B07512720C7C0F9002261EA /* MomentListRequest.m in Sources */,
 				5BCDCB6C2118858E005F46DF /* PosterRequest.m in Sources */,
+				F0F2E86B21C6901B00EFDA17 /* SortSceence.m in Sources */,
 				5B07513620C81F75002261EA /* ButtonsView.m in Sources */,
 				5B463A7520DF85910078D720 /* InviteScene.m in Sources */,
 				5BDD0E512110432200DD2AEA /* TimeSegsListSceneModel.m in Sources */,
@@ -1449,6 +1472,7 @@
 				5BCDE73320BD340100087B39 /* LMNavigationController.m in Sources */,
 				5B1D537920DA59950065400E /* MineHeaderView.m in Sources */,
 				F0A252F421C554A5000439B1 /* OtherScene.m in Sources */,
+				F0F2E87421C6953B00EFDA17 /* MainItemModel.m in Sources */,
 				5B07514820C837C5002261EA /* MainSceneModel.m in Sources */,
 				5B42B17920D11204008AD151 /* SearchListScene.m in Sources */,
 				5B79C81720C3AF4000286BC1 /* SlideBar.m in Sources */,

@@ -13,12 +13,21 @@
 #import "ActionSceneModel.h"
 #import "DialogUtil.h"
 #import "OtherScene.h"
+#import "MainItemModel.h"
+#import <MJExtension.h>
 @interface HomeListVC ()<ZJScrollPageViewDelegate,QRReaderViewControllerDelegate>
 @property (nonatomic, weak) ZJScrollPageView *scrollPageView;
 @property (nonatomic,strong)SearchView *searchView;
-@property (nonatomic,strong)NSArray *listArray;
+@property (nonatomic,strong)NSMutableArray *listArray;
 @end
 @implementation HomeListVC
+-(NSMutableArray *)listArray
+{
+    if (!_listArray) {
+        _listArray = [NSMutableArray array];
+    }
+    return _listArray;
+}
 #pragma mark - getter
 - (ZJScrollPageView *)scrollPageView
 {
@@ -43,7 +52,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden =YES;
-    self.listArray =@[@"女装",@"男装",@"美妆",@"配饰",@"鞋品",@"箱包",@"儿童",@"母婴",@"居家",@"美食",@"数码",@"家电",@"其他",@"车品",@"文体"];
+    [self.listArray removeAllObjects];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"MainItem" ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:nil];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    self.listArray = [MainItemModel mj_objectArrayWithKeyValuesArray:dic[@"result"]];
     [self setupNavigtaion];
     [self setupHomeUI];
 }
@@ -81,9 +94,10 @@
     MainScene *mainvc = [[MainScene alloc]init];
     mainvc.title = @"首页";
     [self addChildViewController:mainvc];
-    for (NSString *title in self.listArray) {
+    for (MainItemModel *model in self.listArray) {
         OtherScene *othervc = [[OtherScene alloc]init];
-        othervc.title = title;
+        othervc.title = model.name;
+        othervc.cid  = model.did;
         [self addChildViewController:othervc];
     }
     self.scrollPageView.backgroundColor = RGB(240, 240, 240);

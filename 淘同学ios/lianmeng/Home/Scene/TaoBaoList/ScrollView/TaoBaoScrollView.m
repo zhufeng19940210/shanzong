@@ -33,7 +33,7 @@ delegate:(id<TaoBaoViewScrolling>)scrollingDelegate{
         }
         
         TaoBaoTableView *tableView = [self viewWithTag:1];
-        [tableView startRAC:0];
+        [tableView startRAC:0 withMain:NO];
     }
     return self;
 }
@@ -46,17 +46,15 @@ delegate:(id<TaoBaoViewScrolling>)scrollingDelegate{
         [self.tabDelegate moveBlackViewToIndex:index];
     }
     TaoBaoTableView *tableView = [self viewWithTag:index+1];
-    [tableView startRAC:index];
+    [tableView startRAC:index withMain:NO];
 }
-
-
 
 -(void)tabBarDidChange:(NSUInteger)index{
     CGFloat width =[UIScreen mainScreen].bounds.size.width;
     [self setContentOffset:CGPointMake(index*width, 0) animated:YES];
     [[GCDQueue mainQueue] queueBlock:^{
         TaoBaoTableView *tableView = [self viewWithTag:index+1];
-        [tableView startRAC:index];
+        [tableView startRAC:index withMain:NO];
     } afterDelay:0.3f];
 }
 @end

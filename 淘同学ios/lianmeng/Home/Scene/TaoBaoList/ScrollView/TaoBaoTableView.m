@@ -60,24 +60,43 @@
     return self;
 }
 
-
--(void)startRAC:(NSUInteger)index{
-    if (self.sceneModel.dataArray && self.sceneModel.dataArray.count >0) {
-        return;
+-(void)startRAC:(NSUInteger)index withMain:(BOOL)isMain{
+    if (isMain == YES) {
+        if (self.sceneModel.dataArray && self.sceneModel.dataArray.count >0) {
+            return;
+        }
+        @weakify(self);
+        [self addPullToRefreshWithActionHandler:^{
+            @strongify(self);
+            self.sceneModel.request.page = @1;
+            self.sceneModel.request.requestNeedActive = YES;
+        }];
+        [self addInfiniteScrollingWithActionHandler:^{
+            @strongify(self);
+            self.sceneModel.request.page = [self.sceneModel.request.page increase:@1];
+            self.sceneModel.request.requestNeedActive = YES;
+        }];
+        _sceneModel.request.cid = @(index);
+        [self triggerPullToRefresh];
+    }else{
+        if (self.sceneModel.dataArray && self.sceneModel.dataArray.count >0) {
+            return;
+        }
+        @weakify(self);
+        [self addPullToRefreshWithActionHandler:^{
+            @strongify(self);
+            self.sceneModel.request.page = @1;
+            self.sceneModel.request.requestNeedActive = YES;
+        }];
+        [self addInfiniteScrollingWithActionHandler:^{
+            @strongify(self);
+            self.sceneModel.request.page = [self.sceneModel.request.page increase:@1];
+            self.sceneModel.request.requestNeedActive = YES;
+        }];
+        _sceneModel.request.cid = index > 2?@(index+1):@(index);
+        [self triggerPullToRefresh];
     }
-    @weakify(self);
-    [self addPullToRefreshWithActionHandler:^{
-        @strongify(self);
-        self.sceneModel.request.page = @1;
-        self.sceneModel.request.requestNeedActive = YES;
-    }];
-    [self addInfiniteScrollingWithActionHandler:^{
-        @strongify(self);
-        self.sceneModel.request.page = [self.sceneModel.request.page increase:@1];
-        self.sceneModel.request.requestNeedActive = YES;
-    }];
-    _sceneModel.request.cid = index > 2?@(index+1):@(index);
-    [self triggerPullToRefresh];
+   
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
