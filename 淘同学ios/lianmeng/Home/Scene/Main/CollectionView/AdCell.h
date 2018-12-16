@@ -5,5 +5,5 @@
 #import <UIKit/UIKit.h>
 #import "MCScrollView.h"
 @interface AdCell : UICollectionViewCell
-@property(nonatomic,strong)NSMutableArray *baanerList;
+-(void)reloadBannerData:(NSArray *)bannerList;
 @end

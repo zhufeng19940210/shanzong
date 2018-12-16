@@ -1,15 +1,10 @@
-//
 //  LikeView.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/6.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
 #import "LikeView.h"
 #import <Masonry/Masonry.h>
 @implementation LikeView
-
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -24,5 +19,4 @@
     }
     return self;
 }
-
 @end

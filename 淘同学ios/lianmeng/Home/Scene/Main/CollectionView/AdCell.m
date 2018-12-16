@@ -9,17 +9,16 @@
 #import <EasyIOS/EasyIOS.h>
 @interface AdCell()<MCScrollViewDelegate>
 @property(nonatomic,retain)MCScrollView *spotlightView;
-@property(nonatomic,strong)NSMutableArray *mybannerlist;
+@property(nonatomic,retain)NSArray *banners;
 @end
 @implementation AdCell
--(NSMutableArray *)mybannerlist
+-(NSArray *)banners
 {
-    if (!_mybannerlist) {
-        _mybannerlist = [NSMutableArray array];
+    if (!_banners) {
+        _banners = [NSArray array];
     }
-    return _mybannerlist;
+    return _banners;
 }
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setupData];
@@ -31,24 +30,20 @@
     }
     return self;
 }
-
 -(void)setupData{
     self.spotlightView = [[MCScrollView alloc]initWIthFrame:CGRectMake(0, 0, self.frame.size.width, 150)];
     self.spotlightView.delegate = self;
     [self.contentView addSubview:self.spotlightView];
 }
--(void)setBaanerList:(NSMutableArray *)baanerList
-{    _baanerList = baanerList;
-    [self.mybannerlist removeAllObjects];
-    [self.mybannerlist addObjectsFromArray:baanerList];
-    NSMutableArray *adArray = [NSMutableArray array];
-    for (BannerModel *model in _baanerList) {
-        [adArray addObject:model.bannerUrl];
-    }
-    [self.spotlightView reloadImages:adArray];
+-(void)reloadBannerData:(NSArray *)bannerList{
+    _banners = bannerList;
+    [_spotlightView reloadImages:[bannerList map:^id(BannerModel* obj) {
+        return obj.bannerUrl;
+    }]];
 }
+
 - (void)MCScrollView:(MCScrollView *)MCScrollView touchImageAtIndex:(int)index{
-    BannerModel* obj = self.mybannerlist[index-1];
+    BannerModel* obj = _banners[index - 1];
     if (obj) {
         if(obj.type.integerValue == 1 && obj.itemId && obj.platformId){
             DetailScene *scene = [[DetailScene alloc]init];
@@ -60,7 +55,4 @@
         }
     }
 }
-
-
-
 @end

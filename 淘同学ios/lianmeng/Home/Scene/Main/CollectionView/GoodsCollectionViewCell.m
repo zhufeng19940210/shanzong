@@ -94,7 +94,6 @@
     }
     return self;
 }
-
 -(void)setModel:(GoodsModel *)model{
     if (model) {
         [_imageView sd_setImageWithURL:[NSURL URLWithString:model.itemPic]];

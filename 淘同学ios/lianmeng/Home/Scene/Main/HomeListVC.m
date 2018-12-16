@@ -19,16 +19,13 @@
 @property (nonatomic,strong)NSArray *listArray;
 @end
 @implementation HomeListVC
-
 #pragma mark - getter
 - (ZJScrollPageView *)scrollPageView
 {
     if(_scrollPageView == nil)
     {
         ZJSegmentStyle *style = [[ZJSegmentStyle alloc] init];
-        //显示滚动条
         style.showLine = YES;
-        // 颜色渐变
         style.gradualChangeTitleColor = YES;
         style.contentViewBounces = NO;
         style.animatedContentViewWhenTitleClicked = NO;
@@ -37,7 +34,7 @@
         style.selectedTitleColor = [UIColor redColor];
         style.normalTitleColor = RGB(100,100,100);
         style.titleFont = [UIFont systemFontOfSize:16];
-        ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, ScreenW, ScreenH-kStatusBarAndNavigationBarHeight) segmentStyle:style titles:[self.childViewControllers valueForKey:@"title"] parentViewController:self delegate:self withColor:[UIColor whiteColor]];
+        ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, ScreenW, ScreenH-kStatusBarAndNavigationBarHeight-49) segmentStyle:style titles:[self.childViewControllers valueForKey:@"title"] parentViewController:self delegate:self withColor:[UIColor whiteColor]];
         [self.view addSubview:scrollPageView];
         _scrollPageView = scrollPageView;
     }
@@ -49,7 +46,6 @@
     self.listArray =@[@"女装",@"男装",@"美妆",@"配饰",@"鞋品",@"箱包",@"儿童",@"母婴",@"居家",@"美食",@"数码",@"家电",@"其他",@"车品",@"文体"];
     [self setupNavigtaion];
     [self setupHomeUI];
-  
 }
 -(void)setupNavigtaion{
     self.searchView = [[SearchView alloc]init];
@@ -80,7 +76,6 @@
         [DialogUtil showMessage:req.message];
     }];
 }
-
 -(void)setupHomeUI{
     self.view.backgroundColor = RGB(240, 240, 240);
     MainScene *mainvc = [[MainScene alloc]init];

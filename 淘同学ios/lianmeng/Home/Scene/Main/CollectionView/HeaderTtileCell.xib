@@ -18,6 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="386" height="40"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiR-rb-zym">
+                        <rect key="frame" x="0.0" y="0.0" width="386" height="40"/>
+                        <connections>
+                            <action selector="actionMoreBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zm3-bh-jqR"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnZ-9V-2U4">
                         <rect key="frame" x="10" y="8.5" width="41" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -25,29 +31,33 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD8-BO-jNy">
-                        <rect key="frame" x="345" y="11" width="31" height="18"/>
+                        <rect key="frame" x="330" y="11" width="31" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiR-rb-zym">
-                        <rect key="frame" x="0.0" y="0.0" width="386" height="40"/>
-                        <connections>
-                            <action selector="actionMoreBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zm3-bh-jqR"/>
-                        </connections>
-                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiantou" translatesAutoresizingMaskIntoConstraints="NO" id="1Se-xl-6We">
+                        <rect key="frame" x="363" y="14.5" width="11" height="11"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="11" id="0ma-vX-jmU"/>
+                            <constraint firstAttribute="height" constant="11" id="3Cx-Up-sIr"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ZD8-BO-jNy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="J12-tu-SHg"/>
+                <constraint firstItem="1Se-xl-6We" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4dY-eE-Mto"/>
+                <constraint firstAttribute="trailing" secondItem="1Se-xl-6We" secondAttribute="trailing" constant="12" id="M3c-uU-1MS"/>
+                <constraint firstItem="MiR-rb-zym" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Piv-gk-Xm1"/>
                 <constraint firstItem="MiR-rb-zym" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UkP-P6-oJD"/>
-                <constraint firstAttribute="trailing" secondItem="ZD8-BO-jNy" secondAttribute="trailing" constant="10" id="bB7-0Y-R8t"/>
+                <constraint firstItem="ZD8-BO-jNy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="azD-5Q-HCC"/>
                 <constraint firstItem="wnZ-9V-2U4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="dDx-hm-BbO"/>
                 <constraint firstAttribute="bottom" secondItem="MiR-rb-zym" secondAttribute="bottom" id="eSb-Ga-kEt"/>
                 <constraint firstItem="wnZ-9V-2U4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="eYm-86-acr"/>
                 <constraint firstAttribute="trailing" secondItem="MiR-rb-zym" secondAttribute="trailing" id="hNe-dq-J5F"/>
                 <constraint firstItem="MiR-rb-zym" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kfh-Le-NAK"/>
+                <constraint firstItem="1Se-xl-6We" firstAttribute="leading" secondItem="ZD8-BO-jNy" secondAttribute="trailing" constant="2" id="s6y-P9-JWD"/>
             </constraints>
             <size key="customSize" width="386" height="40"/>
             <connections>
@@ -56,4 +66,7 @@
             <point key="canvasLocation" x="22" y="24"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="jiantou" width="11" height="11"/>
+    </resources>
 </document>

@@ -15,7 +15,7 @@
 #import "ConetentScrollCell.h"
 #import "AdCell.h"
 #import "BannerListModel.h"
-@interface GoodsCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource,MCScrollViewDelegate>
+@interface GoodsCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,retain)NSArray *itemArray;
 @property(nonatomic,strong)NSArray *studentArray;
 @property(nonatomic,strong)NSArray *nineArray;
@@ -141,7 +141,6 @@
         return 0;
     }
 }
-
 /*
  LikeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LikeCollectionViewCell" forIndexPath:indexPath];
  [cell setImage:[UIImage imageNamed:[NSString stringWithFormat:@"ad%ld",(long)indexPath.row+1]]];
@@ -150,7 +149,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         AdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
-        cell.baanerList = (NSMutableArray *)self.secondArray;
+        [cell reloadBannerData:self.secondArray];
         return cell;
     }if(indexPath.section == 1){
         if (indexPath.row == 0) {
@@ -187,7 +186,7 @@
         }
     }if (indexPath.section == 3) {
         AdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
-        adCell.baanerList = (NSMutableArray *)self.thirdArray;
+        [adCell reloadBannerData:self.thirdArray];
         return adCell;
     }if (indexPath.section == 4) {
         if (indexPath.row == 0) {
@@ -213,7 +212,7 @@
     }
 }
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-   return 7;
+   return 6;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

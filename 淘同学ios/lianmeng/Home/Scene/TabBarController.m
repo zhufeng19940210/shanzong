@@ -41,7 +41,7 @@
                                 UITabSelectedTextColor:[UIColor redColor],
                                 UITabItemsImageArray:@[
                                         @{UITabItemsSelectedImage:@"zf_home_sel",
-                                          UITabItemsNormalImage:@"zf_home_sel"},
+                                          UITabItemsNormalImage:@"zf_home_nor"},
                                         @{UITabItemsSelectedImage:@"zf_sort_sel",
                                           UITabItemsNormalImage:@"zf_sort_nor"},
                                         @{UITabItemsSelectedImage:@"zf_send_sel",
@@ -50,7 +50,6 @@
                                           UITabItemsNormalImage:@"zf_mine_nor"}]
                                 };
     [self setTabBarItemsAttributes:tabConfig];
-    
     NSArray *titles = @[@"首页",@"分类",@"同学圈",@"我的"];
     NSUInteger i = 0;
     for (UITabBarItem *item in self.tabBar.items) {

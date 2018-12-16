@@ -30,6 +30,7 @@
       }]
      subscribeNext:^(NSNumber *state) {
          @strongify(self);
+         NSLog(@"self.likeRequest.output:%@",self.likeRequest.output);
   //       NSError *error;
  //        NSLog(@"likeRequest.data:%@",self.likeRequest.output);
 //         NSDictionary *categoryItemList1  = self.likeRequest.output[@"data"][@"categoryItemList1"];
