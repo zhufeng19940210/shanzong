@@ -17,7 +17,7 @@
 #import "WechatLoginScene.h"
 #import "LMNavigationController.h"
 #import <EasyIOS/EasyIOS.h>
-
+#import "SortVC.h"
 @interface TabBarController ()<UITabBarControllerDelegate>
 @property(nonatomic,retain)LMNavigationController *mainNavController;
 @property(nonatomic,retain)LMNavigationController *momentNavController;
@@ -31,11 +31,11 @@
     [super viewDidLoad];
     
     _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[HomeListVC alloc] init]];
-    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[MomentScene alloc]init]];
-    _messageNavController = [[LMNavigationController alloc]initWithRootViewController:[[NoticeScene alloc] init]];
+    _messageNavController = [[LMNavigationController alloc]initWithRootViewController:[[SortVC alloc]init]];
+    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[MomentScene alloc] init]];
     _mineNavController = [[LMNavigationController alloc]initWithRootViewController:[[MineScene alloc] init]];
     
-    self.viewControllers = [NSArray arrayWithObjects:_mainNavController, _momentNavController,_messageNavController,_mineNavController,nil];
+    self.viewControllers = [NSArray arrayWithObjects:_mainNavController, _messageNavController,_momentNavController,_mineNavController,nil];
     
     NSDictionary *tabConfig = @{UITabNormalTextColor:[UIColor blackColor],
                                 UITabSelectedTextColor:[UIColor redColor],
@@ -70,7 +70,7 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     
-    if([viewController isEqual:_messageNavController] || [viewController isEqual:_mineNavController]){
+    if(/*[viewController isEqual:_messageNavController] ||*/ [viewController isEqual:_mineNavController]){
         if(![[UserCenter sharedInstance] checkLogin]){
             UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

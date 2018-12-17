@@ -118,9 +118,8 @@
         
         
         _splitView = [[UIView alloc]init];
-        _splitView.backgroundColor = [UIColor colorWithRed:0.973f green:0.973f blue:0.973f alpha:1.0f];
+        _splitView.backgroundColor = [UIColor colorWithRed:(202/255.0f) green:(202/255.0f) blue:(202/255.0f) alpha:1.0f];
         [self.contentView addSubview:_splitView];
-        
         
         [self loadAutoLayout];
         
@@ -174,7 +173,7 @@
     
     [_splitView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.left.right.bottom.equalTo(self.contentView);
-        make.height.equalTo(@10.0f);
+        make.height.equalTo(@1.0f);
     }];
     
 }

@@ -1,11 +1,7 @@
-//
 //  MomentTableView.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/3.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
 #import "MomentTableView.h"
 #import "MomentCell.h"
 #import "MomentListSceneModel.h"

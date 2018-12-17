@@ -186,7 +186,7 @@
         }
     }if (indexPath.section == 3) {
         AdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
-        [adCell reloadBannerData:self.thirdArray];
+        //[adCell reloadBannerData:self.thirdArray];
         return adCell;
     }if (indexPath.section == 4) {
         if (indexPath.row == 0) {

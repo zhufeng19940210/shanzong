@@ -20,6 +20,7 @@
 #define iPhoneNotchScreen statusBarHeight >=44
 #define kStatusBarAndNavigationBarHeight (iPhoneNotchScreen ? 88.f : 64.f)
 #define kBottomSafeHeight (iPhoneNotchScreen ? 33.0f : 0.0f)
+#define rgba(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 #define URLHOST @"http://www.taotongxue.cn"
 #endif /* PrefixHeader_pch */

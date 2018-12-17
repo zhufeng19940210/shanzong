@@ -179,6 +179,16 @@
 		F0F2E86B21C6901B00EFDA17 /* SortSceence.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E86A21C6901B00EFDA17 /* SortSceence.m */; };
 		F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */ = {isa = PBXBuildFile; fileRef = F0F2E87021C6949A00EFDA17 /* MainItem.json */; };
 		F0F2E87421C6953B00EFDA17 /* MainItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E87321C6953B00EFDA17 /* MainItemModel.m */; };
+		F0F7E3E321C7A51D00C14818 /* SortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3E121C7A51D00C14818 /* SortVC.m */; };
+		F0F7E3EA21C7A78E00C14818 /* SortReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3E821C7A78E00C14818 /* SortReusableView.m */; };
+		F0F7E3EB21C7A78E00C14818 /* SortReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0F7E3E921C7A78E00C14818 /* SortReusableView.xib */; };
+		F0F7E3EF21C7A7B500C14818 /* SortCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3ED21C7A7B500C14818 /* SortCollectionViewCell.m */; };
+		F0F7E3F021C7A7B500C14818 /* SortCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0F7E3EE21C7A7B500C14818 /* SortCollectionViewCell.xib */; };
+		F0F7E3F321C7A84900C14818 /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3F221C7A84900C14818 /* LeftTableViewCell.m */; };
+		F0F7E3F721C7A9A900C14818 /* NetWorkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3F621C7A9A900C14818 /* NetWorkTool.m */; };
+		F0F7E3FA21C7B2FA00C14818 /* SortTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3F921C7B2FA00C14818 /* SortTypeModel.m */; };
+		F0F7E3FD21C7B37600C14818 /* SortInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3FC21C7B37600C14818 /* SortInfoModel.m */; };
+		F0F7E40021C7B3C900C14818 /* SortTypenextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F7E3FF21C7B3C900C14818 /* SortTypenextModel.m */; };
 		F0FCAB4F21C378BB00788559 /* HeaderTtileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */; };
 		F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */; };
 		F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */; };
@@ -524,6 +534,24 @@
 		F0F2E87021C6949A00EFDA17 /* MainItem.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainItem.json; sourceTree = "<group>"; };
 		F0F2E87221C6953B00EFDA17 /* MainItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainItemModel.h; sourceTree = "<group>"; };
 		F0F2E87321C6953B00EFDA17 /* MainItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainItemModel.m; sourceTree = "<group>"; };
+		F0F7E3E021C7A51D00C14818 /* SortVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortVC.h; sourceTree = "<group>"; };
+		F0F7E3E121C7A51D00C14818 /* SortVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortVC.m; sourceTree = "<group>"; };
+		F0F7E3E721C7A78E00C14818 /* SortReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortReusableView.h; sourceTree = "<group>"; };
+		F0F7E3E821C7A78E00C14818 /* SortReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortReusableView.m; sourceTree = "<group>"; };
+		F0F7E3E921C7A78E00C14818 /* SortReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortReusableView.xib; sourceTree = "<group>"; };
+		F0F7E3EC21C7A7B500C14818 /* SortCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortCollectionViewCell.h; sourceTree = "<group>"; };
+		F0F7E3ED21C7A7B500C14818 /* SortCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortCollectionViewCell.m; sourceTree = "<group>"; };
+		F0F7E3EE21C7A7B500C14818 /* SortCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortCollectionViewCell.xib; sourceTree = "<group>"; };
+		F0F7E3F121C7A84900C14818 /* LeftTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
+		F0F7E3F221C7A84900C14818 /* LeftTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
+		F0F7E3F521C7A9A900C14818 /* NetWorkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkTool.h; sourceTree = "<group>"; };
+		F0F7E3F621C7A9A900C14818 /* NetWorkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkTool.m; sourceTree = "<group>"; };
+		F0F7E3F821C7B2FA00C14818 /* SortTypeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTypeModel.h; sourceTree = "<group>"; };
+		F0F7E3F921C7B2FA00C14818 /* SortTypeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTypeModel.m; sourceTree = "<group>"; };
+		F0F7E3FB21C7B37600C14818 /* SortInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortInfoModel.h; sourceTree = "<group>"; };
+		F0F7E3FC21C7B37600C14818 /* SortInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortInfoModel.m; sourceTree = "<group>"; };
+		F0F7E3FE21C7B3C900C14818 /* SortTypenextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortTypenextModel.h; sourceTree = "<group>"; };
+		F0F7E3FF21C7B3C900C14818 /* SortTypenextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortTypenextModel.m; sourceTree = "<group>"; };
 		F0FCAB4C21C378BB00788559 /* HeaderTtileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderTtileCell.h; sourceTree = "<group>"; };
 		F0FCAB4D21C378BB00788559 /* HeaderTtileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderTtileCell.m; sourceTree = "<group>"; };
 		F0FCAB4E21C378BB00788559 /* HeaderTtileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTtileCell.xib; sourceTree = "<group>"; };
@@ -1291,10 +1319,52 @@
 		F0F2E86821C68FF700EFDA17 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
+				F0F7E3F421C7A99500C14818 /* Tool */,
+				F0F7E3E621C7A73E00C14818 /* Model */,
+				F0F7E3E521C7A73100C14818 /* View */,
 				F0F2E86921C6901B00EFDA17 /* SortSceence.h */,
 				F0F2E86A21C6901B00EFDA17 /* SortSceence.m */,
+				F0F7E3E021C7A51D00C14818 /* SortVC.h */,
+				F0F7E3E121C7A51D00C14818 /* SortVC.m */,
 			);
 			path = Sort;
+			sourceTree = "<group>";
+		};
+		F0F7E3E521C7A73100C14818 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0F7E3E721C7A78E00C14818 /* SortReusableView.h */,
+				F0F7E3E821C7A78E00C14818 /* SortReusableView.m */,
+				F0F7E3E921C7A78E00C14818 /* SortReusableView.xib */,
+				F0F7E3EC21C7A7B500C14818 /* SortCollectionViewCell.h */,
+				F0F7E3ED21C7A7B500C14818 /* SortCollectionViewCell.m */,
+				F0F7E3EE21C7A7B500C14818 /* SortCollectionViewCell.xib */,
+				F0F7E3F121C7A84900C14818 /* LeftTableViewCell.h */,
+				F0F7E3F221C7A84900C14818 /* LeftTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F0F7E3E621C7A73E00C14818 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0F7E3F821C7B2FA00C14818 /* SortTypeModel.h */,
+				F0F7E3F921C7B2FA00C14818 /* SortTypeModel.m */,
+				F0F7E3FE21C7B3C900C14818 /* SortTypenextModel.h */,
+				F0F7E3FF21C7B3C900C14818 /* SortTypenextModel.m */,
+				F0F7E3FB21C7B37600C14818 /* SortInfoModel.h */,
+				F0F7E3FC21C7B37600C14818 /* SortInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F0F7E3F421C7A99500C14818 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				F0F7E3F521C7A9A900C14818 /* NetWorkTool.h */,
+				F0F7E3F621C7A9A900C14818 /* NetWorkTool.m */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1359,6 +1429,7 @@
 				5B79C80E20C1388500286BC1 /* README.md in Resources */,
 				5B79C80720C1388500286BC1 /* LICENSE in Resources */,
 				5BCDE74520BD399D00087B39 /* Launch Screen.storyboard in Resources */,
+				F0F7E3EB21C7A78E00C14818 /* SortReusableView.xib in Resources */,
 				F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */,
 				5BBD27B120E3E2C900EC7D3A /* yw_1222.jpg in Resources */,
 				F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */,
@@ -1366,6 +1437,7 @@
 				5B79C80820C1388500286BC1 /* README.md in Resources */,
 				5BCDE70A20BD248E00087B39 /* Assets.xcassets in Resources */,
 				5B79C80B20C1388500286BC1 /* LICENSE in Resources */,
+				F0F7E3F021C7A7B500C14818 /* SortCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1514,10 +1586,13 @@
 				5B22E4E720E5E00500D4AD2B /* OrderScrollView.m in Sources */,
 				5BCDE72A20BD339100087B39 /* MomentScene.m in Sources */,
 				5B42B18120D11750008AD151 /* TaoBaoNavView.m in Sources */,
+				F0F7E3EF21C7A7B500C14818 /* SortCollectionViewCell.m in Sources */,
 				F0A252EE21C4E8AC000439B1 /* ZJCollectionView.m in Sources */,
+				F0F7E3F721C7A9A900C14818 /* NetWorkTool.m in Sources */,
 				5B42B15C20CE7006008AD151 /* DetailBottomView.m in Sources */,
 				5B1D538D20DDDD0D0065400E /* ProfitScene.m in Sources */,
 				5BBD279320E2720D00EC7D3A /* UserCashRequest.m in Sources */,
+				F0F7E3FA21C7B2FA00C14818 /* SortTypeModel.m in Sources */,
 				5B463A5620DE2D6A0078D720 /* ProfitLargeLabelView.m in Sources */,
 				5B07515420C8FFC1002261EA /* SearchView.m in Sources */,
 				5B1D536320D786C70065400E /* CategoryListScene.m in Sources */,
@@ -1537,6 +1612,7 @@
 				5B1D539020DDDDEF0065400E /* ProfitHeaderView.m in Sources */,
 				5B0750F120C570BB002261EA /* SmsRequest.m in Sources */,
 				F0FCAB5721C37C6C00788559 /* AdCell.m in Sources */,
+				F0F7E3FD21C7B37600C14818 /* SortInfoModel.m in Sources */,
 				5B07511A20C786B4002261EA /* GoodsCollectionView.m in Sources */,
 				5B07511420C77EE3002261EA /* MCScrollView.m in Sources */,
 				5B0750FA20C5722A002261EA /* ActionSceneModel.m in Sources */,
@@ -1544,11 +1620,13 @@
 				5B29A4F720E91DD100903E89 /* UpdatecountRequest.m in Sources */,
 				5BBD279020E2685B00EC7D3A /* UserCenterRequest.m in Sources */,
 				5BBD27A220E2872000EC7D3A /* RankListRequest.m in Sources */,
+				F0F7E3EA21C7A78E00C14818 /* SortReusableView.m in Sources */,
 				5BBD279920E27A0100EC7D3A /* UserOrderListRequest.m in Sources */,
 				F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */,
 				5B58E3BC20D6702800B034AD /* TaoBaoItemListRequest.m in Sources */,
 				5B1D537C20DBEEFA0065400E /* MineItemView.m in Sources */,
 				5BCDCB662116F246005F46DF /* FindSplashRequest.m in Sources */,
+				F0F7E3E321C7A51D00C14818 /* SortVC.m in Sources */,
 				5B07513C20C82A08002261EA /* LikeView.m in Sources */,
 				5BCDE71020BD248E00087B39 /* main.m in Sources */,
 				F0A252ED21C4E8AC000439B1 /* ZJContentView.m in Sources */,
@@ -1575,9 +1653,11 @@
 				5BBD279C20E27E3400EC7D3A /* UserOrderListSceneModel.m in Sources */,
 				5B97864A20CCC96300A18C49 /* DetailHeaderView.m in Sources */,
 				5B29A4EB20E9074200903E89 /* MomentCell2.m in Sources */,
+				F0F7E40021C7B3C900C14818 /* SortTypenextModel.m in Sources */,
 				5B29A50020E9289A00903E89 /* SystemNoticeListModel.m in Sources */,
 				5BCDE73D20BD359A00087B39 /* RegisterScene.m in Sources */,
 				5B58E3C320D69C4B00B034AD /* SortView.m in Sources */,
+				F0F7E3F321C7A84900C14818 /* LeftTableViewCell.m in Sources */,
 				5B1D537620DA49100065400E /* FavBottomView.m in Sources */,
 				5BDD0E62211356A400DD2AEA /* ShareUrlRequest.m in Sources */,
 				F0A252EF21C4E8AC000439B1 /* ZJSegmentStyle.m in Sources */,
