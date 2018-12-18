@@ -3,31 +3,22 @@
 //  Created by zhufeng on 2018/12/18.
 //  Copyright © 2018 zhuchao. All rights reserved.
 #import "OrderMessagScene.h"
-
+#import "UserCenter.h"
 @interface OrderMessagScene ()
-
+@property(nonatomic,retain)UIWebView *webView;
 @end
-
 @implementation OrderMessagScene
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH-kStatusBarAndNavigationBarHeight-49)];
+    NSString *url = [NSString stringWithFormat:@"http://www.taotongxue.cn/mobile/notice/detail/%ld",(long)[UserCenter sharedInstance].loginModel.userId];
+    _webView.backgroundColor = [UIColor clearColor];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [self.view addSubview:_webView];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

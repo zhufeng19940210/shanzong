@@ -1,12 +1,8 @@
-//
 //  MomentCell.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/3.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
-#import "MomentCell.h"
+#import "CircleCell.h"
 #import <Masonry/Masonry.h>
 #import <EasyIOS/EasyIOS.h>
 #import "MRImgShowView.h"
@@ -16,20 +12,17 @@
 #import "ShareUrlRequest.h"
 #import "ShareDataModel.h"
 #import "UpdatecountRequest.h"
-
-
-
 #import "UserCenter.h"
 #import "LMNavigationController.h"
 #import "WechatLoginScene.h"
 
 
 
-@interface ShareButton2 : UIView
+@interface ShareButton : UIView
 @property(nonatomic,retain)UILabel *shareLabel;
 @end
 
-@implementation ShareButton2
+@implementation ShareButton
 -(instancetype)init{
     self = [super init];
     if (self) {
@@ -43,7 +36,7 @@
         [self addSubview:image];
         
         [image mas_makeConstraints:^(MASConstraintMaker *make) {
-           make.centerY.equalTo(self);
+            make.centerY.equalTo(self);
             make.left.equalTo(self).offset(12.0f);
         }];
         
@@ -59,25 +52,25 @@
             make.right.equalTo(self).offset(-12.0f);
         }];
         
-       
+        
     }
     return self;
 }
 @end
 
-@interface MomentCell()
+@interface CircleCell()
 @property(nonatomic,retain)UIImageView *avatarView;
 @property(nonatomic,retain)UILabel *nameLabel;
 @property(nonatomic,retain)UILabel *timeLabel;
-@property(nonatomic,retain)ShareButton2 *shareButton;
+@property(nonatomic,retain)ShareButton *shareButton;
 @property(nonatomic,retain)UILabel *contentLabel;
 @property(nonatomic,retain)UIView *imageWrapView;
 @property(nonatomic,retain)UIView *splitView;
 
-@property(nonatomic,retain)MomentModel *dataModel;
+@property(nonatomic,retain)CircleModel *dataModel;
 @end
 
-@implementation MomentCell
+@implementation CircleCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -101,11 +94,11 @@
         [self.contentView addSubview:_timeLabel];
         
         
-        _shareButton = [[ShareButton2 alloc]init];
+        _shareButton = [[ShareButton alloc]init];
         _shareButton.layer.cornerRadius = 12.0f;
         
         [self.contentView addSubview:_shareButton];
-
+        
         
         _contentLabel = [[UILabel alloc]init];
         _contentLabel.numberOfLines = 0;
@@ -125,7 +118,7 @@
         
         [_shareButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openShare)]];
         
-
+        
     }
     return self;
 }
@@ -161,7 +154,7 @@
         make.top.equalTo(self.avatarView.mas_bottom).offset(11.0f);
     }];
     
-
+    
     
     [_imageWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentLabel);
@@ -172,56 +165,55 @@
     }];
     
     [_splitView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.left.right.bottom.equalTo(self.contentView);
+        make.left.right.bottom.equalTo(self.contentView);
         make.height.equalTo(@0.5f);
     }];
     
 }
-         
- -(void)openShare{
 
-     if(![[UserCenter sharedInstance] checkLogin]){
-         UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
-         [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-         }]];
-         [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-             UIViewController *vc = [[LMNavigationController alloc]initWithRootViewController:[[WechatLoginScene alloc]init]];
-             [[URLNavigation navigation].currentViewController presentViewController:vc animated:YES completion:nil];
-         }]];
-         [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
-         return;
-     }
-     
-     UIViewController *vc = [URLNavigation navigation].currentViewController;
-     [vc loadHudInKeyWindow];
-     
-     [vc showHudIndeterminate:@"数据加载中..."];
-     
-     ShareUrlRequest *req = [ShareUrlRequest Request];
-     req.wechatInfoId = _dataModel.id;
-     @weakify(self);
-     [[ActionSceneModel sharedInstance] doRequest:req success:^{
-         @strongify(self);
-         NSError *error;
-        ShareDataModel *model = [[ShareDataModel alloc]initWithDictionary:[req.output objectForKey:@"data"] error:&error];
-         
-         NSArray *imageList = [model.item map:^UIImage*(ShareDataItemModel *item) {
-             return [item genImage];
-         }];
-         
-         [vc hideHud];
-         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-         pasteboard.string = self.dataModel.goodsDesc;
-         [DialogUtil showMessage:@"文案已复制！"];
-         [self shareItems:imageList wechatInfoId:self.dataModel.id];
-         
-     } error:^{
-         [vc hideHudFailed:@"分享数据获取失败"];
-     }];
+-(void)openShare{
     
- }
+    if(![[UserCenter sharedInstance] checkLogin]){
+        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            UIViewController *vc = [[LMNavigationController alloc]initWithRootViewController:[[WechatLoginScene alloc]init]];
+            [[URLNavigation navigation].currentViewController presentViewController:vc animated:YES completion:nil];
+        }]];
+        [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    UIViewController *vc = [URLNavigation navigation].currentViewController;
+    [vc loadHudInKeyWindow];
+    
+    [vc showHudIndeterminate:@"数据加载中..."];
+    
+    ShareUrlRequest *req = [ShareUrlRequest Request];
+    req.wechatInfoId = _dataModel.id;
+    @weakify(self);
+    [[ActionSceneModel sharedInstance] doRequest:req success:^{
+        @strongify(self);
+        NSError *error;
+        ShareDataModel *model = [[ShareDataModel alloc]initWithDictionary:[req.output objectForKey:@"data"] error:&error];
+        
+        NSArray *imageList = [model.item map:^UIImage*(ShareDataItemModel *item) {
+            return [item genImage];
+        }];
+        
+        [vc hideHud];
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = self.dataModel.goodsDesc;
+        [DialogUtil showMessage:@"文案已复制！"];
+        [self shareItems:imageList wechatInfoId:self.dataModel.id];
+        
+    } error:^{
+        [vc hideHudFailed:@"分享数据获取失败"];
+    }];
+}
 
--(void)setModel:(MomentModel *)model{
+-(void)setModel:(CircleModel *)model{
     _dataModel = model;
     [_avatarView sd_setImageWithURL:[NSURL URLWithString:model.logo]];
     _nameLabel.text = model.title;
@@ -232,7 +224,7 @@
     }
     
     NSArray *imageList = model.pictures;
-    [self setImageList:imageList money:model.flMoney items:model.itemId platformId:model.platformId];
+    [self setImageList:imageList money:nil items:nil platformId:model.platformId];
 }
 
 -(void)setImageList:(NSArray *)imageList money:(NSArray *)money items:(NSArray *)itemIds platformId:(NSUInteger)platformId {
@@ -247,7 +239,7 @@
             image.userInteractionEnabled = YES;
             [image sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
             [_imageWrapView addSubview:image];
-        
+            
             NSUInteger idx = [imageList indexOfObject:imageUrl];
             NSNumber *m = [money safeObjectAtIndex:idx];
             
@@ -274,7 +266,7 @@
                     make.edges.equalTo(kuang);
                 }];
             }
-
+            
             
             
             UITapGestureRecognizer *recognizer = [UITapGestureRecognizer rac_recognizer];
@@ -309,10 +301,10 @@
  @param height  格子高
  */
 - (CGFloat)gridLayoutWithNumPerRow:(NSInteger)numPerRow
-                       width:(NSInteger)width
-                      height:(NSInteger)height
-                     padding:(CGFloat)padding
-                       views:(NSArray *)views
+                             width:(NSInteger)width
+                            height:(NSInteger)height
+                           padding:(CGFloat)padding
+                             views:(NSArray *)views
 {
     for (int i=0; i<views.count; i++) {
         UIView * view = views[i];
@@ -404,6 +396,5 @@
     
     [[URLNavigation navigation].currentNavigationViewController presentViewController:activityController animated:YES completion:nil];
 }
-
 
 @end

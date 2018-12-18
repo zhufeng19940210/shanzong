@@ -7,6 +7,7 @@
 #import "SendCircleScene.h"
 #import "OrderMessagScene.h"
 #import "ZJScrollPageView.h"
+#import "Scene+NavBar.h"
 @interface ZFMomentListVC ()<ZJScrollPageViewDelegate>
 @property (nonatomic, weak) ZJScrollPageView *scrollPageView;
 @end
@@ -35,7 +36,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self nav_setTitle:@"同学圈"];
+    StudentScene *student = [[StudentScene alloc]init];
+    student.title = @"同学精选";
+    [self addChildViewController:student];
+    SendCircleScene *sendCiclevc = [[SendCircleScene alloc]init];
+    sendCiclevc.title = @"发圈素材";
+    [self addChildViewController:sendCiclevc];
+    OrderMessagScene *messagevc = [[OrderMessagScene alloc]init];
+    messagevc.title = @"消息通知";
+    [self addChildViewController:messagevc];
+    self.scrollPageView.backgroundColor = RGB(240, 240, 240);
 }
 #pragma mark - ZJScrollPageViewDelegate
 - (NSInteger)numberOfChildViewControllers {

@@ -18,7 +18,7 @@
 @property(nonatomic,retain)NSArray *itemId;
 @property(nonatomic,retain)NSArray *pictures;
 @property(nonatomic,assign)NSUInteger platformId;
-@property(nonatomic,retain)NSNumber<Optional>* shareCount;
+@property(nonatomic,retain)NSNumber<Optional>*shareCount;
 @property(nonatomic,copy)NSString *title;
 @end
 

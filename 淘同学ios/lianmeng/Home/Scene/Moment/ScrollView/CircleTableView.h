@@ -1,5 +1,5 @@
 //
-//  ZFMomentListVC.h
+//  CircleTableView.h
 //  lianmeng
 //
 //  Created by zhufeng on 2018/12/18.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Scene.h"
-@interface ZFMomentListVC : Scene
 
+@interface CircleTableView : UITableView
+-(void)startRAC:(NSUInteger)goodsType;
 @end

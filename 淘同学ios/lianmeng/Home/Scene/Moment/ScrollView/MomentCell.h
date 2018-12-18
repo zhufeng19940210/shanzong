@@ -4,6 +4,8 @@
 //  Copyright © 2018年 zhuchao. All rights reserved.
 #import <UIKit/UIKit.h>
 #import "MomentListModel.h"
+#import "CircleListModel.h"
 @interface MomentCell : UITableViewCell
 -(void)setModel:(MomentModel *)model;
+-(void)setCircle:(CircleModel *)model;
 @end

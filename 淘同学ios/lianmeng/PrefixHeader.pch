@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#import <UMShare/UMShare.h>
+
 #define BoldFont @"HelveticaNeue-Bold"
 #define RegularFont @"HelveticaNeue"
 #define MediumFont @"HelveticaNeue-Medium"

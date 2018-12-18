@@ -18,6 +18,7 @@
 #import "LMNavigationController.h"
 #import <EasyIOS/EasyIOS.h>
 #import "SortVC.h"
+#import "ZFMomentListVC.h"
 @interface TabBarController ()<UITabBarControllerDelegate>
 @property(nonatomic,retain)LMNavigationController *mainNavController;
 @property(nonatomic,retain)LMNavigationController *momentNavController;
@@ -32,7 +33,7 @@
     
     _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[HomeListVC alloc] init]];
     _messageNavController = [[LMNavigationController alloc]initWithRootViewController:[[SortVC alloc]init]];
-    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[MomentScene alloc] init]];
+    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[ZFMomentListVC alloc] init]];
     _mineNavController = [[LMNavigationController alloc]initWithRootViewController:[[MineScene alloc] init]];
     
     self.viewControllers = [NSArray arrayWithObjects:_mainNavController, _messageNavController,_momentNavController,_mineNavController,nil];
