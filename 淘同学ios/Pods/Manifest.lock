@@ -72,6 +72,8 @@ PODS:
   - ReactiveCocoa/UI (2.4.4):
     - ReactiveCocoa/Core
   - RegExCategories (1.0)
+  - SDCycleScrollView (1.75):
+    - SDWebImage (>= 4.0.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
@@ -102,6 +104,7 @@ DEPENDENCIES:
   - MJExtension
   - PBJVideoPlayer
   - RegExCategories
+  - SDCycleScrollView
   - UMCCommon
   - UMCShare/Social/ReducedWeChat
 
@@ -134,6 +137,7 @@ SPEC REPOS:
     - PBJVideoPlayer
     - ReactiveCocoa
     - RegExCategories
+    - SDCycleScrollView
     - SDWebImage
     - SharkORM
     - TMCache
@@ -172,6 +176,7 @@ SPEC CHECKSUMS:
   PBJVideoPlayer: b2f79c2139e4a74711bc900dd879cee4e7ccfef6
   ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SecurityGuardSDK: 05f6d782189160f2b23b731eed5cb314ce584855
   SGMain: 8a3008d8a709259d4868f78ae3265659e58e4416
@@ -183,6 +188,6 @@ SPEC CHECKSUMS:
   UMCShare: aa233aecad67979930fe43f3a2f676023b669439
   UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
 
-PODFILE CHECKSUM: fd617c14460208bf4a7b70b8e296211691a22543
+PODFILE CHECKSUM: f00613fd4efed879b7b6734b92355a50d6fd74e2
 
 COCOAPODS: 1.5.3

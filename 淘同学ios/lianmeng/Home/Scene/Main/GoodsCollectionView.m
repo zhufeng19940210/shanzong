@@ -15,6 +15,7 @@
 #import "ConetentScrollCell.h"
 #import "AdCell.h"
 #import "BannerListModel.h"
+#import "AdThirdCell.h"
 @interface GoodsCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,retain)NSArray *itemArray;
 @property(nonatomic,strong)NSArray *studentArray;
@@ -57,6 +58,7 @@
         [self registerClass:[LikeView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"LikeView"];
         //todo新加的
         [self registerClass:[AdCell class] forCellWithReuseIdentifier:@"AdCell"];
+        [self registerNib:[UINib nibWithNibName:@"AdThirdCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"AdThirdCell"];
        // [self registerNib:[UINib nibWithNibName:@"AdCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"AdCell"];
         [self registerNib:[UINib nibWithNibName:@"HeaderTtileCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"HeaderTtileCell"];
         [self registerClass:[ConetentScrollCell class] forCellWithReuseIdentifier:@"ConetentScrollCell"];
@@ -185,8 +187,8 @@
             return contentCell;
         }
     }if (indexPath.section == 3) {
-        AdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
-        //[adCell reloadBannerData:self.thirdArray];
+        AdThirdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdThirdCell" forIndexPath:indexPath];
+        adCell.urlArray = (NSMutableArray *)self.thirdArray;
         return adCell;
     }if (indexPath.section == 4) {
         if (indexPath.row == 0) {

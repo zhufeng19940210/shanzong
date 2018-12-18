@@ -204,6 +204,8 @@
 		F0FF4FE321C919D800660B03 /* CircleSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FE221C919D800660B03 /* CircleSceneModel.m */; };
 		F0FF4FE621C91A3100660B03 /* CircleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FE521C91A3100660B03 /* CircleListModel.m */; };
 		F0FF4FE921C92BA900660B03 /* CircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FE821C92BA900660B03 /* CircleCell.m */; };
+		F0FF4FFA21C9365E00660B03 /* AdThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FF821C9365E00660B03 /* AdThirdCell.m */; };
+		F0FF4FFB21C9365E00660B03 /* AdThirdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FF4FF921C9365E00660B03 /* AdThirdCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -592,6 +594,9 @@
 		F0FF4FE521C91A3100660B03 /* CircleListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleListModel.m; sourceTree = "<group>"; };
 		F0FF4FE721C92BA900660B03 /* CircleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleCell.h; sourceTree = "<group>"; };
 		F0FF4FE821C92BA900660B03 /* CircleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleCell.m; sourceTree = "<group>"; };
+		F0FF4FF721C9365E00660B03 /* AdThirdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdThirdCell.h; sourceTree = "<group>"; };
+		F0FF4FF821C9365E00660B03 /* AdThirdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdThirdCell.m; sourceTree = "<group>"; };
+		F0FF4FF921C9365E00660B03 /* AdThirdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdThirdCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -652,6 +657,9 @@
 				F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */,
 				F0FCAB5421C37C6C00788559 /* AdCell.h */,
 				F0FCAB5521C37C6C00788559 /* AdCell.m */,
+				F0FF4FF721C9365E00660B03 /* AdThirdCell.h */,
+				F0FF4FF821C9365E00660B03 /* AdThirdCell.m */,
+				F0FF4FF921C9365E00660B03 /* AdThirdCell.xib */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -1495,6 +1503,7 @@
 				F0F7E3EB21C7A78E00C14818 /* SortReusableView.xib in Resources */,
 				F0FCAB5021C378BB00788559 /* HeaderTtileCell.xib in Resources */,
 				5BBD27B120E3E2C900EC7D3A /* yw_1222.jpg in Resources */,
+				F0FF4FFB21C9365E00660B03 /* AdThirdCell.xib in Resources */,
 				F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */,
 				5B29A54020ECC34300903E89 /* JDSDK.bundle in Resources */,
 				5B79C80820C1388500286BC1 /* README.md in Resources */,
@@ -1576,6 +1585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0FF4FFA21C9365E00660B03 /* AdThirdCell.m in Sources */,
 				F0003B6E21C89D1000A5661F /* CollectionViewHeaderView.m in Sources */,
 				F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */,
 				5BDD0E5721109FEA00DD2AEA /* XianShiCell.m in Sources */,

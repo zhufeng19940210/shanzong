@@ -18,4 +18,5 @@ pod 'PBJVideoPlayer'
 pod 'AlibcTradeSDK'
 pod 'Crontab-IOS'
 pod 'MJExtension'
+pod 'SDCycleScrollView'
 end
