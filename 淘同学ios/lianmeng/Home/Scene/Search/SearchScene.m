@@ -88,6 +88,7 @@
         SearchListScene *scene = [[SearchListScene alloc]init];
         scene.platformId = self.platformId;
         scene.keyword = [keyWord copy];
+        scene.isSort = NO;
         [self.navigationController pushViewController:scene animated:YES];
     }
     return YES;
@@ -97,6 +98,7 @@
     SearchListScene *scene = [[SearchListScene alloc]init];
     scene.platformId = self.platformId;
     scene.keyword = [keyword copy];
+    scene.isSort = NO;
     [self.navigationController pushViewController:scene animated:YES];
 }
 

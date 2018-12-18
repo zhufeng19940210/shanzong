@@ -44,7 +44,7 @@
         _button2.tag = 1;
         [_button2 addTarget:self action:@selector(touchButton:) forControlEvents:UIControlEventTouchUpInside];
         _button2.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-        [_button2 setTitle:@"淘宝专区" forState:UIControlStateNormal];
+        [_button2 setTitle:@"发圈素材" forState:UIControlStateNormal];
         [_button2 setTitleColor:black forState:UIControlStateNormal];
         [_button2 setTitleColor:red forState:UIControlStateHighlighted];
         [self addSubview:_button2];
@@ -53,7 +53,7 @@
         _button3.tag = 2;
         [_button3 addTarget:self action:@selector(touchButton:) forControlEvents:UIControlEventTouchUpInside];
         _button3.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
-        [_button3 setTitle:@"京东专区" forState:UIControlStateNormal];
+        [_button3 setTitle:@"消息通知" forState:UIControlStateNormal];
         [_button3 setTitleColor:black forState:UIControlStateNormal];\
         [_button3 setTitleColor:red forState:UIControlStateHighlighted];
         [self addSubview:_button3];

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SortReusableView : UICollectionReusableView
-
+@property (weak, nonatomic) IBOutlet UILabel *title_lab;
 @end

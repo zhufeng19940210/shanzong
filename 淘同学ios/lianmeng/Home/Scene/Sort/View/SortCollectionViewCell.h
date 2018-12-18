@@ -6,5 +6,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SortCollectionViewCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *title_lab;
+@property (weak, nonatomic) IBOutlet UIImageView *icon_img;
 @end

@@ -165,6 +165,9 @@
 		5BF7E4E120EFC6D0006E4AD1 /* UpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7E4E020EFC6D0006E4AD1 /* UpdateRequest.m */; };
 		5BF7E4E420EFC77A006E4AD1 /* UpdateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7E4E320EFC77A006E4AD1 /* UpdateModel.m */; };
 		9E6B5FE84DEA8CED03EE4DA5 /* libPods-lianmeng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF510DCDCD6900E55137A1B0 /* libPods-lianmeng.a */; };
+		F0003B6E21C89D1000A5661F /* CollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B6A21C89D1000A5661F /* CollectionViewHeaderView.m */; };
+		F0003B6F21C89D1000A5661F /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B6C21C89D1000A5661F /* CollectionViewCell.m */; };
+		F0003B7221C8C46800A5661F /* SearchTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7121C8C46800A5661F /* SearchTopView.m */; };
 		F0506C3721C09BB800BB5D82 /* SecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0506C3621C09BB800BB5D82 /* SecondView.m */; };
 		F0785F8D21C39628003A181A /* HomeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0785F8C21C39628003A181A /* HomeListVC.m */; };
 		F0A252EA21C4E8AC000439B1 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252DA21C4E8AC000439B1 /* UIView+ZJFrame.m */; };
@@ -506,6 +509,12 @@
 		5BF7E4E320EFC77A006E4AD1 /* UpdateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateModel.m; sourceTree = "<group>"; };
 		AF447A2CB0C562042C8BFB07 /* Pods-lianmeng.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lianmeng.release.xcconfig"; path = "Pods/Target Support Files/Pods-lianmeng/Pods-lianmeng.release.xcconfig"; sourceTree = "<group>"; };
 		CF510DCDCD6900E55137A1B0 /* libPods-lianmeng.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-lianmeng.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0003B6A21C89D1000A5661F /* CollectionViewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewHeaderView.m; sourceTree = "<group>"; };
+		F0003B6B21C89D1000A5661F /* CollectionViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewHeaderView.h; sourceTree = "<group>"; };
+		F0003B6C21C89D1000A5661F /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		F0003B6D21C89D1000A5661F /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		F0003B7021C8C46800A5661F /* SearchTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTopView.h; sourceTree = "<group>"; };
+		F0003B7121C8C46800A5661F /* SearchTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTopView.m; sourceTree = "<group>"; };
 		F0506C3521C09BB800BB5D82 /* SecondView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondView.h; sourceTree = "<group>"; };
 		F0506C3621C09BB800BB5D82 /* SecondView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondView.m; sourceTree = "<group>"; };
 		F0785F8B21C39628003A181A /* HomeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListVC.h; sourceTree = "<group>"; };
@@ -738,6 +747,8 @@
 				5B42B17220D0FE20008AD151 /* SearchDropDownView.m */,
 				5B42B17420D10949008AD151 /* SearchItemCell.h */,
 				5B42B17520D10949008AD151 /* SearchItemCell.m */,
+				F0003B7021C8C46800A5661F /* SearchTopView.h */,
+				F0003B7121C8C46800A5661F /* SearchTopView.m */,
 			);
 			path = SearchBar;
 			sourceTree = "<group>";
@@ -1333,6 +1344,10 @@
 		F0F7E3E521C7A73100C14818 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F0003B6B21C89D1000A5661F /* CollectionViewHeaderView.h */,
+				F0003B6A21C89D1000A5661F /* CollectionViewHeaderView.m */,
+				F0003B6D21C89D1000A5661F /* CollectionViewCell.h */,
+				F0003B6C21C89D1000A5661F /* CollectionViewCell.m */,
 				F0F7E3E721C7A78E00C14818 /* SortReusableView.h */,
 				F0F7E3E821C7A78E00C14818 /* SortReusableView.m */,
 				F0F7E3E921C7A78E00C14818 /* SortReusableView.xib */,
@@ -1513,6 +1528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0003B6E21C89D1000A5661F /* CollectionViewHeaderView.m in Sources */,
 				F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */,
 				5BDD0E5721109FEA00DD2AEA /* XianShiCell.m in Sources */,
 				5B29A4FA20E9279F00903E89 /* OrderNoticeListReuest.m in Sources */,
@@ -1578,6 +1594,7 @@
 				5B463A7120DF84040078D720 /* TakeProfitScene.m in Sources */,
 				5BCDE73A20BD358800087B39 /* PhoneLoginScene.m in Sources */,
 				5B0750FD20C57954002261EA /* RexHelper.m in Sources */,
+				F0003B6F21C89D1000A5661F /* CollectionViewCell.m in Sources */,
 				5BBD279620E276A600EC7D3A /* ProfitModel.m in Sources */,
 				5B07515820C91CAC002261EA /* ShareScene.m in Sources */,
 				5B463A6720DF4A7A0078D720 /* FansScene.m in Sources */,
@@ -1604,6 +1621,7 @@
 				5B463A5320DE293B0078D720 /* ProfitContenView.m in Sources */,
 				5B79C80920C1388500286BC1 /* Scene+NavBar.m in Sources */,
 				5BBD279F20E27E8D00EC7D3A /* UserOrderListModel.m in Sources */,
+				F0003B7221C8C46800A5661F /* SearchTopView.m in Sources */,
 				5BDD0E54211043B900DD2AEA /* TimeSegModel.m in Sources */,
 				5B07512120C78CD7002261EA /* GoodsCollectionViewCell.m in Sources */,
 				5B07510E20C6DC76002261EA /* MessageCell.m in Sources */,

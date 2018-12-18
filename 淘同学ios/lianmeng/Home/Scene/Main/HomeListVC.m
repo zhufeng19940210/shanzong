@@ -91,14 +91,20 @@
 }
 -(void)setupHomeUI{
     self.view.backgroundColor = RGB(240, 240, 240);
-    MainScene *mainvc = [[MainScene alloc]init];
-    mainvc.title = @"首页";
-    [self addChildViewController:mainvc];
-    for (MainItemModel *model in self.listArray) {
-        OtherScene *othervc = [[OtherScene alloc]init];
-        othervc.title = model.name;
-        othervc.cid  = model.did;
-        [self addChildViewController:othervc];
+    for (int i = 0 ; i<self.listArray.count+1;i++) {
+        Scene *scene = nil;
+        if (i == 0) {
+            MainScene *mainvc = [[MainScene alloc]init];
+            mainvc.title = @"首页";
+            scene = mainvc;
+        }else{
+            MainItemModel *model = self.listArray[i-1];
+            OtherScene *othervc = [[OtherScene alloc]init];
+            othervc.title = model.name;
+            othervc.cid  = model.did;
+            scene = othervc;
+        }
+        [self addChildViewController:scene];
     }
     self.scrollPageView.backgroundColor = RGB(240, 240, 240);
 }

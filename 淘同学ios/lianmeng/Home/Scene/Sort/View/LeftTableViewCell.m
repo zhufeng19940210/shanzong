@@ -21,11 +21,10 @@
         self.name.numberOfLines = 0;
         self.name.font = [UIFont systemFontOfSize:15];
         self.name.textColor = rgba(130, 130, 130, 1);
-        self.name.highlightedTextColor = defaultColor;
+        self.name.highlightedTextColor = [UIColor redColor];
         [self.contentView addSubview:self.name];
-        
         self.yellowView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 5, 45)];
-        self.yellowView.backgroundColor = defaultColor;
+        self.yellowView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:self.yellowView];
     }
     return self;
@@ -35,7 +34,7 @@
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 
-    self.contentView.backgroundColor = selected ? [UIColor whiteColor] : [UIColor colorWithWhite:0 alpha:0.1];
+    self.contentView.backgroundColor = selected ?[UIColor colorWithWhite:0 alpha:0.1] : [UIColor whiteColor] ;
     self.highlighted = selected;
     self.name.highlighted = selected;
     self.yellowView.hidden = !selected;

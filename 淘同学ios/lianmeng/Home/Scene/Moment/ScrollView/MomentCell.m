@@ -173,7 +173,7 @@
     
     [_splitView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.left.right.bottom.equalTo(self.contentView);
-        make.height.equalTo(@1.0f);
+        make.height.equalTo(@0.5f);
     }];
     
 }

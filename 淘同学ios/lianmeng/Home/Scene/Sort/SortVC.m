@@ -10,15 +10,24 @@
 #import "SortCollectionViewCell.h"
 #import "SortTypeModel.h"
 #import "SortTypenextModel.h"
+#import "SortInfoModel.h"
+#import "CollectionViewHeaderView.h"
+#import "CollectionViewCell.h"
 #import <MJExtension.h>
 #import "Scene+NavBar.h"
+#import "SearchListScene.h"
 static float kLeftTableViewWidth = 80.f;
 static float kCollectionViewMargin = 3.f;
 @interface SortVC ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSInteger _selectIndex;
+    BOOL _isScrollDown;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSMutableArray *collectionDatas;
+@property (nonatomic,assign)int MidddleNumber;
 @end
 @implementation SortVC
 -(NSMutableArray *)dataSource
@@ -41,8 +50,8 @@ static float kCollectionViewMargin = 3.f;
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, kLeftTableViewWidth,ScreenH-kStatusBarAndNavigationBarHeight-kCollectionViewMargin)];
-        _tableView.backgroundColor = [UIColor redColor];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, kLeftTableViewWidth,ScreenH-kStatusBarAndNavigationBarHeight-kCollectionViewMargin-49)];
+        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
@@ -62,39 +71,46 @@ static float kCollectionViewMargin = 3.f;
         UICollectionViewFlowLayout *flowLayout =  [[UICollectionViewFlowLayout alloc]init];
         flowLayout.minimumLineSpacing = 0;
         flowLayout.minimumInteritemSpacing = 0;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kStatusBarAndNavigationBarHeight, ScreenW - kLeftTableViewWidth - 2 * kCollectionViewMargin, ScreenH-kStatusBarAndNavigationBarHeight - kCollectionViewMargin) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kStatusBarAndNavigationBarHeight, ScreenW - kLeftTableViewWidth - 2 * kCollectionViewMargin, ScreenH-kStatusBarAndNavigationBarHeight - kCollectionViewMargin-49) collectionViewLayout:flowLayout];
         _collectionView.delegate = self;
-        _collectionView.dataSource = self;
-        _collectionView.backgroundColor = [UIColor yellowColor];
+         _collectionView.dataSource = self;
+        _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         //注册cell
-        [_collectionView registerNib:[UINib nibWithNibName:@"SortCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"SortCollectionViewCell"];
-        //注册分区头部
-        [_collectionView registerNib:[UINib nibWithNibName:@"SortReusableView" bundle:[NSBundle mainBundle]] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SortReusableView"];
+        [_collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier_CollectionView];
+        //注册分区头标题
+        [_collectionView registerClass:[CollectionViewHeaderView class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                   withReuseIdentifier:@"CollectionViewHeaderView"];
     }
     return _collectionView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor =[UIColor whiteColor];
     [self nav_setTitle:@"分类"];
+    _selectIndex = 0;
+    _isScrollDown = YES;
     [self setupData];
 }
 -(void)setupData
 {
+    __weak typeof(self) weakSelf = self;
     [[NetWorkTool shareInstacne]getWithURLString:@"http://47.110.40.176:8888/mobile/taobao/superclassifylist" parameters:nil success:^(id responseObject) {
-        NSLog(@"responseObject:%@",responseObject);
         if ([responseObject[@"status"] integerValue] == 200) {
-            [self.dataSource removeAllObjects];
-            self.dataSource = [SortTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            NSLog(@"self.dataSource.count:%lu",(unsigned long)self.dataSource.count);
-            [self.view addSubview:self.tableView];
-            [self.view addSubview:self.collectionView];
-            [self.tableView reloadData];
-            [self.collectionView reloadData];
+            [weakSelf.dataSource removeAllObjects];
+            weakSelf.dataSource = [SortTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            weakSelf.MidddleNumber = (int)weakSelf.dataSource.count / 2;
+            [weakSelf.view addSubview:weakSelf.tableView];
+            [weakSelf.view addSubview:weakSelf.collectionView];
+            [weakSelf.tableView reloadData];
+            [weakSelf.collectionView reloadData];
+            [weakSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                        animated:YES
+                                  scrollPosition:UITableViewScrollPositionNone];
         }else{
             [DialogUtil showMessage:@"请求失败"];
             return;
@@ -104,7 +120,6 @@ static float kCollectionViewMargin = 3.f;
         return;
     }];
 }
-
 #pragma mark -- uitableviewdelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -119,50 +134,72 @@ static float kCollectionViewMargin = 3.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   // _selectIndex = indexPath.row;
-    
-    // http://stackoverflow.com/questions/22100227/scroll-uicollectionview-to-section-header-view
-    // 解决点击 TableView 后 CollectionView 的 Header 遮挡问题。
-    //[self scrollToTopOfSection:_selectIndex animated:YES];
-    //    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:_selectIndex] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
-   // [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_selectIndex inSection:0]
-    // atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    _selectIndex = indexPath.row;
+    //todo 这里要修改下
+    if (_selectIndex >= self.MidddleNumber) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_selectIndex inSection:0]
+                              atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }else{
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_selectIndex inSection:0]
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
+    }
+    [self.collectionView reloadData];
 }
-
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    SortTypeModel *typemodel = self.dataSource[0];
-    NSLog(@"typemodel.data.count:%lu",(unsigned long)typemodel.data.count);
+    SortTypeModel *typemodel = self.dataSource[_selectIndex];
     return typemodel.data.count;
 }
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    SortTypeModel *typemodel = self.dataSource[0];
-    SortTypenextModel *nextmodel = typemodel.data[0];
-    NSLog(@"nextmodel.info.count:%lu",(unsigned long)nextmodel.info.count);
+    SortTypeModel *typemodel = self.dataSource[_selectIndex];
+    SortTypenextModel *nextmodel = typemodel.data[section];
     return nextmodel.info.count;
-   // CollectionCategoryModel *model = self.dataSource[section];
-   // return model.subcategories.count;
 }
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"" forIndexPath:indexPath];
-//   // SubCategoryModel *model = self.collectionDatas[indexPath.section][indexPath.row];
-//    //cell.model = model;
-//    return cell;
+    SortTypeModel *typemodel = self.dataSource[_selectIndex];
+    SortTypenextModel *nextmodel = typemodel.data[indexPath.section];
+    SortInfoModel *info = nextmodel.info[indexPath.row];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
+    [cell.imageV sd_setImageWithURL:[NSURL URLWithString:info.imgurl] placeholderImage:[UIImage imageNamed:@""]];
+    cell.name.text = [NSString stringWithFormat:@"%@",info.son_name];
+    return cell;
+}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
+           viewForSupplementaryElementOfKind:(NSString *)kind
+                                 atIndexPath:(NSIndexPath *)indexPath
+{    SortTypeModel *typemodel = self.dataSource[_selectIndex];
+     SortTypenextModel *nextmodel = typemodel.data[indexPath.section];
+    if (kind == UICollectionElementKindSectionHeader) {
+        CollectionViewHeaderView  *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CollectionViewHeaderView" forIndexPath:indexPath];
+        headerView.title.text = nextmodel.next_name;
+        return headerView;
+    }
     return nil;
 }
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((ScreenW - kLeftTableViewWidth - 4 * kCollectionViewMargin) / 3,
+                      (ScreenW - kLeftTableViewWidth - 4 * kCollectionViewMargin) / 3 + 10);
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(ScreenW, 40);
+}
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return CGSizeMake((SCREEN_WIDTH - kLeftTableViewWidth - 4 * kCollectionViewMargin) / 3,
-//                      (SCREEN_WIDTH - kLeftTableViewWidth - 4 * kCollectionViewMargin) / 3 + 30);
-//}
-
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SortTypeModel *typemodel = self.dataSource[_selectIndex];
+    SortTypenextModel *nextmodel = typemodel.data[indexPath.section];
+    SortInfoModel *info = nextmodel.info[indexPath.row];
+    SearchListScene *searchscene = [[SearchListScene alloc]init];
+    searchscene.keyword = info.son_name;
+    searchscene.platformId = 1;
+    searchscene.isSort = YES;
+    [self.navigationController pushViewController:searchscene animated:YES];
+}
 @end

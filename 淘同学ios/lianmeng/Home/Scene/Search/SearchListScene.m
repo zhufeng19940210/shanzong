@@ -7,7 +7,6 @@
 //
 
 #import "SearchListScene.h"
-
 #import <Masonry/Masonry.h>
 #import "SearchNavBar.h"
 #import "SearchNavBar.h"
@@ -17,6 +16,7 @@
 #import "TabBaoItemCell.h"
 #import "GoodsSearchSceneModel.h"
 #import "DetailScene.h"
+#import "SearchTopView.h"
 
 @interface SearchListScene ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SortViewDelegate,YouhuiQuanViewDelegate>
 @property(nonatomic,retain)SearchNavBar *searchBar;
@@ -25,7 +25,7 @@
 @property(nonatomic,retain)YouhuiQuanView *yhqView;
 @property(nonatomic,retain)UITableView *tableView;
 @property(nonatomic,retain)GoodsSearchSceneModel *sceneModel;
-
+@property(nonatomic,retain)SearchTopView *topView;
 @end
 
 @implementation SearchListScene
@@ -34,48 +34,84 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    _searchBar = [[SearchNavBar alloc]init];
-    [self.view addSubview:_searchBar];
-    [_searchBar.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
-    [_searchBar.dropDownButton addTarget:self action:@selector(showDropDownBox) forControlEvents:UIControlEventTouchUpInside];
-    _searchBar.textField.delegate = self;
-    _searchBar.textField.text = self.keyword;
-    _searchBar.textField.returnKeyType = UIReturnKeySearch;
-    
-    if (self.platformId == 1) {
-        [_searchBar.dropDownButton setTitle:@"淘宝" forState:UIControlStateNormal];
+    if (self.isSort == YES) {
+        _topView = [[SearchTopView alloc]init];
+        [self.view addSubview:_topView];
+        [_topView.titlelab setText:self.keyword];
+        [_topView.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+        [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self.view);
+            make.height.equalTo(@(kStatusBarAndNavigationBarHeight));
+        }];
+        _sortView = [[SortView alloc]init];
+        _sortView.delegate = self;
+        [self.view addSubview:_sortView];
+        
+        [_sortView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.topView.mas_bottom);
+            make.height.equalTo(@34.5f);
+        }];
+        _yhqView = [[YouhuiQuanView alloc]init];
+        _yhqView.delegate = self;
+        [self.view addSubview:_yhqView];
+        
+        [_yhqView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.sortView.mas_bottom);
+            make.height.equalTo(@40.0f);
+        }];
     }else{
-        [_searchBar.dropDownButton setTitle:@"京东" forState:UIControlStateNormal];
+        _searchBar = [[SearchNavBar alloc]init];
+        [self.view addSubview:_searchBar];
+        [_searchBar.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
+        [_searchBar.dropDownButton addTarget:self action:@selector(showDropDownBox) forControlEvents:UIControlEventTouchUpInside];
+        _searchBar.textField.delegate = self;
+        _searchBar.textField.text = self.keyword;
+        _searchBar.textField.returnKeyType = UIReturnKeySearch;
+        
+        if (self.platformId == 1) {
+            [_searchBar.dropDownButton setTitle:@"淘宝" forState:UIControlStateNormal];
+        }else{
+            [_searchBar.dropDownButton setTitle:@"京东" forState:UIControlStateNormal];
+        }
+        
+        [_searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self.view);
+            make.height.equalTo(@(kStatusBarAndNavigationBarHeight));
+        }];
+        
+        _sortView = [[SortView alloc]init];
+        _sortView.delegate = self;
+        [self.view addSubview:_sortView];
+        
+        [_sortView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.searchBar.mas_bottom);
+            make.height.equalTo(@34.5f);
+        }];
+        
+        _yhqView = [[YouhuiQuanView alloc]init];
+        _yhqView.delegate = self;
+        [self.view addSubview:_yhqView];
+        
+        [_yhqView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self.view);
+            make.top.equalTo(self.sortView.mas_bottom);
+            make.height.equalTo(@40.0f);
+        }];
+        _dropDownView = [[SearchDropDownView alloc]init];
+        _dropDownView.hidden = YES;
+        [self.view addSubview:_dropDownView];
+        [_dropDownView.button1 addTarget:self action:@selector(touchTaobao) forControlEvents:UIControlEventTouchUpInside];
+        [_dropDownView.button2 addTarget:self action:@selector(touchJd) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_dropDownView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@65.0f);
+            make.top.equalTo(self.searchBar.mas_bottom).offset(-8.0f);
+            make.left.equalTo(self.searchBar.mas_left).offset(60.0f);
+        }];
     }
-    
-    [_searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self.view);
-        make.height.equalTo(@(kStatusBarAndNavigationBarHeight));
-    }];
-    
-
-    
-    _sortView = [[SortView alloc]init];
-    _sortView.delegate = self;
-    [self.view addSubview:_sortView];
-    
-    [_sortView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.searchBar.mas_bottom);
-        make.height.equalTo(@34.5f);
-    }];
-    
-    _yhqView = [[YouhuiQuanView alloc]init];
-    _yhqView.delegate = self;
-    [self.view addSubview:_yhqView];
-    
-    [_yhqView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.equalTo(self.sortView.mas_bottom);
-        make.height.equalTo(@40.0f);
-    }];
-    
     _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
     [_tableView registerClass:[TabBaoItemCell class] forCellReuseIdentifier:@"TabBaoItemCell"];
     _tableView.dataSource = self;
@@ -88,22 +124,6 @@
        make.top.equalTo(self.yhqView.mas_bottom);
         make.left.right.bottom.equalTo(self.view);
     }];
-    
-    
-    _dropDownView = [[SearchDropDownView alloc]init];
-    _dropDownView.hidden = YES;
-    [self.view addSubview:_dropDownView];
-    [_dropDownView.button1 addTarget:self action:@selector(touchTaobao) forControlEvents:UIControlEventTouchUpInside];
-    [_dropDownView.button2 addTarget:self action:@selector(touchJd) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [_dropDownView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@65.0f);
-        make.top.equalTo(self.searchBar.mas_bottom).offset(-8.0f);
-        make.left.equalTo(self.searchBar.mas_left).offset(60.0f);
-    }];
-    
-    
     _sceneModel = [GoodsSearchSceneModel SceneModel];
     _sceneModel.request.platformId = @(self.platformId);
     _sceneModel.request.keyword = [self.keyword copy];
@@ -208,7 +228,6 @@
     }
     _dropDownView.hidden = !_dropDownView.hidden;
 }
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TabBaoItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TabBaoItemCell" forIndexPath:indexPath];

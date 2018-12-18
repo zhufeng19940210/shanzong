@@ -1,18 +1,10 @@
-//
 //  SortReusableView.m
 //  lianmeng
-//
 //  Created by zhufeng on 2018/12/17.
 //  Copyright © 2018 zhuchao. All rights reserved.
-//
-
 #import "SortReusableView.h"
-
 @implementation SortReusableView
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
-
 @end
