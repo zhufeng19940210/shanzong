@@ -96,6 +96,7 @@ static float kCollectionViewMargin = 3.f;
     _isScrollDown = YES;
     [self setupData];
 }
+
 -(void)setupData
 {
     __weak typeof(self) weakSelf = self;
@@ -120,7 +121,9 @@ static float kCollectionViewMargin = 3.f;
         return;
     }];
 }
+
 #pragma mark -- uitableviewdelegate
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.dataSource.count;

@@ -168,6 +168,10 @@
 		F0003B6E21C89D1000A5661F /* CollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B6A21C89D1000A5661F /* CollectionViewHeaderView.m */; };
 		F0003B6F21C89D1000A5661F /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B6C21C89D1000A5661F /* CollectionViewCell.m */; };
 		F0003B7221C8C46800A5661F /* SearchTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7121C8C46800A5661F /* SearchTopView.m */; };
+		F0003B7621C8ECCC00A5661F /* ZFMomentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7521C8ECCC00A5661F /* ZFMomentListVC.m */; };
+		F0003B7921C8ED7200A5661F /* StudentScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7821C8ED7200A5661F /* StudentScene.m */; };
+		F0003B7C21C8EE4C00A5661F /* SendCircleScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7B21C8EE4C00A5661F /* SendCircleScene.m */; };
+		F0003B7F21C8EE7200A5661F /* OrderMessagScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0003B7E21C8EE7200A5661F /* OrderMessagScene.m */; };
 		F0506C3721C09BB800BB5D82 /* SecondView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0506C3621C09BB800BB5D82 /* SecondView.m */; };
 		F0785F8D21C39628003A181A /* HomeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0785F8C21C39628003A181A /* HomeListVC.m */; };
 		F0A252EA21C4E8AC000439B1 /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252DA21C4E8AC000439B1 /* UIView+ZJFrame.m */; };
@@ -515,6 +519,14 @@
 		F0003B6D21C89D1000A5661F /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		F0003B7021C8C46800A5661F /* SearchTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTopView.h; sourceTree = "<group>"; };
 		F0003B7121C8C46800A5661F /* SearchTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTopView.m; sourceTree = "<group>"; };
+		F0003B7421C8ECCC00A5661F /* ZFMomentListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFMomentListVC.h; sourceTree = "<group>"; };
+		F0003B7521C8ECCC00A5661F /* ZFMomentListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFMomentListVC.m; sourceTree = "<group>"; };
+		F0003B7721C8ED7200A5661F /* StudentScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StudentScene.h; sourceTree = "<group>"; };
+		F0003B7821C8ED7200A5661F /* StudentScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudentScene.m; sourceTree = "<group>"; };
+		F0003B7A21C8EE4C00A5661F /* SendCircleScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCircleScene.h; sourceTree = "<group>"; };
+		F0003B7B21C8EE4C00A5661F /* SendCircleScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCircleScene.m; sourceTree = "<group>"; };
+		F0003B7D21C8EE7200A5661F /* OrderMessagScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderMessagScene.h; sourceTree = "<group>"; };
+		F0003B7E21C8EE7200A5661F /* OrderMessagScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderMessagScene.m; sourceTree = "<group>"; };
 		F0506C3521C09BB800BB5D82 /* SecondView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondView.h; sourceTree = "<group>"; };
 		F0506C3621C09BB800BB5D82 /* SecondView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondView.m; sourceTree = "<group>"; };
 		F0785F8B21C39628003A181A /* HomeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListVC.h; sourceTree = "<group>"; };
@@ -1185,6 +1197,7 @@
 		5BCDE72220BD333500087B39 /* Moment */ = {
 			isa = PBXGroup;
 			children = (
+				F0003B7321C8EB9700A5661F /* ZFMoent */,
 				5B79C81820C3BEF400286BC1 /* ScrollView */,
 				5B79C81420C3AF1100286BC1 /* SlideBar */,
 				5BCDE72820BD339100087B39 /* MomentScene.h */,
@@ -1301,6 +1314,21 @@
 				AF447A2CB0C562042C8BFB07 /* Pods-lianmeng.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F0003B7321C8EB9700A5661F /* ZFMoent */ = {
+			isa = PBXGroup;
+			children = (
+				F0003B7421C8ECCC00A5661F /* ZFMomentListVC.h */,
+				F0003B7521C8ECCC00A5661F /* ZFMomentListVC.m */,
+				F0003B7721C8ED7200A5661F /* StudentScene.h */,
+				F0003B7821C8ED7200A5661F /* StudentScene.m */,
+				F0003B7A21C8EE4C00A5661F /* SendCircleScene.h */,
+				F0003B7B21C8EE4C00A5661F /* SendCircleScene.m */,
+				F0003B7D21C8EE7200A5661F /* OrderMessagScene.h */,
+				F0003B7E21C8EE7200A5661F /* OrderMessagScene.m */,
+			);
+			path = ZFMoent;
 			sourceTree = "<group>";
 		};
 		F0A252D821C4E8AC000439B1 /* ZJScrollPageView */ = {
@@ -1592,6 +1620,7 @@
 				5B1D537F20DBFD4B0065400E /* MineCellView.m in Sources */,
 				5B42B17D20D116D1008AD151 /* TaoBaoListScene.m in Sources */,
 				5B463A7120DF84040078D720 /* TakeProfitScene.m in Sources */,
+				F0003B7621C8ECCC00A5661F /* ZFMomentListVC.m in Sources */,
 				5BCDE73A20BD358800087B39 /* PhoneLoginScene.m in Sources */,
 				5B0750FD20C57954002261EA /* RexHelper.m in Sources */,
 				F0003B6F21C89D1000A5661F /* CollectionViewCell.m in Sources */,
@@ -1649,7 +1678,9 @@
 				5BCDE71020BD248E00087B39 /* main.m in Sources */,
 				F0A252ED21C4E8AC000439B1 /* ZJContentView.m in Sources */,
 				5B1D538320DCEC1F0065400E /* RankScene.m in Sources */,
+				F0003B7C21C8EE4C00A5661F /* SendCircleScene.m in Sources */,
 				5B1D538620DCF3A40065400E /* RankScrollView.m in Sources */,
+				F0003B7F21C8EE7200A5661F /* OrderMessagScene.m in Sources */,
 				5B1D536620D787FB0065400E /* CategoryListRequest.m in Sources */,
 				5B463A6A20DF4AA60078D720 /* RecommendView.m in Sources */,
 				5B79C81320C1498400286BC1 /* NavLeftView.m in Sources */,
@@ -1657,6 +1688,7 @@
 				5B07511120C6EA3A002261EA /* MessageListModel.m in Sources */,
 				5B463A5920DE2D810078D720 /* ProfitBarView.m in Sources */,
 				5BF7E4D420EE2B34006E4AD1 /* UserFansNumModel.m in Sources */,
+				F0003B7921C8ED7200A5661F /* StudentScene.m in Sources */,
 				5BF7E4CE20ECC6BC006E4AD1 /* ShareInfo.m in Sources */,
 				5B1D537020D940F90065400E /* FavScene.m in Sources */,
 				5B07515B20C93039002261EA /* ImageShowView.m in Sources */,

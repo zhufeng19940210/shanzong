@@ -7,14 +7,11 @@
 #import "MomentListSceneModel.h"
 #import <EasyIOS/EasyIOS.h>
 #import "MomentCell2.h"
-
 @interface MomentTableView()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)MomentListSceneModel *sceneModel;
 @property(nonatomic,assign)NSUInteger goodsType;
 @end
-
 @implementation MomentTableView
-
 -(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
     self = [super initWithFrame:frame style:style];
     if (self) {
@@ -25,12 +22,10 @@
         self.estimatedRowHeight = 100;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self registerClass:[MomentCell class] forCellReuseIdentifier:@"MomentCell"];
-        [self registerClass:[MomentCell2 class] forCellReuseIdentifier:@"MomentCell2"];
-        
+        //[self registerClass:[MomentCell2 class] forCellReuseIdentifier:@"MomentCell2"];
     }
     return self;
 }
-
 -(void)startRAC:(NSUInteger)goodsType{
     _goodsType = goodsType;
     _sceneModel = [MomentListSceneModel SceneModel];
@@ -86,7 +81,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_goodsType == 1) {
+    /*if (_goodsType == 1) {
         MomentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MomentCell" forIndexPath:indexPath];
         [cell setModel:[_sceneModel.dataArray safeObjectAtIndex:indexPath.row]];
         return cell;
@@ -94,9 +89,10 @@
         MomentCell2 *cell = [tableView dequeueReusableCellWithIdentifier:@"MomentCell2" forIndexPath:indexPath];
         [cell setModel:[_sceneModel.dataArray safeObjectAtIndex:indexPath.row]];
         return cell;
-    }
+    }*/
+    MomentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MomentCell" forIndexPath:indexPath];
+    [cell setModel:[_sceneModel.dataArray safeObjectAtIndex:indexPath.row]];
+    return cell;
 }
-
-
 
 @end

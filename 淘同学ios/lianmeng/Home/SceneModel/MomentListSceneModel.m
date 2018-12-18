@@ -1,15 +1,11 @@
-//
 //  MomentListSceneModel.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/6.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
 
 #import "MomentListSceneModel.h"
 
 @implementation MomentListSceneModel
-
 /**
  *   初始化加载SceneModel
  */
@@ -33,6 +29,7 @@
      subscribeNext:^(NSNumber *state) {
          @strongify(self);
          NSError *error;
+         NSLog(@"data:%@",[self.request.output objectForKey:@"data"]);
          self.dataModel = [[MomentListModel alloc] initWithDictionary:[self.request.output objectForKey:@"data"] error:&error];//Model的ORM操作，dictionary to object
      }];
 }

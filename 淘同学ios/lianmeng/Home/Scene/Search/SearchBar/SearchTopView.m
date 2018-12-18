@@ -2,12 +2,10 @@
 //  lianmeng
 //  Created by zhufeng on 2018/12/18.
 //  Copyright © 2018 zhuchao. All rights reserved.
-
 #import "SearchTopView.h"
 #import <Masonry/Masonry.h>
 @interface SearchTopView()
 @property(nonatomic,strong)UIImageView *bgView;
-
 @end
 @implementation SearchTopView
 
@@ -24,7 +22,7 @@
         [_leftButton setImage:[UIImage imageNamed:@"search-back"] forState:UIControlStateNormal];
         _titlelab = [[UILabel alloc]init];
         _titlelab.textColor = [UIColor whiteColor];
-        _titlelab.font = [UIFont systemFontOfSize:15];
+        _titlelab.font = [UIFont systemFontOfSize:18];
         _titlelab.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_titlelab];
         [self loadAutoLayout];
