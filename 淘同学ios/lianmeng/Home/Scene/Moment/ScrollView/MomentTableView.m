@@ -6,7 +6,6 @@
 #import "MomentCell.h"
 #import "MomentListSceneModel.h"
 #import <EasyIOS/EasyIOS.h>
-#import "MomentCell2.h"
 @interface MomentTableView()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)MomentListSceneModel *sceneModel;
 @property(nonatomic,assign)NSUInteger goodsType;

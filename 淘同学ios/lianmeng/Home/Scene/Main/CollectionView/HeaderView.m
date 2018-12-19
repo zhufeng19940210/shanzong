@@ -2,7 +2,6 @@
 //  lianmeng
 //  Created by zhuchao on 2018/6/6.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-
 #import "HeaderView.h"
 #import "MCScrollView.h"
 #import "ButtonsView.h"
@@ -10,6 +9,7 @@
 #import <EasyIOS/EasyIOS.h>
 #import "DetailScene.h"
 #import "BannerListModel.h"
+#import "ZFSceneDetail.h"
 @interface HeaderView()<MCScrollViewDelegate>
 @property(nonatomic,retain)MCScrollView *spotlightView;
 @property(nonatomic,retain)ButtonsView *buttonsView;
@@ -56,7 +56,9 @@
             scene.platformId = obj.platformId.integerValue;
             [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
         }else if(obj.type.integerValue == 2 && obj.refUrl){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.refUrl]];
+            ZFSceneDetail *detilvc = [[ZFSceneDetail alloc]init];
+            detilvc.detailStr = obj.refUrl;
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detilvc animated:YES];
         }
     }
 }

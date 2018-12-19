@@ -6,6 +6,7 @@
 #import "BannerListModel.h"
 #import "DetailScene.h"
 #import <EasyIOS/EasyIOS.h>
+#import "ZFSceneDetail.h"
 @interface AdThirdCell()<SDCycleScrollViewDelegate>
 @property (nonatomic,strong)NSMutableArray *imageArray;
 @end
@@ -24,7 +25,6 @@
 
 -(void)setUrlArray:(NSMutableArray *)urlArray
 {
-    [self.imageArray removeAllObjects];
     self.imageArray = urlArray;
     NSMutableArray *url = [NSMutableArray array];
     for (BannerModel *model  in self.imageArray) {
@@ -44,7 +44,9 @@
             scene.platformId = obj.platformId.integerValue;
             [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
         }else if(obj.type.integerValue == 2 && obj.refUrl){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.refUrl]];
+            ZFSceneDetail *detilvc = [[ZFSceneDetail alloc]init];
+            detilvc.detailStr = obj.refUrl;
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detilvc animated:YES];
         }
     }    
 }

@@ -88,19 +88,25 @@ static float kCollectionViewMargin = 3.f;
     return _collectionView;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.dataSource.count == 0) {
+        [self setupData];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor =[UIColor whiteColor];
     [self nav_setTitle:@"分类"];
     _selectIndex = 0;
-    _isScrollDown = YES;
-    [self setupData];
 }
-
 -(void)setupData
 {
     __weak typeof(self) weakSelf = self;
     [[NetWorkTool shareInstacne]getWithURLString:@"http://47.110.40.176:8888/mobile/taobao/superclassifylist" parameters:nil success:^(id responseObject) {
+        NSLog(@"responseObject:%@",responseObject);
+        [self hideHud];
         if ([responseObject[@"status"] integerValue] == 200) {
             [weakSelf.dataSource removeAllObjects];
             weakSelf.dataSource = [SortTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];

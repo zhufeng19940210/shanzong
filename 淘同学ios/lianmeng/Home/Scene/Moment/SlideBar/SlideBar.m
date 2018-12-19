@@ -89,7 +89,6 @@
     }
 }
 
-
 - (void)updateConstraints {
     [self.constraint uninstall];
     if(_selectedIdx == 0){

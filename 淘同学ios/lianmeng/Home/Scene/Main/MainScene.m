@@ -75,34 +75,26 @@
                  [self.sceneModel.studentArray removeAllObjects];
                  self.sceneModel.studentArray = [NSMutableArray array];
              }
-             if ([categoryItemList1[@"list"] count] >0) {
-                   [self.sceneModel.studentArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList1[@"list"]]];
-             }
+             [self.sceneModel.studentArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList1[@"list"]]];
          }
          if (categoryItemList2) {
              if ([categoryItemList2[@"currentPage"] intValue] ==1) {
                  [self.sceneModel.ninetonineArray removeAllObjects];
                  self.sceneModel.ninetonineArray = [NSMutableArray array];
              }
-             if ([categoryItemList2[@"list"] count] >0) {
-                  [self.sceneModel.ninetonineArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList2[@"list"]]];
-             }
+             [self.sceneModel.ninetonineArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList2[@"list"]]];
          }
          if ([categoryItemList3[@"currentPage"] intValue] == 1) {
              [self.sceneModel.recommandArray removeAllObjects];
              self.sceneModel.recommandArray = [NSMutableArray array];
-             if ([categoryItemList3[@"list"] count] >0) {
-                  [self.sceneModel.recommandArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList3[@"list"]]];
-             }
+             [self.sceneModel.recommandArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:categoryItemList3[@"list"]]];
          }
          if (itemlistDic) {
              if ([itemlistDic[@"currentPage"] intValue] == 1) {
                  [self.sceneModel.likeArray removeAllObjects];
                   self.sceneModel.likeArray = [NSMutableArray array];
              }
-             if ([itemlistDic[@"list"] count] >0) {
-                [self.sceneModel.likeArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:itemlistDic[@"list"]]];
-             }
+              [self.sceneModel.likeArray addObjectsFromArray:[GoodsModel mj_objectArrayWithKeyValuesArray:itemlistDic[@"list"]]];
              self.sceneModel.likeRequest.page = itemlistDic[@"currentPage"];
              NSLog(@"self.sceneModel.likeRequest.page:%@",self.sceneModel.likeRequest.page);
          }

@@ -404,7 +404,8 @@
         //NSAssert(NO, @"不要添加UINavigationController包装后的子控制器");
     }
     if (_currentChildVc.zj_scrollViewController != self.parentViewController) {
-        [self.parentViewController addChildViewController:_currentChildVc];
+        ///zhufeng这里怎么报错呀
+        //[self.parentViewController addChildViewController:_currentChildVc];
     }
     _currentChildVc.view.frame = cell.contentView.bounds;
     [cell.contentView addSubview:_currentChildVc.view];

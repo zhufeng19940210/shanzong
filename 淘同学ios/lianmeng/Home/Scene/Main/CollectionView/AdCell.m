@@ -7,6 +7,7 @@
 #import "BannerListModel.h"
 #import "DetailScene.h"
 #import <EasyIOS/EasyIOS.h>
+#import "ZFSceneDetail.h"
 @interface AdCell()<MCScrollViewDelegate>
 @property(nonatomic,retain)MCScrollView *spotlightView;
 @property(nonatomic,retain)NSArray *banners;
@@ -51,7 +52,9 @@
             scene.platformId = obj.platformId.integerValue;
             [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
         }else if(obj.type.integerValue == 2 && obj.refUrl){
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:obj.refUrl]];
+            ZFSceneDetail *detilvc = [[ZFSceneDetail alloc]init];
+            detilvc.detailStr = obj.refUrl;
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detilvc animated:YES];
         }
     }
 }

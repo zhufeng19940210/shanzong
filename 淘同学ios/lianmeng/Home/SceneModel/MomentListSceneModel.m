@@ -12,7 +12,7 @@
 -(void)loadSceneModel{
     [super loadSceneModel];
     
-    [self.action useCache];
+    //[self.action useCache];
     _dataModel = nil;
     @weakify(self);
     _request = [MomentListRequest RequestWithBlock:^{

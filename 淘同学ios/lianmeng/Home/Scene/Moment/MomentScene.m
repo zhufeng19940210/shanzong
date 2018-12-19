@@ -11,20 +11,15 @@
 #import <Masonry/Masonry.h>
 #import "MomentScrollView.h"
 #import "Scene+NavBar.h"
-
 @interface MomentScene ()<UIScrollViewDelegate,SlideBarDelegate>
 @property(nonatomic,retain)SlideBar *slideBar;
 @property(nonatomic,retain)MomentScrollView *scrollview;
-
 @end
-
 @implementation MomentScene
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self nav_setTitle:@"同学圈"];
-    
     _slideBar = [[SlideBar alloc]init];
     _slideBar.delegate = self;
     [self.view addSubview:_slideBar];

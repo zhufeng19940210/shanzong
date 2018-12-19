@@ -8,15 +8,13 @@
 @property(nonatomic,strong)UIImageView *bgView;
 @end
 @implementation SearchTopView
-
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         _bgView = [[UIImageView alloc]init];
         [self addSubview:_bgView];
-        _bgView.image = [UIImage imageNamed:@"nav-bg"];
-        
+        _bgView.backgroundColor = self.bgColor;
         _leftButton = [[UIButton alloc]init];
         [self addSubview:_leftButton];
         [_leftButton setImage:[UIImage imageNamed:@"search-back"] forState:UIControlStateNormal];

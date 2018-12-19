@@ -7,5 +7,6 @@
 
 @interface SearchTopView : UIView
 @property(nonatomic,strong)UILabel *titlelab;
-@property (nonatomic,strong)UIButton *leftButton;
+@property(nonatomic,strong)UIButton *leftButton;
+@property(nonatomic,strong)UIColor *bgColor;
 @end

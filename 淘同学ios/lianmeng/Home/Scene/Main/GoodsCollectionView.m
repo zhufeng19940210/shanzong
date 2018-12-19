@@ -189,6 +189,7 @@
     }if (indexPath.section == 3) {
         AdThirdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdThirdCell" forIndexPath:indexPath];
         adCell.urlArray = (NSMutableArray *)self.thirdArray;
+        adCell.adCrollView.placeholderImage = [UIImage imageNamed:@"lunbo.png"];
         return adCell;
     }if (indexPath.section == 4) {
         if (indexPath.row == 0) {

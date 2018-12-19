@@ -1,11 +1,7 @@
-//
 //  SearchListScene.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/13.
-//  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
+//  Copyright © 2018年 zhuchao. All rights reserved
 #import "SearchListScene.h"
 #import <Masonry/Masonry.h>
 #import "SearchNavBar.h"
@@ -16,8 +12,6 @@
 #import "TabBaoItemCell.h"
 #import "GoodsSearchSceneModel.h"
 #import "DetailScene.h"
-#import "SearchTopView.h"
-
 @interface SearchListScene ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SortViewDelegate,YouhuiQuanViewDelegate>
 @property(nonatomic,retain)SearchNavBar *searchBar;
 @property(nonatomic,retain)SearchDropDownView *dropDownView;
@@ -27,15 +21,15 @@
 @property(nonatomic,retain)GoodsSearchSceneModel *sceneModel;
 @property(nonatomic,retain)SearchTopView *topView;
 @end
-
 @implementation SearchListScene
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     if (self.isSort == YES) {
         _topView = [[SearchTopView alloc]init];
+        _topView.backgroundColor = [UIColor redColor];
+        _topView.titlelab.textColor = [UIColor whiteColor];
         [self.view addSubview:_topView];
         [_topView.titlelab setText:self.keyword];
         [_topView.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];

@@ -102,7 +102,7 @@
         [imageView addGestureRecognizer:tap];
         //加载图片数据
         NSString *url = [curImages safeObjectAtIndex:i];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_image"]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"banner"]];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.layer.masksToBounds = YES;
 
