@@ -1905,8 +1905,9 @@
 			baseConfigurationReference = 3287A971E754CC8C270FB6F9 /* Pods-lianmeng.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D9PZ846R8K;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3R48RV923F;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1930,10 +1931,10 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bailing.tao;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5757ae07-6a0f-433f-a563-9260569860fc";
-				PROVISIONING_PROFILE_SPECIFIER = tao_dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1943,9 +1944,9 @@
 			baseConfigurationReference = AF447A2CB0C562042C8BFB07 /* Pods-lianmeng.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D9PZ846R8K;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3R48RV923F;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1969,10 +1970,10 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bailing.tao;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8c1e5af4-2d53-4700-a0e9-f214a168d339";
-				PROVISIONING_PROFILE_SPECIFIER = tao_adhoc;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

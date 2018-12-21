@@ -26,7 +26,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc]init];
     flow.scrollDirection = UICollectionViewScrollDirectionVertical;
-
     flow.minimumLineSpacing = 1;//行间距
     flow.minimumInteritemSpacing = 1;//列间距
     _collectionView = [[GoodsCollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flow];
@@ -35,15 +34,14 @@
        make.edges.equalTo(self.view);
     }];
     
-    [self.view layoutIfNeeded];
-    [self.view setNeedsLayout];
-    
+    //[self.view layoutIfNeeded];
+    //[self.view setNeedsLayout];
+
     if (@available(iOS 11.0, *)) {
         _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-   
     _sceneModel = [MainSceneModel SceneModel];
     _sceneModel.likeRequest.page = @1;
     

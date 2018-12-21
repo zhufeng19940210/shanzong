@@ -37,13 +37,15 @@
     // Override point for customization after application launch.
     ///www.taotongxue.cn
     ///47.110.40.176:8888/
-    [Action actionConfigScheme:@"http" host:@"47.110.40.176:8888/" client:@"lianmeng-ios"
+    //com.bailing.tao
+    [Action actionConfigScheme:@"https" host:@"www.taotongxue.cn" client:@"lianmeng-ios"
                        codeKey:@"status" rightCode:200 msgKey:@"msg"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     UIViewController *vc = [[TabBarController alloc]init];
     self.window.rootViewController = vc;
-    @weakify(vc);
+    //@weakify(vc);
+    /*
     [CronTabCenter addCronJob:@"1 1" forBlock:^{
         NSLog(@"1 1 executed");
         FindSplashRequest *req = [FindSplashRequest Request];
@@ -58,7 +60,7 @@
         } error:^{
             
         }];
-    }];
+    }];*/
     [self.window makeKeyAndVisible];
     //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式

@@ -204,7 +204,6 @@
     [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
 }
 
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     //这里是js，主要目的实现对url的获取
     static  NSString * const jsGetImages =
