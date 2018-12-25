@@ -6,5 +6,6 @@
 typedef void (^MoreBlock)(void);
 @interface HeaderTtileCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title_lab;
+@property (weak, nonatomic) IBOutlet UILabel *english_lab;
 @property (nonatomic,copy)MoreBlock moreblock;
 @end

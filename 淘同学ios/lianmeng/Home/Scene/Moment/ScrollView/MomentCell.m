@@ -123,7 +123,7 @@
         
         [self loadAutoLayout];
         
-        [_shareButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openShare)]];
+        [_shareButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openShare2)]];
         
 
     }
@@ -175,10 +175,8 @@
        make.left.right.bottom.equalTo(self.contentView);
         make.height.equalTo(@0.5f);
     }];
-    
 }
-         
- -(void)openShare{
+ -(void)openShare2{
 
      if(![[UserCenter sharedInstance] checkLogin]){
          UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
@@ -208,7 +206,6 @@
          NSArray *imageList = [model.item map:^UIImage*(ShareDataItemModel *item) {
              return [item genImage];
          }];
-         
          [vc hideHud];
          UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
          pasteboard.string = self.dataModel.goodsDesc;
@@ -218,8 +215,7 @@
      } error:^{
          [vc hideHudFailed:@"分享数据获取失败"];
      }];
-    
- }
+}
 
 -(void)setModel:(MomentModel *)model{
     _dataModel = model;
@@ -382,8 +378,6 @@
     }];
 }
 
-
-
 - (void)shareItems:(NSArray *)list wechatInfoId:(NSNumber *)wechatInfoId
 {
     
@@ -401,9 +395,6 @@
             self.shareButton.shareLabel.text = [NSString stringWithFormat:@"%ld",(long)self.dataModel.shareCount.integerValue + 1];
         }
     };
-    
     [[URLNavigation navigation].currentNavigationViewController presentViewController:activityController animated:YES completion:nil];
 }
-
-
 @end

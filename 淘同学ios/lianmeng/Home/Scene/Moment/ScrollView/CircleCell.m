@@ -15,18 +15,14 @@
 #import "UserCenter.h"
 #import "LMNavigationController.h"
 #import "WechatLoginScene.h"
-
-
-
+#import "PictureDetailVC.h"
 @interface ShareButton : UIView
 @property(nonatomic,retain)UILabel *shareLabel;
 @end
-
 @implementation ShareButton
 -(instancetype)init{
     self = [super init];
     if (self) {
-        
         UIColor * red = [UIColor colorWithRed:242.0f/255.0f green:74.0f/255.0f blue:63.0f/255.0f alpha:1.0f];
         self.layer.borderColor = red.CGColor;
         self.layer.borderWidth = 1.0f;
@@ -117,8 +113,6 @@
         [self loadAutoLayout];
         
         [_shareButton addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openShare)]];
-        
-        
     }
     return self;
 }
@@ -146,15 +140,11 @@
         make.right.equalTo(self.contentView).offset(-25.0f);
         make.centerY.equalTo(self.avatarView);
     }];
-    
-    
     [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarView);
         make.right.equalTo(self.shareButton);
         make.top.equalTo(self.avatarView.mas_bottom).offset(11.0f);
     }];
-    
-    
     
     [_imageWrapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentLabel);
@@ -168,9 +158,7 @@
         make.left.right.bottom.equalTo(self.contentView);
         make.height.equalTo(@0.5f);
     }];
-    
 }
-
 -(void)openShare{
     
     if(![[UserCenter sharedInstance] checkLogin]){
@@ -266,16 +254,18 @@
                     make.edges.equalTo(kuang);
                 }];
             }
-            
-            
-            
             UITapGestureRecognizer *recognizer = [UITapGestureRecognizer rac_recognizer];
             [image addGestureRecognizer:recognizer];
             [[recognizer rac_signal] subscribeNext:^(id x) {
-                DetailScene *scene = [[DetailScene alloc]init];
-                scene.itemId = [itemIds safeObjectAtIndex:idx];
-                scene.platformId = platformId;
-                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+                /// todo zf
+                PictureDetailVC *bigDetailvc = [[PictureDetailVC alloc]init];
+                bigDetailvc.imageArray =(NSMutableArray *)imageList;
+                bigDetailvc.position =(int)idx;
+                [[URLNavigation navigation].currentNavigationViewController pushViewController:bigDetailvc animated:YES];
+//                DetailScene *scene = [[DetailScene alloc]init];
+//                scene.itemId = [itemIds safeObjectAtIndex:idx];
+//                scene.platformId = platformId;
+//                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
             }];
         }
         
@@ -363,22 +353,17 @@
         make.height.equalTo(@30.0f);
         make.centerX.equalTo(pageControl.superview);
     }];
-    
     [RACObserve(imgShowView.scrollView, curIndex)
      subscribeNext:^(NSNumber* index) {
          pageControl.currentPage = index.integerValue;
      }];
-    
     [UIView animateWithDuration:0.5f animations:^{
         blackView.alpha = 1.0f;
     }];
 }
 
-
-
 - (void)shareItems:(NSArray *)list wechatInfoId:(NSNumber *)wechatInfoId
 {
-    
     UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:list applicationActivities:nil];
     activityController.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
         if (completed) {
@@ -393,8 +378,6 @@
             self.shareButton.shareLabel.text = [NSString stringWithFormat:@"%ld",(long)self.dataModel.shareCount.integerValue + 1];
         }
     };
-    
     [[URLNavigation navigation].currentNavigationViewController presentViewController:activityController animated:YES completion:nil];
 }
-
 @end

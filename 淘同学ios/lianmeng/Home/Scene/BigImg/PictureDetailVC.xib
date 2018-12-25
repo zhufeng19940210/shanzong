@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PictureDetailVC">
+            <connections>
+                <outlet property="number_lab" destination="Ebu-e1-SFH" id="0Ze-Uk-kjg"/>
+                <outlet property="scrollview" destination="OC9-QF-fyA" id="V4h-fm-Gxg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC9-QF-fyA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-fO-9Kc">
+                    <rect key="frame" x="20" y="20" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="0k0-az-ZQS"/>
+                        <constraint firstAttribute="width" constant="35" id="bUf-50-1Af"/>
+                    </constraints>
+                    <state key="normal" image="zf_cha">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="acitonCloseBtn:" destination="-1" eventType="touchUpInside" id="hSH-5C-lnN"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebu-e1-SFH">
+                    <rect key="frame" x="169" y="634" width="37.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="OC9-QF-fyA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0a0-RO-ULO"/>
+                <constraint firstItem="bFp-fO-9Kc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Qjk-wr-5U9"/>
+                <constraint firstItem="OC9-QF-fyA" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="T2D-yX-w0t"/>
+                <constraint firstAttribute="bottom" secondItem="Ebu-e1-SFH" secondAttribute="bottom" constant="15" id="cpF-Na-Crs"/>
+                <constraint firstItem="OC9-QF-fyA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="n0L-sh-QkR"/>
+                <constraint firstItem="Ebu-e1-SFH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sP1-os-0Xm"/>
+                <constraint firstItem="OC9-QF-fyA" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="wvn-fD-q5M"/>
+                <constraint firstItem="bFp-fO-9Kc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="zic-2r-uQl"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="zf_cha" width="40" height="40"/>
+    </resources>
+</document>

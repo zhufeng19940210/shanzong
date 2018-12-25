@@ -31,8 +31,9 @@
         [url addObject:model.bannerUrl];
     }
     self.adCrollView.imageURLStringsGroup = url;
+    //默认是2s,给4s
+    self.adCrollView.autoScrollTimeInterval = 4;
 }
-
 #pragma mark -- SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {

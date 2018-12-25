@@ -1,11 +1,7 @@
-//
 //  AppDelegate.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/5/29.
-//  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
+//  Copyright © 2018年 zhuchao. All rights reserved
 #import "AppDelegate.h"
 #import "TabBarController.h"
 #import "WechatLoginScene.h"
@@ -20,12 +16,9 @@
 #import "JPUSHService.h"
 #import <JDSDK/JDKeplerSDK.h>
 #import "WelcomeScrollView.h"
-
 #import "FindSplashRequest.h"
 #import "ActionSceneModel.h"
-
 #import <Crontab-IOS/CronTabCenter.h>
-
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -38,7 +31,8 @@
     ///www.taotongxue.cn
     ///47.110.40.176:8888/
     //com.bailing.tao
-    [Action actionConfigScheme:@"https" host:@"www.taotongxue.cn" client:@"lianmeng-ios"
+    //ttx.yuncai58.top
+    [Action actionConfigScheme:@"https" host:@"ttx.yuncai58.top" client:@"lianmeng-ios"
                        codeKey:@"status" rightCode:200 msgKey:@"msg"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -182,8 +176,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //Optional
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
-
-
 #pragma mark- JPUSHRegisterDelegate
 
 // iOS 10 Support
@@ -214,12 +206,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
 }
-
-
-
-
 @end

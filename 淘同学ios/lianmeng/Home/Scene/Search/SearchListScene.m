@@ -12,6 +12,7 @@
 #import "TabBaoItemCell.h"
 #import "GoodsSearchSceneModel.h"
 #import "DetailScene.h"
+#import <DialogUtil.h>
 @interface SearchListScene ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SortViewDelegate,YouhuiQuanViewDelegate>
 @property(nonatomic,retain)SearchNavBar *searchBar;
 @property(nonatomic,retain)SearchDropDownView *dropDownView;
@@ -134,7 +135,6 @@
         self.sceneModel.request.requestNeedActive = YES;
     }];
     
-
     [[RACObserve(self.sceneModel, dataModel)
       filter:^BOOL(GoodsListModel* value) {
           return value !=nil;
@@ -152,10 +152,12 @@
          [self.tableView reloadData];
          [self.tableView endAllRefreshingWithIntEnd:value.totalPage <= value.currentPage];
      }];
-    
     [[RACObserve(self.sceneModel.request, state)
       filter:^BOOL(NSNumber *state) {
           @strongify(self);
+          if (self.sceneModel.request.failed) {
+               [DialogUtil showMessage:@"抱歉暂时没有找到这个产品,去看看其他的"];
+          }
           return self.sceneModel.request.failed;
       }]
      subscribeNext:^(id x) {
@@ -163,28 +165,28 @@
          self.sceneModel.request.page = self.sceneModel.dataModel?@(self.sceneModel.dataModel.currentPage):@(1);
          [self.tableView endAllRefreshingWithIntEnd:self.sceneModel.dataModel.currentPage >= self.sceneModel.dataModel.totalPage];
      }];
-        [self.tableView triggerPullToRefresh];
-    
+    [self.tableView triggerPullToRefresh];
 }
-
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
--(void)switchYHQ:(NSUInteger)isCoupon{
+-(void)switchYHQ:(NSUInteger)isCoupon
+{
     self.sceneModel.request.isCoupon = @(isCoupon);
     self.sceneModel.request.page = @1;
     self.sceneModel.request.requestNeedActive = YES;
 }
 
--(void)changeSort:(NSUInteger)sort{
+-(void)changeSort:(NSUInteger)sort
+{
     self.sceneModel.request.sort = @(sort);
     self.sceneModel.request.page = @1;
     self.sceneModel.request.requestNeedActive = YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     NSString *keyWord = [textField.text copy];
     if(keyWord.length >0){
         self.sceneModel.request.keyword = keyWord;
@@ -192,13 +194,11 @@
     }
     return YES;
 }
-
 -(void)touchTaobao{
     self.platformId = 1;
     _dropDownView.hidden = YES;
     [_searchBar.dropDownButton setTitle:@"淘宝" forState:UIControlStateNormal];
     _searchBar.pinkArrow.transform = CGAffineTransformMakeRotation(180 *M_PI / 180.0);
-    
     self.sceneModel.request.platformId = @(1);
     [self.tableView triggerPullToRefresh];
 }
@@ -213,8 +213,8 @@
     [self.tableView triggerPullToRefresh];
 }
 
--(void)showDropDownBox{
-    
+-(void)showDropDownBox
+{
     if(_dropDownView.hidden){
         _searchBar.pinkArrow.transform = CGAffineTransformMakeRotation(0);
     }else{
@@ -223,20 +223,22 @@
     _dropDownView.hidden = !_dropDownView.hidden;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     TabBaoItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TabBaoItemCell" forIndexPath:indexPath];
     [cell setModel: [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row]];
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.sceneModel.dataArray.count;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     DetailScene *detail = [[DetailScene alloc]init];
     detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
     [self.navigationController pushViewController:detail animated:YES];
 }
-
 @end

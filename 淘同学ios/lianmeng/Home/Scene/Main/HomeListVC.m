@@ -41,8 +41,8 @@
         style.autoAdjustTitlesWidth = YES;
         style.scrollLineColor = [UIColor redColor];
         style.selectedTitleColor = [UIColor redColor];
-        style.normalTitleColor = RGB(100,100,100);
-        style.titleFont = [UIFont systemFontOfSize:16];
+        style.normalTitleColor = RGB(50,50,50);
+        style.titleFont = [UIFont boldSystemFontOfSize:17];
         ZJScrollPageView *scrollPageView = [[ZJScrollPageView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, ScreenW, ScreenH-kStatusBarAndNavigationBarHeight-49) segmentStyle:style titles:[self.childViewControllers valueForKey:@"title"] parentViewController:self delegate:self withColor:[UIColor whiteColor]];
         [self.view addSubview:scrollPageView];
         _scrollPageView = scrollPageView;
@@ -119,8 +119,8 @@
     }
     return childVc;
 }
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods{
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods
+{
     return NO;
 }
-
 @end

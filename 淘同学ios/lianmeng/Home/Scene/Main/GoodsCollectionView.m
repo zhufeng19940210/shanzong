@@ -59,7 +59,6 @@
         //todo新加的
         [self registerClass:[AdCell class] forCellWithReuseIdentifier:@"AdCell"];
         [self registerNib:[UINib nibWithNibName:@"AdThirdCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"AdThirdCell"];
-       // [self registerNib:[UINib nibWithNibName:@"AdCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"AdCell"];
         [self registerNib:[UINib nibWithNibName:@"HeaderTtileCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"HeaderTtileCell"];
         [self registerClass:[ConetentScrollCell class] forCellWithReuseIdentifier:@"ConetentScrollCell"];
     }
@@ -96,13 +95,13 @@
         if (indexPath.row == 0) {
             return CGSizeMake(ScreenW, 50);
         }else{
-            return CGSizeMake(ScreenW, 300);
+            return CGSizeMake(ScreenW,240);
         }
     }if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             return CGSizeMake(ScreenW, 50);
         }else{
-            return CGSizeMake(ScreenW, 300);
+            return CGSizeMake(ScreenW, 240);
         }
     }
     if (indexPath.section == 3) {
@@ -112,7 +111,7 @@
         if (indexPath.row == 0) {
             return CGSizeMake(ScreenW, 50);
         }else{
-            return CGSizeMake(ScreenW, 300);
+            return CGSizeMake(ScreenW, 240);
         }
     }else{
          return CGSizeMake((ScreenW - 15)/2, 287.0f);
@@ -150,13 +149,18 @@
  */
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        AdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
-        [cell reloadBannerData:self.secondArray];
-        return cell;
+        //AdCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdCell" forIndexPath:indexPath];
+        //[cell reloadBannerData:self.secondArray];
+        //return cell;
+        AdThirdCell *adCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AdThirdCell" forIndexPath:indexPath];
+        adCell.urlArray = (NSMutableArray *)self.secondArray;
+        adCell.adCrollView.placeholderImage = [UIImage imageNamed:@"lunbo.png"];
+        return adCell;
     }if(indexPath.section == 1){
         if (indexPath.row == 0) {
             HeaderTtileCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderTtileCell" forIndexPath:indexPath];
             titleCell.title_lab.text = @"同学优选";
+            titleCell.english_lab.text = @"// PREFERABLY";
             [titleCell setMoreblock:^{
                //同学优选跳转
                 NSLog(@"同学优选");
@@ -174,6 +178,7 @@
         if (indexPath.row == 0) {
             HeaderTtileCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderTtileCell" forIndexPath:indexPath];
             titleCell.title_lab.text = @"9块9包邮";
+            titleCell.english_lab.text = @"// ¥ 9.9 POSTING";
             [titleCell setMoreblock:^{
                 NSLog(@"9块9包邮");
                 CategoryListScene *scene = [[CategoryListScene alloc]init];
@@ -195,6 +200,7 @@
         if (indexPath.row == 0) {
             HeaderTtileCell *titleCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderTtileCell" forIndexPath:indexPath];
             titleCell.title_lab.text = @"超级划算";
+            titleCell.english_lab.text = @"// TIME - LIMITED";
             [titleCell setMoreblock:^{
                 NSLog(@"超级划算");
                 CategoryListScene *scene = [[CategoryListScene alloc]init];
@@ -244,19 +250,4 @@
         [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
     }
 }
-
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat y = scrollView.contentOffset.y;
-//    if(self.animationDelegate){
-//        if (y<=150.0f) {
-//            if(y>0){
-//                [self.animationDelegate animationWithPercent:y/150.0f];
-//            }else{
-//                [self.animationDelegate animationWithPercent:0.0f];
-//            }
-//        }else if(y<=300.0f){
-//             [self.animationDelegate animationWithPercent:1.0f];
-//        }
-//    }
-//}
 @end

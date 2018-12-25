@@ -30,8 +30,6 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
- 
-    
     _searchBar = [[SearchNavBar alloc]init];
     [self.view addSubview:_searchBar];
     [_searchBar.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
@@ -76,13 +74,10 @@
     }else{
         self.platformId = 1;
     }
-    
 }
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSString *keyWord = [textField.text copy];
     textField.text = @"";
-    
     if(keyWord.length >0){
         [_contentView addKeyWord:keyWord];
         SearchListScene *scene = [[SearchListScene alloc]init];

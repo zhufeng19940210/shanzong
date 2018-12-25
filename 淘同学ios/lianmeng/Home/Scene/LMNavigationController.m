@@ -1,23 +1,14 @@
-//
 //  LMNavigationController.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/5/29.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
 #import "LMNavigationController.h"
-
 @interface LMNavigationController ()
-
 @end
-
 @implementation LMNavigationController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.hidden = YES;
-    // Do any additional setup after loading the view.
 }
 
 - (UIViewController *)childViewControllerForStatusBarStyle{

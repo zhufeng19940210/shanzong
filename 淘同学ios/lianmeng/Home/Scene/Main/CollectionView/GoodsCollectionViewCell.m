@@ -30,7 +30,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, frame.size.width, 170.0f)];
+        _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, 170.0f)];
         _imageView.clipsToBounds = YES;
         [self addSubview:_imageView];
         
@@ -64,7 +64,7 @@
         _originPrice.text = @"淘宝价 ￥0.00";
         [self addSubview:_originPrice];
         
-        _salesCount= [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width - 78.0f, 195.0f+42.0f,70.0f, 12.0f)];
+        _salesCount= [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width - 75.0f, 195.0f+42.0f,70.0f, 12.0f)];
         _salesCount.font = [UIFont fontWithName:MediumFont size:12.0f];
         _salesCount.textColor = [UIColor colorWithString:@"rgb(153,153,153)"];
         _salesCount.textAlignment = NSTextAlignmentRight;
@@ -72,8 +72,8 @@
         [self addSubview:_salesCount];
         
         
-        _price = [[UILabel alloc] initWithFrame:CGRectMake(5.0f, 195.0f+42.0f + 22.0f, 100.0f, 21.0f)];
-        _price.font = [UIFont fontWithName:MediumFont size:21.0f];
+        _price = [[UILabel alloc] initWithFrame:CGRectMake(5.0f, 195.0f+42.0f + 22.0f, 90.0f, 21.0f)];
+        _price.font = [UIFont fontWithName:MediumFont size:20.0f];
         _price.textColor = [UIColor colorWithString:@"rgb(210,7,27)"];
         _price.textAlignment = NSTextAlignmentLeft;
 
@@ -83,8 +83,8 @@
         _youhuiquanView.image = [UIImage imageNamed:@"quankuang"];
         [self addSubview:_youhuiquanView];
         
-        _youhuiquanLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,  60.0f, 20.0f)];
-        _youhuiquanLabel.font = [UIFont fontWithName:MediumFont size:14.0f];
+        _youhuiquanLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,  55.0f, 20.0f)];
+        _youhuiquanLabel.font = [UIFont fontWithName:MediumFont size:13.0f];
         _youhuiquanLabel.textColor = [UIColor whiteColor];
         _youhuiquanLabel.textAlignment = NSTextAlignmentCenter;
         _youhuiquanLabel.text = @"券￥0";

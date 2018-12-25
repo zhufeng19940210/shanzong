@@ -132,7 +132,6 @@
 
 - (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType withImage:(UIImage *)image
 {
-
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     //设置文本

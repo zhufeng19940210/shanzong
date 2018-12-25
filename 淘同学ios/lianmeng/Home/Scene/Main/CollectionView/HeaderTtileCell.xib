@@ -25,8 +25,8 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnZ-9V-2U4">
-                        <rect key="frame" x="10" y="8.5" width="41" height="24"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <rect key="frame" x="10" y="8" width="43" height="25.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -43,6 +43,12 @@
                             <constraint firstAttribute="height" constant="11" id="3Cx-Up-sIr"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-Le-VEB">
+                        <rect key="frame" x="63" y="12" width="37" height="18"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                        <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,15 +58,18 @@
                 <constraint firstItem="MiR-rb-zym" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Piv-gk-Xm1"/>
                 <constraint firstItem="MiR-rb-zym" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="UkP-P6-oJD"/>
                 <constraint firstItem="ZD8-BO-jNy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="azD-5Q-HCC"/>
+                <constraint firstItem="fz1-Le-VEB" firstAttribute="centerY" secondItem="wnZ-9V-2U4" secondAttribute="centerY" id="cKC-0v-aAI"/>
                 <constraint firstItem="wnZ-9V-2U4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="dDx-hm-BbO"/>
                 <constraint firstAttribute="bottom" secondItem="MiR-rb-zym" secondAttribute="bottom" id="eSb-Ga-kEt"/>
                 <constraint firstItem="wnZ-9V-2U4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="eYm-86-acr"/>
                 <constraint firstAttribute="trailing" secondItem="MiR-rb-zym" secondAttribute="trailing" id="hNe-dq-J5F"/>
                 <constraint firstItem="MiR-rb-zym" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="kfh-Le-NAK"/>
+                <constraint firstItem="fz1-Le-VEB" firstAttribute="leading" secondItem="wnZ-9V-2U4" secondAttribute="trailing" constant="10" id="l8q-Gf-aRk"/>
                 <constraint firstItem="1Se-xl-6We" firstAttribute="leading" secondItem="ZD8-BO-jNy" secondAttribute="trailing" constant="2" id="s6y-P9-JWD"/>
             </constraints>
             <size key="customSize" width="386" height="40"/>
             <connections>
+                <outlet property="english_lab" destination="fz1-Le-VEB" id="CC7-Uq-jWB"/>
                 <outlet property="title_lab" destination="wnZ-9V-2U4" id="zl2-wJ-YC2"/>
             </connections>
             <point key="canvasLocation" x="22" y="24"/>

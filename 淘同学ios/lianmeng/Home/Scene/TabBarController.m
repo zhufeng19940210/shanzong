@@ -1,11 +1,7 @@
-//
 //  TabBarController.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/5/29.
-//  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
+//  Copyright © 2018年 zhuchao. All rights reserved
 #import "TabBarController.h"
 #import "LMNavigationController.h"
 #import "MainScene.h"
@@ -18,28 +14,42 @@
 #import "LMNavigationController.h"
 #import <EasyIOS/EasyIOS.h>
 #import "SortVC.h"
-#import "ZFMomentListVC.h"
+#import "MainScrollview.h"
+#import "MomentScrollView2.h"
 @interface TabBarController ()<UITabBarControllerDelegate>
 @property(nonatomic,retain)LMNavigationController *mainNavController;
 @property(nonatomic,retain)LMNavigationController *momentNavController;
 @property(nonatomic,retain)LMNavigationController *messageNavController;
 @property(nonatomic,retain)LMNavigationController *mineNavController;
 @end
-
 @implementation TabBarController
-
++(void)initialize{
+    
+    [super initialize];
+    NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
+    attrs[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    attrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    
+    NSMutableDictionary *selectAttrs = [NSMutableDictionary dictionary];
+    selectAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:13];
+    selectAttrs[NSForegroundColorAttributeName] = [UIColor redColor];
+    
+    UITabBarItem *item = [UITabBarItem appearance];
+    [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
+    [item setTitleTextAttributes:selectAttrs forState:UIControlStateSelected];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[HomeListVC alloc] init]];
+    _mainNavController = [[LMNavigationController alloc]initWithRootViewController:[[MainScrollview alloc] init]];
     _messageNavController = [[LMNavigationController alloc]initWithRootViewController:[[SortVC alloc]init]];
-    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[ZFMomentListVC alloc] init]];
+    _momentNavController = [[LMNavigationController alloc]initWithRootViewController:[[MomentScrollView2 alloc] init]];
     _mineNavController = [[LMNavigationController alloc]initWithRootViewController:[[MineScene alloc] init]];
     
     self.viewControllers = [NSArray arrayWithObjects:_mainNavController, _messageNavController,_momentNavController,_mineNavController,nil];
     
-    NSDictionary *tabConfig = @{UITabNormalTextColor:[UIColor blackColor],
-                                UITabSelectedTextColor:[UIColor redColor],
+    NSDictionary *tabConfig = @{//UITabNormalTextColor:[UIColor blackColor],
+                                //UITabSelectedTextColor:[UIColor redColor],
                                 UITabItemsImageArray:@[
                                         @{UITabItemsSelectedImage:@"zf_home_sel",
                                           UITabItemsNormalImage:@"zf_home_nor"},

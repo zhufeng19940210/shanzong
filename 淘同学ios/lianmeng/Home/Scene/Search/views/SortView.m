@@ -65,8 +65,7 @@
         [_btn2 addTarget:self action:@selector(sortTouch:) forControlEvents:UIControlEventTouchUpInside];
         [_btn3 addTarget:self action:@selector(sortTouch:) forControlEvents:UIControlEventTouchUpInside];
         [_btn4 addTarget:self action:@selector(sortTouch:) forControlEvents:UIControlEventTouchUpInside];
-        
-        _xiaoliang = 2;
+        //_xiaoliang = 3;
         _jiage = 4;
         [self loadAutoLayout];
     }
@@ -107,10 +106,9 @@
         _btn1.titleLabel.font = [UIFont fontWithName:RegularFont size:13.0f];
         [_btn4 setTitleColor:[UIColor colorWithString:@"#363636"] forState:UIControlStateNormal];
         _btn4.titleLabel.font = [UIFont fontWithName:RegularFont size:13.0f];
-        
-        _xiaoliang = _xiaoliang==2?3:2;
+        //_xiaoliang = 3;
         if (self.delegate) {
-            [self.delegate changeSort:_xiaoliang];
+            [self.delegate changeSort:2];
         }
     }else if([btn isEqual:_btn4]){
         [_btn4 setTitleColor:[UIColor colorWithString:@"#000000"] forState:UIControlStateNormal];

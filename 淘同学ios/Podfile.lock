@@ -80,6 +80,7 @@ PODS:
   - SecurityGuardSDK (5.1.94)
   - SGMain (5.1.94):
     - SecurityGuardSDK (= 5.1.94)
+  - SGPagingView (1.5.5)
   - SGSecurityBody (5.1.29):
     - SecurityGuardSDK (>= 5.1.94)
     - SGMain (>= 5.1.94)
@@ -105,6 +106,7 @@ DEPENDENCIES:
   - PBJVideoPlayer
   - RegExCategories
   - SDCycleScrollView
+  - SGPagingView
   - UMCCommon
   - UMCShare/Social/ReducedWeChat
 
@@ -139,6 +141,7 @@ SPEC REPOS:
     - RegExCategories
     - SDCycleScrollView
     - SDWebImage
+    - SGPagingView
     - SharkORM
     - TMCache
     - UMCCommon
@@ -180,6 +183,7 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SecurityGuardSDK: 05f6d782189160f2b23b731eed5cb314ce584855
   SGMain: 8a3008d8a709259d4868f78ae3265659e58e4416
+  SGPagingView: 8054435c0149cf907ad3d515bc75e0ee9575216c
   SGSecurityBody: 098c981416d0f04faa605642e2da3bb556419f73
   SharkORM: 0dd55f13d82ab4c68f7c54012211c6a34a9f0001
   TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   UMCShare: aa233aecad67979930fe43f3a2f676023b669439
   UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
 
-PODFILE CHECKSUM: f00613fd4efed879b7b6734b92355a50d6fd74e2
+PODFILE CHECKSUM: 65ae57dc8b12da3722cbbc94a15a498bb2d42746
 
 COCOAPODS: 1.5.3

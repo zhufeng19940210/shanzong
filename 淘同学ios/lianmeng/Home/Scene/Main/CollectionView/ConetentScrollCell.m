@@ -6,6 +6,7 @@
 #import "GoodsCollectionViewCell.h"
 #import "DetailScene.h"
 #import <EasyIOS/EasyIOS.h>
+#import "GoodTypeCollectionViewCell.h"
 @interface ConetentScrollCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,weak) UICollectionView * myCollectionView;
 @end
@@ -34,21 +35,21 @@
     flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
     //滚动的方向
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    UICollectionView *mycollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300) collectionViewLayout:flowLayout];
+    UICollectionView *mycollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 240) collectionViewLayout:flowLayout];
     mycollectionView.delegate = self;
     mycollectionView.dataSource = self;
     mycollectionView.clipsToBounds = NO;
     mycollectionView.backgroundColor = [UIColor colorWithRed:(240/255.0f) green:(240/255.0f) blue:(240/255.0f) alpha:1.0];
     mycollectionView.showsVerticalScrollIndicator = NO;
     mycollectionView.showsHorizontalScrollIndicator = NO;
-    [mycollectionView registerClass:[GoodsCollectionViewCell class] forCellWithReuseIdentifier:@"GoodsCollectionViewCell"];
+    //[mycollectionView registerClass:[GoodsCollectionViewCell class] forCellWithReuseIdentifier:@"GoodsCollectionViewCell"];
+    [mycollectionView registerClass:[GoodTypeCollectionViewCell class] forCellWithReuseIdentifier:@"GoodTypeCollectionViewCell"];
     [self addSubview:mycollectionView];
     _myCollectionView = mycollectionView;
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake ((ScreenW - 40)/2,290);
+    return CGSizeMake ((ScreenW - 60)/2,220);
 }
-
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -58,8 +59,8 @@
     return self.productTypeArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    GoodsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GoodsCollectionViewCell" forIndexPath:indexPath];
+    //GoodsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GoodsCollectionViewCell" forIndexPath:indexPath];
+    GoodTypeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GoodTypeCollectionViewCell" forIndexPath:indexPath];
     [cell setModel:self.productTypeArray[indexPath.row]];
     return cell;
 }
