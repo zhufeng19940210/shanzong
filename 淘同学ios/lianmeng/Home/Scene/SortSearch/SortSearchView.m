@@ -149,5 +149,4 @@
         make.centerX.equalTo(self.btn4).offset(18.0f);
     }];
 }
-
 @end
