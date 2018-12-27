@@ -16,6 +16,7 @@
 #import <MJExtension.h>
 #import "Scene+NavBar.h"
 #import "SearchListScene.h"
+#import "SortSearchScene.h"
 static float kLeftTableViewWidth = 80.f;
 static float kCollectionViewMargin = 3.f;
 @interface SortVC ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource>
@@ -50,7 +51,7 @@ static float kCollectionViewMargin = 3.f;
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, kLeftTableViewWidth,ScreenH-kStatusBarAndNavigationBarHeight-kCollectionViewMargin-49)];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, kLeftTableViewWidth,ScreenH-kStatusBarAndNavigationBarHeight-kCollectionViewMargin-65)];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -71,7 +72,7 @@ static float kCollectionViewMargin = 3.f;
         UICollectionViewFlowLayout *flowLayout =  [[UICollectionViewFlowLayout alloc]init];
         flowLayout.minimumLineSpacing = 0;
         flowLayout.minimumInteritemSpacing = 0;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kStatusBarAndNavigationBarHeight, ScreenW - kLeftTableViewWidth - 2 * kCollectionViewMargin, ScreenH-kStatusBarAndNavigationBarHeight - kCollectionViewMargin-49) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(kCollectionViewMargin + kLeftTableViewWidth, kStatusBarAndNavigationBarHeight, ScreenW - kLeftTableViewWidth - 2 * kCollectionViewMargin, ScreenH-kStatusBarAndNavigationBarHeight - kCollectionViewMargin-65) collectionViewLayout:flowLayout];
         _collectionView.delegate = self;
          _collectionView.dataSource = self;
         _collectionView.backgroundColor = [UIColor clearColor];
@@ -104,7 +105,7 @@ static float kCollectionViewMargin = 3.f;
 -(void)setupData
 {
     __weak typeof(self) weakSelf = self;
-    [[NetWorkTool shareInstacne]getWithURLString:@"http://47.110.40.176:8888/mobile/taobao/superclassifylist" parameters:nil success:^(id responseObject) {
+    [[NetWorkTool shareInstacne]getWithURLString:@"https://ttx.yuncai58.top/mobile/taobao/superclassifylist" parameters:nil success:^(id responseObject) {
         NSLog(@"responseObject:%@",responseObject);
         [self hideHud];
         if ([responseObject[@"status"] integerValue] == 200) {
@@ -205,10 +206,14 @@ static float kCollectionViewMargin = 3.f;
     SortTypeModel *typemodel = self.dataSource[_selectIndex];
     SortTypenextModel *nextmodel = typemodel.data[indexPath.section];
     SortInfoModel *info = nextmodel.info[indexPath.row];
-    SearchListScene *searchscene = [[SearchListScene alloc]init];
-    searchscene.keyword = info.son_name;
-    searchscene.platformId = 1;
-    searchscene.isSort = YES;
-    [self.navigationController pushViewController:searchscene animated:YES];
+    
+    SortSearchScene *sortsearchsence = [[SortSearchScene alloc]init];
+    sortsearchsence.keyword = info.son_name;
+    sortsearchsence.cid  = [typemodel.cid integerValue];
+//    SearchListScene *searchscene = [[SearchListScene alloc]init];
+//    searchscene.keyword = info.son_name;
+//    searchscene.platformId = 1;
+//    searchscene.isSort = YES;
+    [self.navigationController pushViewController:sortsearchsence animated:YES];
 }
 @end

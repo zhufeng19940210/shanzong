@@ -123,6 +123,8 @@
     _sceneModel.request.platformId = @(self.platformId);
     _sceneModel.request.keyword = [self.keyword copy];
 
+
+    
     @weakify(self);
     [self.tableView addPullToRefreshWithActionHandler:^{
         @strongify(self);

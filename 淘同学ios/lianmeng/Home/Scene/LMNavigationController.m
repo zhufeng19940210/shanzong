@@ -16,7 +16,6 @@
 }
 
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    
     UIViewController *vc = self.visibleViewController;
     if(self.childViewControllers.count == 1){
         vc.hidesBottomBarWhenPushed = YES;

@@ -28,7 +28,7 @@
         [self addSubview:_tableView2];
     
         _webView = [[UIWebView alloc]initWithFrame:CGRectMake(2*frame.size.width, 0, frame.size.width, self.frame.size.height)];
-        NSString *url = [NSString stringWithFormat:@"http://www.taotongxue.cn/mobile/notice/detail/%ld",(long)[UserCenter sharedInstance].loginModel.userId];
+        NSString *url = [NSString stringWithFormat:@"http://ttx.yuncai58.top/mobile/notice/detail/%ld",(long)[UserCenter sharedInstance].loginModel.userId];
         _webView.backgroundColor = [UIColor clearColor];
         [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
         [self addSubview:_webView];

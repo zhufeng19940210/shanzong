@@ -205,6 +205,10 @@
 		F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5221C3790C00788559 /* ConetentScrollCell.m */; };
 		F0FCAB5721C37C6C00788559 /* AdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FCAB5521C37C6C00788559 /* AdCell.m */; };
 		F0FD631C21CA7B57008F9F57 /* ZFSceneDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FD631B21CA7B56008F9F57 /* ZFSceneDetail.m */; };
+		F0FF3DC221D4B31F009ED2E4 /* SortSearchScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF3DC121D4B31F009ED2E4 /* SortSearchScene.m */; };
+		F0FF3DC621D4B4C2009ED2E4 /* SortGoodSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF3DC521D4B4C2009ED2E4 /* SortGoodSearchRequest.m */; };
+		F0FF3DC921D4B838009ED2E4 /* SortGoodSearchSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF3DC821D4B838009ED2E4 /* SortGoodSearchSceneModel.m */; };
+		F0FF3DCC21D4BB22009ED2E4 /* SortSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF3DCB21D4BB22009ED2E4 /* SortSearchView.m */; };
 		F0FF4FE021C9199C00660B03 /* CircleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FDF21C9199C00660B03 /* CircleTableView.m */; };
 		F0FF4FE321C919D800660B03 /* CircleSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FE221C919D800660B03 /* CircleSceneModel.m */; };
 		F0FF4FE621C91A3100660B03 /* CircleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FF4FE521C91A3100660B03 /* CircleListModel.m */; };
@@ -600,6 +604,14 @@
 		F0FCAB5521C37C6C00788559 /* AdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdCell.m; sourceTree = "<group>"; };
 		F0FD631A21CA7B56008F9F57 /* ZFSceneDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFSceneDetail.h; sourceTree = "<group>"; };
 		F0FD631B21CA7B56008F9F57 /* ZFSceneDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFSceneDetail.m; sourceTree = "<group>"; };
+		F0FF3DC021D4B31F009ED2E4 /* SortSearchScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortSearchScene.h; sourceTree = "<group>"; };
+		F0FF3DC121D4B31F009ED2E4 /* SortSearchScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortSearchScene.m; sourceTree = "<group>"; };
+		F0FF3DC421D4B4C2009ED2E4 /* SortGoodSearchRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortGoodSearchRequest.h; sourceTree = "<group>"; };
+		F0FF3DC521D4B4C2009ED2E4 /* SortGoodSearchRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortGoodSearchRequest.m; sourceTree = "<group>"; };
+		F0FF3DC721D4B838009ED2E4 /* SortGoodSearchSceneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortGoodSearchSceneModel.h; sourceTree = "<group>"; };
+		F0FF3DC821D4B838009ED2E4 /* SortGoodSearchSceneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortGoodSearchSceneModel.m; sourceTree = "<group>"; };
+		F0FF3DCA21D4BB22009ED2E4 /* SortSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortSearchView.h; sourceTree = "<group>"; };
+		F0FF3DCB21D4BB22009ED2E4 /* SortSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortSearchView.m; sourceTree = "<group>"; };
 		F0FF4FDE21C9199C00660B03 /* CircleTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleTableView.h; sourceTree = "<group>"; };
 		F0FF4FDF21C9199C00660B03 /* CircleTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleTableView.m; sourceTree = "<group>"; };
 		F0FF4FE121C919D800660B03 /* CircleSceneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleSceneModel.h; sourceTree = "<group>"; };
@@ -1170,6 +1182,7 @@
 		5BCDE71B20BD329300087B39 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				F0FF3DC321D4B3F0009ED2E4 /* SortSearch */,
 				F0FA7B1E21D1EE5B000181DF /* BigImg */,
 				F0FD631921CA7AE4008F9F57 /* Detail */,
 				F0F2E86821C68FF700EFDA17 /* Sort */,
@@ -1478,6 +1491,21 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		F0FF3DC321D4B3F0009ED2E4 /* SortSearch */ = {
+			isa = PBXGroup;
+			children = (
+				F0FF3DC021D4B31F009ED2E4 /* SortSearchScene.h */,
+				F0FF3DC121D4B31F009ED2E4 /* SortSearchScene.m */,
+				F0FF3DC421D4B4C2009ED2E4 /* SortGoodSearchRequest.h */,
+				F0FF3DC521D4B4C2009ED2E4 /* SortGoodSearchRequest.m */,
+				F0FF3DC721D4B838009ED2E4 /* SortGoodSearchSceneModel.h */,
+				F0FF3DC821D4B838009ED2E4 /* SortGoodSearchSceneModel.m */,
+				F0FF3DCA21D4BB22009ED2E4 /* SortSearchView.h */,
+				F0FF3DCB21D4BB22009ED2E4 /* SortSearchView.m */,
+			);
+			path = SortSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1673,6 +1701,7 @@
 				5BDD0E5F21134DC900DD2AEA /* QRReaderViewController.m in Sources */,
 				5B6503F020E5330200603F74 /* UserFansListSceneModel.m in Sources */,
 				F0FF4FE021C9199C00660B03 /* CircleTableView.m in Sources */,
+				F0FF3DC921D4B838009ED2E4 /* SortGoodSearchSceneModel.m in Sources */,
 				5B07515120C8D1ED002261EA /* BannerListModel.m in Sources */,
 				5B58E3BF20D6717F00B034AD /* TaoBaoItemListSceneModel.m in Sources */,
 				5B1D538920DD00CC0065400E /* RankCell.m in Sources */,
@@ -1745,6 +1774,7 @@
 				5BBD279920E27A0100EC7D3A /* UserOrderListRequest.m in Sources */,
 				F0FCAB5321C3790C00788559 /* ConetentScrollCell.m in Sources */,
 				5B58E3BC20D6702800B034AD /* TaoBaoItemListRequest.m in Sources */,
+				F0FF3DC221D4B31F009ED2E4 /* SortSearchScene.m in Sources */,
 				5B1D537C20DBEEFA0065400E /* MineItemView.m in Sources */,
 				5BCDCB662116F246005F46DF /* FindSplashRequest.m in Sources */,
 				F0F7E3E321C7A51D00C14818 /* SortVC.m in Sources */,
@@ -1756,6 +1786,7 @@
 				5B1D538620DCF3A40065400E /* RankScrollView.m in Sources */,
 				F0003B7F21C8EE7200A5661F /* OrderMessagScene.m in Sources */,
 				5B1D536620D787FB0065400E /* CategoryListRequest.m in Sources */,
+				F0FF3DCC21D4BB22009ED2E4 /* SortSearchView.m in Sources */,
 				5B463A6A20DF4AA60078D720 /* RecommendView.m in Sources */,
 				5B79C81320C1498400286BC1 /* NavLeftView.m in Sources */,
 				5BDD0E4B2110350200DD2AEA /* TimeSelectView.m in Sources */,
@@ -1805,6 +1836,7 @@
 				5B42B17620D10949008AD151 /* SearchItemCell.m in Sources */,
 				5B42B18820D2165B008AD151 /* TaoBaoScrollView.m in Sources */,
 				5BDD0E652115645F00DD2AEA /* ShareDataModel.m in Sources */,
+				F0FF3DC621D4B4C2009ED2E4 /* SortGoodSearchRequest.m in Sources */,
 				5B1D537320D94D6A0065400E /* FavCell.m in Sources */,
 				5B58E3B620D4BACE00B034AD /* TaoBaoTableView.m in Sources */,
 				5B07513F20C82B11002261EA /* LikeCollectionViewCell.m in Sources */,
@@ -1936,8 +1968,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D9PZ846R8K;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3R48RV923F;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1961,10 +1993,10 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bailing.tao;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a3ab13ec-54c1-49f0-b25b-ee8c19a6e22f";
-				PROVISIONING_PROFILE_SPECIFIER = tao_dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1974,9 +2006,9 @@
 			baseConfigurationReference = AF447A2CB0C562042C8BFB07 /* Pods-lianmeng.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D9PZ846R8K;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3R48RV923F;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2000,10 +2032,10 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bailing.tao;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c7e17e3-053b-4148-acf9-e51005619d68";
-				PROVISIONING_PROFILE_SPECIFIER = tao_adhoc;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -1,11 +1,7 @@
-//
 //  MomentListRequest.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/6.
-//  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
+//  Copyright © 2018年 zhuchao. All rights reserved
 #import "MomentListRequest.h"
 #import "UserCenter.h"
 
