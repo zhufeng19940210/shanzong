@@ -19,7 +19,7 @@
 
 -(UIImage *)genImage{
     
-    
+    NSLog(@"过来了吗");
     NSString *title = self.itmeInfo.itemTitle;
     NSString *pic = self.itmeInfo.itemPic;
     NSString *price = [NSString stringWithFormat:@"￥%.2f",self.itmeInfo.itemPrice.floatValue - self.itmeInfo.couponPrice.floatValue];

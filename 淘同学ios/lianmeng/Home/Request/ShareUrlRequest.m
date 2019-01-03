@@ -24,6 +24,7 @@
 
 +(void)getShareInfo:(NSArray *)dataList callBack:(void (^)(NSArray* imageList))callBack{
     NSArray *requestList = [dataList map:^ShareInfo *(GoodsModel *obj) {
+        NSLog(@"GoodsModel.objec:%@",obj);
         return [self getUrl:obj];
     }];
     [[RACSignal combineLatest:[requestList map:^id(ShareInfo * req) {
@@ -38,6 +39,7 @@
             }
             return true;
         }] map:^id(NSDictionary* value) {
+            NSLog(@"getShareInfo.value:%@",value);
             return value[@"data"];
         }];
     }]] subscribeNext:^(RACTuple* list) {
@@ -54,9 +56,10 @@
 }
 
 +(void)getShareUrl:(NSArray *)list dataList:(NSArray *)dataList callBack:(void (^)(NSArray* imageList))callBack{
-    
+    NSLog(@"getShareUrl过来了吗?");
     NSArray *requestList = [list mapWithIndex:^id(NSString * url, NSUInteger idx) {
         GoodsModel *model = dataList[idx];
+        NSLog(@"model.:%@",model);
         if(model.platformId == 1){
             return [self getShareUrl:url itemId:model.itemId];
         }else{
@@ -64,6 +67,7 @@
         }
     }];
     [[RACSignal combineLatest:[requestList map:^id(id obj) {
+        NSLog(@"999999");
         if([obj isKindOfClass:[TBShareUrlRequest class]]){
             TBShareUrlRequest *req = (TBShareUrlRequest *)obj;
             return [[RACObserve(req, output) filter:^BOOL(id value) {
@@ -77,14 +81,17 @@
                 }
                 return true;
             }] map:^id(NSDictionary* value) {
+                NSLog(@"getShareUrl.value:%@",value);
                 return value[@"data"];
             }];
         }else{
+            NSLog(@"objc:%@",obj);
             return [RACSignal return:obj];
         }
     }]] subscribeNext:^(RACTuple* list) {
         NSMutableArray *urlList = [NSMutableArray array];
         for (NSString *obj in list) {
+            NSLog(@"list.object:%@",obj);
             [urlList addObject:obj];
         }
         NSArray *imageList = [dataList mapWithIndex:^UIImage *(GoodsModel *obj, NSUInteger idx) {
@@ -103,7 +110,6 @@
         }
     }
 }
-
 
 +(ShareInfo *)getUrl:(GoodsModel *)model{
     ShareInfo *request = [ShareInfo Request];

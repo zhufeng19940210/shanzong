@@ -16,6 +16,7 @@
 #import "AdCell.h"
 #import "BannerListModel.h"
 #import "AdThirdCell.h"
+#import "ZFProductDetail.h"
 @interface GoodsCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,retain)NSArray *itemArray;
 @property(nonatomic,strong)NSArray *studentArray;
@@ -245,9 +246,16 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 5){
-        DetailScene *detail = [[DetailScene alloc]init];
-        detail.model = [_itemArray safeObjectAtIndex:indexPath.row];
+        //
+//        DetailScene *detail = [[DetailScene alloc]init];
+//        detail.model = [_itemArray safeObjectAtIndex:indexPath.row];
+//        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        
+        ZFProductDetail *detail = [[ZFProductDetail alloc]init];
+        GoodsModel *model =  [_itemArray safeObjectAtIndex:indexPath.row];
+        detail.itemId = [NSString stringWithFormat:@"%@",model.itemId];
         [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+
     }
 }
 @end
