@@ -4,5 +4,5 @@
 //  Copyright © 2019 zhuchao. All rights reserved.
 #import <UIKit/UIKit.h>
 @interface ProductDetailScrollView : UICollectionView
-
+-(void)reloadDetailWithDic:(NSDictionary *)dict;
 @end

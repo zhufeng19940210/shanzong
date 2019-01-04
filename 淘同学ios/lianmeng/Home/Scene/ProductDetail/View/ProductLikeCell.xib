@@ -38,25 +38,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卖家服务 4.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T4-Wn-s8Q">
-                        <rect key="frame" x="158" y="69" width="88" height="18"/>
+                        <rect key="frame" x="158" y="72" width="88" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物流服务 4.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8c-UK-G4X">
-                        <rect key="frame" x="301" y="69" width="88" height="18"/>
+                        <rect key="frame" x="301" y="72" width="88" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝描述 4.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TM-if-l7Q">
-                        <rect key="frame" x="15" y="69" width="88" height="18"/>
+                        <rect key="frame" x="15" y="72" width="88" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Dc1-RO-Edp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="11" id="Et5-sH-zOl"/>
                 <constraint firstItem="9T4-Wn-s8Q" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LUO-Uk-0MX"/>
@@ -67,7 +68,7 @@
                 <constraint firstItem="1TM-if-l7Q" firstAttribute="centerY" secondItem="9T4-Wn-s8Q" secondAttribute="centerY" id="aqK-qC-MTt"/>
                 <constraint firstItem="tNU-k7-Wm8" firstAttribute="leading" secondItem="Dc1-RO-Edp" secondAttribute="trailing" constant="12" id="cKA-Ba-v1E"/>
                 <constraint firstItem="1TM-if-l7Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="cm8-BR-9pf"/>
-                <constraint firstAttribute="bottom" secondItem="9T4-Wn-s8Q" secondAttribute="bottom" constant="13" id="lf3-EU-ULa"/>
+                <constraint firstAttribute="bottom" secondItem="9T4-Wn-s8Q" secondAttribute="bottom" constant="10" id="lf3-EU-ULa"/>
                 <constraint firstItem="y8c-UK-G4X" firstAttribute="centerY" secondItem="9T4-Wn-s8Q" secondAttribute="centerY" id="noa-WX-Etp"/>
                 <constraint firstItem="kaM-Ml-XER" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="usd-LL-Kpk"/>
             </constraints>

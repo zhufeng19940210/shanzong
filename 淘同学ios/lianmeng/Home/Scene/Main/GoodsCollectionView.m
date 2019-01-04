@@ -17,6 +17,7 @@
 #import "BannerListModel.h"
 #import "AdThirdCell.h"
 #import "ZFProductDetail.h"
+#import "DetailScene2.h"
 @interface GoodsCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,retain)NSArray *itemArray;
 @property(nonatomic,strong)NSArray *studentArray;
@@ -251,7 +252,7 @@
 //        detail.model = [_itemArray safeObjectAtIndex:indexPath.row];
 //        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
         
-        ZFProductDetail *detail = [[ZFProductDetail alloc]init];
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
         GoodsModel *model =  [_itemArray safeObjectAtIndex:indexPath.row];
         detail.itemId = [NSString stringWithFormat:@"%@",model.itemId];
         [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];

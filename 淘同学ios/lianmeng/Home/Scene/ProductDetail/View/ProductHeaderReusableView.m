@@ -9,5 +9,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
-
+- (void)setImgArray:(NSMutableArray *)imgArray
+{
+    _imgArray = imgArray;
+    self.adscrollview.imageURLStringsGroup = imgArray;
+}
 @end

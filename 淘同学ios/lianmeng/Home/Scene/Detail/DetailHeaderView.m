@@ -212,7 +212,6 @@
         
         [_topImage sd_setImageWithURL:[NSURL URLWithString:model.itemPic]];
         _titleLabel.text = [NSString stringWithFormat:@"         %@", model.itemTitle];
-
         if (model.itemSale.integerValue > 10000) {
             _saleNum.text = [NSString stringWithFormat:@"%.2f万人已买",model.itemSale.floatValue/10000];
         }else{
@@ -260,9 +259,6 @@
             _originPrice.hidden = YES;
             _quanhoujia.hidden = YES;
         }
-        
-
-        
     }
 }
 @end

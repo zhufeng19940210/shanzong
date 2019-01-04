@@ -13,7 +13,6 @@
     self.yuji_btn.layer.masksToBounds = YES;
     self.yuji_btn.layer.borderColor = [UIColor redColor].CGColor;
     self.yuji_btn.layer.borderWidth = 1.0f;
-    
     self.shengji_btn.layer.cornerRadius = 10.0f;
     self.shengji_btn.layer.masksToBounds = YES;
     self.shengji_btn.layer.borderColor = [UIColor redColor].CGColor;

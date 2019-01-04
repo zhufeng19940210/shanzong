@@ -7,4 +7,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *content_lab;
 @property (weak, nonatomic) IBOutlet UIButton *yuji_btn;
 @property (weak, nonatomic) IBOutlet UIButton *shengji_btn;
+@property (weak, nonatomic) IBOutlet UIImageView *type_img;
 @end

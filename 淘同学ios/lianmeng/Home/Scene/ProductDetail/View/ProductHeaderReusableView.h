@@ -6,4 +6,5 @@
 #import <SDCycleScrollView.h>
 @interface ProductHeaderReusableView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *adscrollview;
+@property (nonatomic,strong)NSMutableArray *imgArray;
 @end
