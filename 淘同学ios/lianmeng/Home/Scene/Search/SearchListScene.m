@@ -13,6 +13,7 @@
 #import "GoodsSearchSceneModel.h"
 #import "DetailScene.h"
 #import <DialogUtil.h>
+#import "DetailScene2.h"
 @interface SearchListScene ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,SortViewDelegate,YouhuiQuanViewDelegate>
 @property(nonatomic,retain)SearchNavBar *searchBar;
 @property(nonatomic,retain)SearchDropDownView *dropDownView;
@@ -239,8 +240,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+    GoodsModel *model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+    if (model.platformId ==1) {
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+
 }
 @end

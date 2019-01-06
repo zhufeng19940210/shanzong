@@ -10,6 +10,7 @@
 #import "DetailScene.h"
 #import "BannerListModel.h"
 #import "ZFSceneDetail.h"
+#import "DetailScene2.h"
 @interface HeaderView()<MCScrollViewDelegate>
 @property(nonatomic,retain)MCScrollView *spotlightView;
 @property(nonatomic,retain)ButtonsView *buttonsView;
@@ -51,10 +52,17 @@
     BannerModel* obj = _banners[index - 1];
     if (obj) {
         if(obj.type.integerValue == 1 && obj.itemId && obj.platformId){
-            DetailScene *scene = [[DetailScene alloc]init];
-            scene.itemId = obj.itemId;
-            scene.platformId = obj.platformId.integerValue;
-            [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+            if (obj.platformId.integerValue == 1) {
+                DetailScene2 *scene = [[DetailScene2 alloc]init];
+                scene.itemId = obj.itemId;
+                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+            }else{
+                DetailScene *scene = [[DetailScene alloc]init];
+                scene.itemId = obj.itemId;
+                scene.platformId = obj.platformId.integerValue;
+                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+
+            }
         }else if(obj.type.integerValue == 2 && obj.refUrl){
             ZFSceneDetail *detilvc = [[ZFSceneDetail alloc]init];
             detilvc.detailStr = obj.refUrl;

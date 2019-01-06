@@ -18,6 +18,7 @@
 #import "ShareInfo.H"
 #import "ActionSceneModel.h"
 #import "ShareUrlRequest.h"
+#import "DetailScene2.h"
 @interface FavScene ()<UITableViewDelegate,UITableViewDataSource,FavDelegate,FavSelectAllDelegate>
 @property(nonatomic,retain)UITableView *tableView;
 @property(nonatomic,retain)NSMutableArray *list;
@@ -168,9 +169,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = [self.list safeObjectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+    GoodsModel *model = [self.list safeObjectAtIndex:indexPath.row];
+    if (model.platformId == 1) {
+        DetailScene2 *detail = [[DetailScene alloc]init];
+        detail.model = [self.list safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = [self.list safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+
 }
 
 @end

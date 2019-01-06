@@ -11,7 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "TimeSegsListSceneModel.h"
 #import "XianShiCell.h"
-
+#import "DetailScene2.h"
 @interface XianShiScene ()<TimeSelectDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)TimeSegsListSceneModel *sceneModel;
 @property(nonatomic,retain)TimeSelectView *timeSelectView;
@@ -128,9 +128,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
-    [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    GoodsModel *model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+    if (model.platformId == 1) {
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }
 }
 
 @end

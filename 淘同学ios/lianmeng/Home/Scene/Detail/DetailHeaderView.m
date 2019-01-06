@@ -112,7 +112,6 @@
             [_takeYHQ setTitleColor:[UIColor colorWithString:@"white"] forState:UIControlStateNormal];
             [_takeYHQ addTarget:self.delegate action:@selector(buyAction) forControlEvents:UIControlEventTouchUpInside];
         }
-        
         [self loadAutoLayout:frame.size.height];
     }
     return self;

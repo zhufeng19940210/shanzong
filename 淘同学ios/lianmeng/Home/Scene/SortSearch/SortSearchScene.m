@@ -13,6 +13,7 @@
 #import <EasyIOS/EasyIOS.h>
 #import "Scene+NavBar.h"
 #import "SearchTopView.h"
+#import "DetailScene2.h"
 @interface SortSearchScene ()<SortSearchViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,retain)SortSearchView *sortView;
 @property(nonatomic,retain)UITableView *tableView;
@@ -121,9 +122,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:detail animated:YES];
+    GoodsModel *model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+    if (model.platformId == 1) {
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+    
 }
 #pragma mark -- SortSearchViewDelegate
 -(void)changeSortType:(NSUInteger)sort

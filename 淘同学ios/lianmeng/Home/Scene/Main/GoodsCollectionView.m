@@ -247,16 +247,17 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 5){
-        //
-//        DetailScene *detail = [[DetailScene alloc]init];
-//        detail.model = [_itemArray safeObjectAtIndex:indexPath.row];
-//        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
-        
-        DetailScene2 *detail = [[DetailScene2 alloc]init];
-        GoodsModel *model =  [_itemArray safeObjectAtIndex:indexPath.row];
-        detail.itemId = [NSString stringWithFormat:@"%@",model.itemId];
-        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
-
+         GoodsModel *model =  [_itemArray safeObjectAtIndex:indexPath.row];
+        if (model.platformId == 1) {
+            DetailScene2 *detail = [[DetailScene2 alloc]init];
+            GoodsModel *model =  [_itemArray safeObjectAtIndex:indexPath.row];
+            detail.model = model;
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        }else{
+            DetailScene *detail = [[DetailScene alloc]init];
+            detail.model = model;
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        }
     }
 }
 @end

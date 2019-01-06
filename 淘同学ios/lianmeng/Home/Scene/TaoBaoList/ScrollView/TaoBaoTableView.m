@@ -10,7 +10,7 @@
 #import "TabBaoItemCell.h"
 #import <EasyIOS/EasyIOS.h>
 #import "DetailScene.h"
-
+#import "DetailScene2.h"
 @interface TaoBaoTableView()<UITableViewDelegate,UITableViewDataSource>
 @end
 @implementation TaoBaoTableView
@@ -110,9 +110,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
-    [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    GoodsModel *model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+    if (model.platformId == 1) {
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = [self.sceneModel.dataArray safeObjectAtIndex:indexPath.row];
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }
+
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

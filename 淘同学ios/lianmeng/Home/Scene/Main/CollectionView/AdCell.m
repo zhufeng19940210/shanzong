@@ -8,6 +8,7 @@
 #import "DetailScene.h"
 #import <EasyIOS/EasyIOS.h>
 #import "ZFSceneDetail.h"
+#import "DetailScene2.h"
 @interface AdCell()<MCScrollViewDelegate>
 @property(nonatomic,retain)MCScrollView *spotlightView;
 @property(nonatomic,retain)NSArray *banners;
@@ -47,10 +48,17 @@
     BannerModel* obj = _banners[index - 1];
     if (obj) {
         if(obj.type.integerValue == 1 && obj.itemId && obj.platformId){
-            DetailScene *scene = [[DetailScene alloc]init];
-            scene.itemId = obj.itemId;
-            scene.platformId = obj.platformId.integerValue;
-            [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+            if (obj.platformId.integerValue ==1) {
+                DetailScene2 *detail = [[DetailScene2 alloc]init];
+                detail.itemId = obj.itemId;
+                   [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+            }else{
+                DetailScene *scene = [[DetailScene alloc]init];
+                scene.itemId = obj.itemId;
+                scene.platformId = obj.platformId.integerValue;
+                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+            }
+
         }else if(obj.type.integerValue == 2 && obj.refUrl){
             ZFSceneDetail *detilvc = [[ZFSceneDetail alloc]init];
             detilvc.detailStr = obj.refUrl;

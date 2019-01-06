@@ -17,9 +17,22 @@
 #import "JPUSHService.h"
 #import <EasyIOS/EasyIOS.h>
 #import "TabBarController.h"
+#import "UpdateRequest2.h"
+#import "ActionSceneModel.h"
+//定义一个枚举来判断这个东西的了
+typedef enum : NSUInteger {
+    LocolVersionToAppStoreVersionEqual = 0,//本地等于appStore版本号
+    LocolVersionToAppStoreVersionLarge = 1,//本地大于appStore版本号
+    LocolVersionToAppStoreVersionSmall = 2,//本地小于appStore版本号
+} CompareVersionType;
 
-@interface AboutUsScene ()
+@interface AboutUsScene ()<UIAlertViewDelegate>
 @property(nonatomic,retain)UIScrollView *scrollView;
+/**
+ *  本地版本号与appStore版本号的大小关系
+ */
+@property (nonatomic, assign) CompareVersionType type;
+@property (nonatomic,copy) NSString *downurl;
 @end
 
 @implementation AboutUsScene
@@ -205,7 +218,8 @@
         web.title = @"投诉";
         [self.navigationController pushViewController:web animated:YES];
     }else if ([label.text isEqualToString:@"检查新版本"]) {
-        [DialogUtil showMessage:@"已是最新版本"];
+        [self setupVersion];
+  //      [DialogUtil showMessage:@"已是最新版本"];
 //        NSString *appStoreStr = @"https://itunes.apple.com/cn/app/%E5%BE%AE%E4%BF%A1/id414478124?mt=8";
 //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreStr]];
     }else if([label.text isEqualToString:@"退出登录"]){
@@ -216,6 +230,70 @@
         [UIApplication sharedApplication].keyWindow.rootViewController = [[TabBarController alloc]init];
     }
 }
+#pragma mark -- setupVersion
+-(void)setupVersion
+{
+    UpdateRequest2 *request = [UpdateRequest2 Request];
+    request.plantfrom = @(2);
+    @weakify(self);
+    [[ActionSceneModel sharedInstance] doRequest:request success:^{
+        @strongify(self);
+        NSLog(@"data:%@",request.output);
+        self.downurl = request.output[@"data"][@"dowUrl"];
+        NSString *severVersion = request.output[@"data"][@"version"];
+        NSString *currentVesion =[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        self.type = [self checkVersion:currentVesion isNewThanVersion:severVersion];
+        NSLog(@"self.type:%lu",(unsigned long)self.type);
+        NSString * message = nil;
+        if ( self.type == LocolVersionToAppStoreVersionEqual) {
+            [DialogUtil showMessage:@"已是最新版本"];
+            return;
+        }
+        else if (self.type == LocolVersionToAppStoreVersionSmall)
+        {
+            UIAlertView *alterVC = [[UIAlertView alloc]initWithTitle:@"版本更新" message:@"检测到新版本" delegate:self  cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alterVC show];
+        }
+    } error:^{
+    }];
+}
+#pragma mark --alertViewdelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex ==1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.downurl]];
+    }
+}
+- (CompareVersionType)checkVersion:(NSString *)localVersion isNewThanVersion:(NSString *)appSroreVersion{
+    CompareVersionType compareVersion ;
+    NSArray * locol = [localVersion componentsSeparatedByString:@"."];
+    NSArray * appStore = [appSroreVersion componentsSeparatedByString:@"."];
+    for (NSUInteger i = 0; i<locol.count; i++) {
+        NSInteger locolV = [[locol objectAtIndex:i] integerValue];
+        NSInteger appStoreV = appStore.count > i ? [[appStore objectAtIndex:i] integerValue] : 0;
+        if (locolV > appStoreV) {
+            compareVersion =  LocolVersionToAppStoreVersionLarge;
+            return  compareVersion;
+        }
+        else if (locolV < appStoreV) {
+            
+            compareVersion =  LocolVersionToAppStoreVersionSmall;
+            return compareVersion;
+        }
+        
+        else if(i == locol.count - 1)
+        {
+            if (locolV == appStoreV) {
+                
+                compareVersion = LocolVersionToAppStoreVersionEqual;
+                
+                return compareVersion;
+                
+            }
+        }
+    }
+    return compareVersion;
+}
+
 /*
 #pragma mark - Navigation
 

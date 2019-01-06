@@ -15,6 +15,7 @@
 #import "ActionSceneModel.h"
 #import "PlatBannerRequest.h"
 #import "DetailScene.h"
+#import "DetailScene2.h"
 @interface TaoBaoListScene ()<TaoBaoViewScrolling>
 @property(nonatomic,retain)TaoBaoNavView *navView;
 @property(nonatomic,retain)UIImageView *bannerImageView;
@@ -70,10 +71,16 @@
 
 -(void)touchBanner{
     if (self.bannerId) {
-        DetailScene *scene = [[DetailScene alloc]init];
-        scene.itemId = self.bannerId;
-        scene.platformId = self.platformId;
-        [self.navigationController pushViewController:scene animated:YES];
+        if (self.platformId ==1) {
+            DetailScene2 *scene = [[DetailScene2 alloc]init];
+            scene.itemId = self.bannerId;
+            [self.navigationController pushViewController:scene animated:YES];
+        }else{
+            DetailScene *scene = [[DetailScene alloc]init];
+            scene.itemId = self.bannerId;
+            scene.platformId = self.platformId;
+            [self.navigationController pushViewController:scene animated:YES];
+        }
     }
 }
 

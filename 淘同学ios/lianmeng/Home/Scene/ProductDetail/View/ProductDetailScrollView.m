@@ -15,13 +15,34 @@
 #import "GoodsListModel.h"
 #import <MJExtension.h>
 #import "EvlationModel.h"
+#import "UIImage+ImgSize.h"
+#import "ShareInfo.h"
+#import "ActionSceneModel.h"
+#import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import "UserCenter.h"
+#import <EasyIOS/EasyIOS.h>
+#import "LMNavigationController.h"
+#import "WechatLoginScene.h"
+#import "DetailSizeModel.h"
+#import "DetailScene2.h"
 @interface ProductDetailScrollView() <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)NSMutableArray *adimageArray;
 @property (nonatomic,strong)NSMutableArray *detailArray;
 @property (nonatomic,strong)NSMutableArray *itemArray;
 @property (nonatomic,strong)NSDictionary *itemDic; ///详情的功能
+@property (nonatomic,retain)NSString *buyUrl;
+@property (nonatomic,strong)NSMutableArray *hightArray;
+
 @end
 @implementation ProductDetailScrollView
+-(NSMutableArray *)hightArray
+{
+    if (!_hightArray) {
+        _hightArray = [NSMutableArray array];
+    }
+    return _hightArray;
+}
+
 -(NSMutableArray *)itemArray
 {
     if (!_itemArray) {
@@ -46,13 +67,31 @@
 
 -(void)reloadDetailWithDic:(NSDictionary *)dict
 {
+   self.itemDic = dict;
     NSLog(@"dict:%@",dict);
-    self.itemDic = dict;
     self.adimageArray = dict[@"data"][@"iteminfo"][@"taobao_image"];
     self.itemArray = [GoodsModel mj_objectArrayWithKeyValuesArray:dict[@"data"][@"SimilarGoods"]];
+    self.detailArray = dict[@"data"][@"images"];
     [self reloadData];
+//    dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(queue, ^{
+//        //耗时操作
+//
+//        for (int i = 0; i<self.detailArray.count; i++) {
+//            DetailSizeModel *model = [[DetailSizeModel alloc]init];
+//            CGSize size =  [UIImage getImageSizeWithURL:[NSURL URLWithString:self.detailArray[i]]];
+//            model.zf_width = size.width;
+//            model.zf_hight = size.height;
+//            model.zf_all_hight = ScreenW*size.height/size.width;
+//            [self.hightArray addObject:model];
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            //更新界面了
+//
+//           
+//        });
+//    });
 }
-
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
@@ -75,7 +114,7 @@
         if (indexPath.section == 0) {
             ProductHeaderReusableView *headerview = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"ProductHeaderReusableView" forIndexPath:indexPath];
             headerview.adscrollview.backgroundColor = [UIColor clearColor];
-            headerview.adscrollview.placeholderImage = [UIImage imageNamed:@""];
+            headerview.adscrollview.placeholderImage = [UIImage imageNamed:@"banner"];
             headerview.imgArray = self.adimageArray;
             return headerview ;
         }
@@ -94,14 +133,13 @@
             }
             NSString *oldPrice = [NSString stringWithFormat:@"￥%.2f",[self.itemDic[@"data"][@"iteminfo"][@"itemPrice"]floatValue]];
             footerview.total_price_lab.text = oldPrice;
-              NSString *text =  [NSString stringWithFormat:@"￥%.2f",  [self.itemDic[@"data"][@"iteminfo"][@"itemPrice"]floatValue] -  [self.itemDic[@"data"][@"iteminfo"][@"couponPrice"]floatValue]];
+              NSString *text =  [NSString stringWithFormat:@"￥%.2f",  [self.itemDic[@"data"][@"iteminfo"][@"itemPrice"]floatValue] - [self.itemDic[@"data"][@"iteminfo"][@"couponPrice"]floatValue]];
             footerview.price_lab.text = text;
-    
             NSString *youhuquan =  [NSString stringWithFormat:@"%1.f优惠券      |   立即领取",[self.itemDic[@"data"][@"iteminfo"][@"couponPrice"]floatValue]];
             NSLog(@"youhuquan:%@",youhuquan);
             [footerview.youhunqiuan_btn setTitle:youhuquan forState:UIControlStateNormal];
             [footerview setActionblock:^{
-                NSLog(@"领取优惠券的东西了");
+                [self taobaobuy];
             }];
             return footerview;
         }else{
@@ -110,6 +148,57 @@
     }
     return nil;
 }
+
+-(void)taobaobuy{
+    ShareInfo *request = [ShareInfo Request];
+    request.itemId = self.itemDic[@"data"][@"iteminfo"][@"itemId"];
+    request.PATH = @"/mobile/taobao/clickUrl";
+    @weakify(self);
+    [[ActionSceneModel sharedInstance] doRequest:request success:^{
+        @strongify(self);
+         NSLog(@"data:%@",request.output[@"data"][@"clickUrl"]);
+        self.buyUrl = request.output[@"data"][@"clickUrl"];
+        [self LoginMehtod];
+    } error:^{
+    }];
+}
+-(void)LoginMehtod{
+    if(![[UserCenter sharedInstance] checkLogin]){
+        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            UIViewController *vc = [[LMNavigationController alloc]initWithRootViewController:[[WechatLoginScene alloc]init]];
+            [[URLNavigation navigation].currentViewController presentViewController:vc animated:YES completion:nil];
+        }]];
+        [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if([UserCenter sharedInstance].loginModel.shopLimti.floatValue < [self.itemDic[@"data"][@"iteminfo"][@"couponPrice"]floatValue]){
+        [DialogUtil showMessage:@"额度不足无法领取"];
+        return;
+    }
+    [self tbPage:self.buyUrl];
+}
+-(void)tbPage:(NSString *)url{
+    id<AlibcTradeService> tradeService = [[AlibcTradeSDK sharedInstance] tradeService];
+    AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
+    showParam.openType = AlibcOpenTypeNative;
+    showParam.backUrl=@"tbopen24942494://";
+    showParam.isNeedPush=NO;
+    showParam.nativeFailMode = AlibcNativeFailModeJumpBrowser;
+    AlibcTradeTaokeParams *taoKeParams=[[AlibcTradeTaokeParams alloc] init];
+    taoKeParams.pid= @"mm_132592094_0_0"; //
+    //打开商品详情页
+    id<AlibcTradePage> page = [AlibcTradePageFactory page: url];
+    
+    [tradeService show:self page:page showParams:showParam taoKeParams:taoKeParams trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        NSLog(@"%@",result);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         ProductContentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductContentCell" forIndexPath:indexPath];
@@ -130,12 +219,13 @@
         EvlationModel *model1 = array[0];
         EvlationModel *model2 = array[1];
         EvlationModel *model3 = array[2];
-        cell.baobei_lab.text = [NSString stringWithFormat:@"%@%@",model1.title,model1.score];
-        cell.maijia_lab.text = [NSString stringWithFormat:@"%@%@",model2.title,model2.score];
-        cell.wuliu_lab.text = [NSString stringWithFormat:@"%@%@",model3.title,model3.score];
+        cell.baobei_lab.text = [NSString stringWithFormat:@"%@%@",model1.title?:@"",model1.score?:@""];
+        cell.maijia_lab.text = [NSString stringWithFormat:@"%@%@",model2.title?:@"",model2.score?:@""];
+        cell.wuliu_lab.text = [NSString stringWithFormat:@"%@%@",model3.title?:@"",model3.score?:@""];
         return cell;
     }if (indexPath.section == 2) {
         ProductImgCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImgCell" forIndexPath:indexPath];
+        [cell.detail_img sd_setImageWithURL:[NSURL URLWithString:self.detailArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"banner"]];
         return cell;
     }if (indexPath.section == 3) {
         GoodsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GoodsCollectionViewCell" forIndexPath:indexPath];
@@ -172,7 +262,29 @@
     }
     if (indexPath.section == 2) {
         //这里的时候需要去判断下图片的大小
-        return CGSizeMake(ScreenW, 240);
+        dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            //耗时操作
+            if (self.detailArray.count>0) {
+                for (int i = 0; i<self.detailArray.count; i++) {
+                    DetailSizeModel *model = [[DetailSizeModel alloc]init];
+                    CGSize size =  [UIImage getImageSizeWithURL:[NSURL URLWithString:self.detailArray[i]]];
+                    model.zf_width = size.width;
+                    model.zf_hight = size.height;
+                    model.zf_all_hight = ScreenW*size.height/size.width;
+                    [self.hightArray addObject:model];
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //更新界面了
+                [self reloadData];
+            });
+        });
+        if (self.hightArray.count >0) {
+            DetailSizeModel *model = self.hightArray[indexPath.row];
+            return CGSizeMake(ScreenW, model.zf_all_hight);
+        }
+
     }
     if (indexPath.section == 3) {
         return CGSizeMake((ScreenW - 15)/2, 287.0f);
@@ -192,7 +304,6 @@
         return UIEdgeInsetsMake(7, 0, 7, 0);//分别为上、左、下、右
     }else{
         return UIEdgeInsetsZero;
-        
     }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
@@ -220,9 +331,17 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 3){
-        DetailScene *detail = [[DetailScene alloc]init];
-        detail.model = [_detailArray safeObjectAtIndex:indexPath.row];
-        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        GoodsModel *model =  [_detailArray safeObjectAtIndex:indexPath.row];
+        if (model.platformId == 1) {
+            DetailScene2 *detail = [[DetailScene2 alloc]init];
+            detail.model = [_detailArray safeObjectAtIndex:indexPath.row];
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        }else{
+            DetailScene *detail = [[DetailScene alloc]init];
+            detail.model = [_detailArray safeObjectAtIndex:indexPath.row];
+            [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+        }
+        
     }
 }
 @end

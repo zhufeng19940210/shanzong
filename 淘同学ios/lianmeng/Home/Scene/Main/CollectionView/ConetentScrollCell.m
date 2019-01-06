@@ -7,6 +7,7 @@
 #import "DetailScene.h"
 #import <EasyIOS/EasyIOS.h>
 #import "GoodTypeCollectionViewCell.h"
+#import "DetailScene2.h"
 @interface ConetentScrollCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,weak) UICollectionView * myCollectionView;
 @end
@@ -67,8 +68,15 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GoodsModel *model = self.productTypeArray[indexPath.row];
-    DetailScene *detail = [[DetailScene alloc]init];
-    detail.model = model;
-    [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    if (model.platformId == 1) {
+        DetailScene2 *detail = [[DetailScene2 alloc]init];
+        detail.model = model;
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }else{
+        DetailScene *detail = [[DetailScene alloc]init];
+        detail.model = model;
+        [[URLNavigation navigation].currentNavigationViewController pushViewController:detail animated:YES];
+    }
+
 }
 @end

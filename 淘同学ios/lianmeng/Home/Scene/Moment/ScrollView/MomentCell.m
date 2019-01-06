@@ -22,7 +22,7 @@
 #import "UserCenter.h"
 #import "LMNavigationController.h"
 #import "WechatLoginScene.h"
-
+#import "DetailScene2.h"
 
 
 @interface ShareButton2 : UIView
@@ -276,10 +276,16 @@
             UITapGestureRecognizer *recognizer = [UITapGestureRecognizer rac_recognizer];
             [image addGestureRecognizer:recognizer];
             [[recognizer rac_signal] subscribeNext:^(id x) {
-                DetailScene *scene = [[DetailScene alloc]init];
-                scene.itemId = [itemIds safeObjectAtIndex:idx];
-                scene.platformId = platformId;
-                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+                if (platformId == 1) {
+                    DetailScene2 *scene = [[DetailScene2 alloc]init];
+                    scene.itemId = [itemIds safeObjectAtIndex:idx];
+                    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+                }else{
+                    DetailScene *scene = [[DetailScene alloc]init];
+                    scene.itemId = [itemIds safeObjectAtIndex:idx];
+                    scene.platformId = platformId;
+                    [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+                }
             }];
         }
         

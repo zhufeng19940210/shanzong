@@ -163,7 +163,6 @@
         }
     }];
 }
-
 -(void)genShareData:(NSString *)itemId platformId:(NSUInteger)platformId{
     ShareItemInfoRequest *request = [ShareItemInfoRequest Request];
     request.platformId = @(platformId);

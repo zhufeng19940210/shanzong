@@ -12,7 +12,7 @@
 #import "GoodsListModel.h"
 #import "ShareInfo.h"
 #import "ShareDataModel.h"
-
+#import "GoodsListModel.h"
 @implementation ShareUrlRequest
 -(void)loadRequest{
     [super loadRequest];
@@ -21,10 +21,15 @@
     self.userId = @([UserCenter sharedInstance].loginModel.userId);
 }
 
-
 +(void)getShareInfo:(NSArray *)dataList callBack:(void (^)(NSArray* imageList))callBack{
+    __block NSString *tagstr = nil;
     NSArray *requestList = [dataList map:^ShareInfo *(GoodsModel *obj) {
         NSLog(@"GoodsModel.objec:%@",obj);
+        if (obj.platformId) {
+            tagstr = @"1";
+        }else{
+            tagstr = @"2";
+        }
         return [self getUrl:obj];
     }];
     [[RACSignal combineLatest:[requestList map:^id(ShareInfo * req) {
@@ -39,8 +44,12 @@
             }
             return true;
         }] map:^id(NSDictionary* value) {
-            NSLog(@"getShareInfo.value:%@",value);
-            return value[@"data"];
+            NSLog(@"getShareInfo333.value:%@",value);
+            if ([tagstr isEqualToString:@"1"]){
+                return value[@"data"][@"clickUrl"];
+            }else{
+               return value[@"data"];
+            }
         }];
     }]] subscribeNext:^(RACTuple* list) {
         NSMutableArray *urlList = [NSMutableArray array];
@@ -55,9 +64,14 @@
     }
 }
 
++ (void)extracted:(TBShareUrlRequest *)req {
+    ;
+}
+
 +(void)getShareUrl:(NSArray *)list dataList:(NSArray *)dataList callBack:(void (^)(NSArray* imageList))callBack{
-    NSLog(@"getShareUrl过来了吗?");
+    NSLog(@"getShareUrl过来了吗?，url");
     NSArray *requestList = [list mapWithIndex:^id(NSString * url, NSUInteger idx) {
+        NSLog(@"url:%@",url);
         GoodsModel *model = dataList[idx];
         NSLog(@"model.:%@",model);
         if(model.platformId == 1){

@@ -8,7 +8,7 @@
 
 #import "Scene.h"
 #import "GoodsListModel.h"
-
 @interface DetailScene2 : Scene
 @property(nonatomic,copy)NSString *itemId;
+@property(nonatomic,retain)GoodsModel *model;
 @end
