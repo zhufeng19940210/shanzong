@@ -218,11 +218,14 @@
     
     [webView stringByEvaluatingJavaScriptFromString:jsGetImages];//注入js方法
     NSString *urlResurlt = [webView stringByEvaluatingJavaScriptFromString:@"getImages()"];
+    NSLog(@"urlResurlt:%@",urlResurlt);
     self.mUrlArray = [NSMutableArray arrayWithArray:[urlResurlt componentsSeparatedByString:@"+"]];
+    NSLog(@" self.mUrlArray.count:%lu",(unsigned long)self.mUrlArray.count);
 }
 
 
 -(void)shareAction{
+    NSLog(@"1111");
     if(!self.mUrlArray) return;
     ShareScene *share = [[ShareScene alloc]init];
     share.model = self.model;

@@ -105,9 +105,10 @@ static float kCollectionViewMargin = 3.f;
 -(void)setupData
 {
     __weak typeof(self) weakSelf = self;
+    [SVProgressHUD show];
     [[NetWorkTool shareInstacne]getWithURLString:@"https://ttx.yuncai58.top/mobile/taobao/superclassifylist" parameters:nil success:^(id responseObject) {
         NSLog(@"responseObject:%@",responseObject);
-        [self hideHud];
+        [SVProgressHUD dismiss];
         if ([responseObject[@"status"] integerValue] == 200) {
             [weakSelf.dataSource removeAllObjects];
             weakSelf.dataSource = [SortTypeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -120,11 +121,12 @@ static float kCollectionViewMargin = 3.f;
                                         animated:YES
                                   scrollPosition:UITableViewScrollPositionNone];
         }else{
-            [DialogUtil showMessage:@"请求失败"];
+            [SVProgressHUD showErrorWithStatus:@"请求失败"];
             return;
         }
     } failure:^(NSError *error) {
-        [DialogUtil showMessage:@"请求失败"];
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"请求失败"];
         return;
     }];
 }

@@ -20,4 +20,5 @@ pod 'Crontab-IOS'
 pod 'MJExtension'
 pod 'SDCycleScrollView'
 pod 'SGPagingView'
+pod 'SVProgressHUD'
 end

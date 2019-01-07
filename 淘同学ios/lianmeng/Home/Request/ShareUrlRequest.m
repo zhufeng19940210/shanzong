@@ -45,10 +45,12 @@
             return true;
         }] map:^id(NSDictionary* value) {
             NSLog(@"getShareInfo333.value:%@",value);
-            if ([tagstr isEqualToString:@"1"]){
+            NSString *sharurltag = [[NSUserDefaults standardUserDefaults]valueForKey:ShareUrl];
+            NSLog(@"sharurltag:%@",sharurltag);
+            if ([sharurltag isEqualToString:@"1"]) {
                 return value[@"data"][@"clickUrl"];
             }else{
-               return value[@"data"];
+                  return value[@"data"];
             }
         }];
     }]] subscribeNext:^(RACTuple* list) {
@@ -65,7 +67,6 @@
 }
 
 + (void)extracted:(TBShareUrlRequest *)req {
-    ;
 }
 
 +(void)getShareUrl:(NSArray *)list dataList:(NSArray *)dataList callBack:(void (^)(NSArray* imageList))callBack{

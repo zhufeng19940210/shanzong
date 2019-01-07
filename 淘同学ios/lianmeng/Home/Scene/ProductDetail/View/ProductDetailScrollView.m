@@ -32,6 +32,7 @@
 @property (nonatomic,strong)NSDictionary *itemDic; ///详情的功能
 @property (nonatomic,retain)NSString *buyUrl;
 @property (nonatomic,strong)NSMutableArray *hightArray;
+@property (nonatomic,strong)UIImageView *testImage;
 
 @end
 @implementation ProductDetailScrollView
@@ -225,6 +226,14 @@
         return cell;
     }if (indexPath.section == 2) {
         ProductImgCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ProductImgCell" forIndexPath:indexPath];
+//        [cell.detail_img sd_setImageWithURL:[NSURL URLWithString:self.detailArray[indexPath.row]] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            NSLog(@"宽：%f, 高：%f", image.size.width, image.size.height);
+//            DetailSizeModel *model = [[DetailSizeModel alloc]init];
+//            model.zf_width = image.size.width;
+//            model.zf_hight = image.size.height;
+//            model.zf_all_hight = ScreenW*image.size.height/image.size.width;
+//            [self.hightArray addObject:model];
+//        }];
         [cell.detail_img sd_setImageWithURL:[NSURL URLWithString:self.detailArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"banner"]];
         return cell;
     }if (indexPath.section == 3) {
@@ -262,29 +271,8 @@
     }
     if (indexPath.section == 2) {
         //这里的时候需要去判断下图片的大小
-        dispatch_queue_t queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(queue, ^{
-            //耗时操作
-            if (self.detailArray.count>0) {
-                for (int i = 0; i<self.detailArray.count; i++) {
-                    DetailSizeModel *model = [[DetailSizeModel alloc]init];
-                    CGSize size =  [UIImage getImageSizeWithURL:[NSURL URLWithString:self.detailArray[i]]];
-                    model.zf_width = size.width;
-                    model.zf_hight = size.height;
-                    model.zf_all_hight = ScreenW*size.height/size.width;
-                    [self.hightArray addObject:model];
-                }
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                //更新界面了
-                [self reloadData];
-            });
-        });
-        if (self.hightArray.count >0) {
-            DetailSizeModel *model = self.hightArray[indexPath.row];
-            return CGSizeMake(ScreenW, model.zf_all_hight);
-        }
-
+       // DetailSizeModel *model = self.hightArray[indexPath.row];
+        return CGSizeMake(ScreenW, 300);
     }
     if (indexPath.section == 3) {
         return CGSizeMake((ScreenW - 15)/2, 287.0f);

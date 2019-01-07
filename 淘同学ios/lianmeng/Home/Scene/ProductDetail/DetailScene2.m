@@ -30,6 +30,7 @@
 #import <EasyIOS/EasyIOS.h>
 #import "UserCenter.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import "DetailSizeModel.h"
 @interface DetailScene2 ()<DetailDelegate,ProductBottomViewDelegate>
 @property (nonatomic,strong)ProductDetailScrollView *collectionview;
 @property (nonatomic,retain)DetailBottomView *bottomView;
@@ -87,6 +88,7 @@
     self.bottomview.frame = CGRectMake(0, ScreenH-50, ScreenW, 50);
     self.bottomview.delegate = self;
     [self.view addSubview:self.bottomview];
+    [SVProgressHUD show];
     ProdcutRequest *request = [ProdcutRequest Request];
     NSString *imteid = [NSString stringWithFormat:@"%@",self.model.itemId];
     if (imteid.length !=0) {
@@ -97,16 +99,23 @@
     @weakify(self);
     [[ActionSceneModel sharedInstance] doRequest:request success:^{
         @strongify(self);
+        [SVProgressHUD dismiss];
         self.responseDict = request.output;
         self.bottomview.middle_price_lab.text = [NSString stringWithFormat:@"￥%.2f",[self.responseDict[@"data"][@"iteminfo"][@"tkMoney"]floatValue]] ;
         self.bottomview.last_price_lab.text  = [NSString stringWithFormat:@"￥%.2f",[self.responseDict[@"data"][@"iteminfo"][@"couponPrice"]floatValue]];
         self.detailArray = self.responseDict[@"data"][@"images"];
         if ([[self.responseDict valueForKey:@"status"] intValue] == 200) {
             [self.collectionview reloadDetailWithDic:self.responseDict];
+            //[self setupReloadMethodWithDict:self.responseDict];
         }
     } error:^{
-        NSLog(@"暂无数据");
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"请求失败"];
+        return;
     }];
+}
+-(void)setupReloadMethodWithDict:(NSDictionary *)dict
+{
 }
 #pragma mark -- actionBackBtn
 -(void)actionBackBtn
@@ -154,6 +163,21 @@
         [self myshareAction];
     }else if(productTag == 2){
         NSLog(@"自己买");
+        if(![[UserCenter sharedInstance] checkLogin]){
+            UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            }]];
+            [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                UIViewController *vc = [[LMNavigationController alloc]initWithRootViewController:[[WechatLoginScene alloc]init]];
+                [[URLNavigation navigation].currentViewController presentViewController:vc animated:YES completion:nil];
+            }]];
+            [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
+            return;
+        }
+        if([UserCenter sharedInstance].loginModel.shopLimti.floatValue < [self.responseDict[@"data"][@"iteminfo"][@"couponPrice"]floatValue]){
+            [DialogUtil showMessage:@"额度不足无法领取"];
+            return;
+        }
         [self taobaobuy2];
     }
 }
@@ -179,21 +203,7 @@
     }];
 }
 -(void)mybuyAction{
-    if(![[UserCenter sharedInstance] checkLogin]){
-        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"需要登录" message:@"此操作需要登录，是否前往登录" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }]];
-        [alert addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            UIViewController *vc = [[LMNavigationController alloc]initWithRootViewController:[[WechatLoginScene alloc]init]];
-            [[URLNavigation navigation].currentViewController presentViewController:vc animated:YES completion:nil];
-        }]];
-        [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
-        return;
-    }
-    if([UserCenter sharedInstance].loginModel.shopLimti.floatValue < [self.responseDict[@"data"][@"iteminfo"][@"couponPrice"]floatValue]){
-        [DialogUtil showMessage:@"额度不足无法领取"];
-        return;
-    }
+   
     [self tbPage:self.buyUrl];
 }
 

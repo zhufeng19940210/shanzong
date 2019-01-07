@@ -33,11 +33,11 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSString *shareurltag = [NSString stringWithFormat:@"%lu",(unsigned long)self.model.platformId];
+    [[NSUserDefaults standardUserDefaults]setValue:shareurltag forKey:ShareUrl];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIImageView *titleBgImage = [[UIImageView alloc]init];

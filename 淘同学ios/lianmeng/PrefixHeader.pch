@@ -12,6 +12,7 @@
 #import <UMShare/UMShare.h>
 #import "SearchTopView.h"
 #import <SGPagingView.h>
+#import <SVProgressHUD.h>
 
 #define BoldFont @"HelveticaNeue-Bold"
 #define RegularFont @"HelveticaNeue"
@@ -27,4 +28,5 @@
 #define rgba(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 ///http://www.taotongxue.cn
 #define URLHOST @"http://ttx.yuncai58.top"
+#define ShareUrl  @"sharurl"
 #endif /* PrefixHeader_pch */

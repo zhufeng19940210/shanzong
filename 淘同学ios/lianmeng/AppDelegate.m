@@ -32,6 +32,14 @@
     ///47.110.40.176:8888/
     //com.bailing.tao
     //ttx.yuncai58.top
+    //这里设置下样式
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    //设置背景颜色
+    [SVProgressHUD setBackgroundColor:[UIColor blackColor]];
+    //设置前景色
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    //显示时间
+    [SVProgressHUD setMinimumDismissTimeInterval:1.0];//显示的时间
     [Action actionConfigScheme:@"https" host:@"ttx.yuncai58.top" client:@"lianmeng-ios"
                        codeKey:@"status" rightCode:200 msgKey:@"msg"];
 
