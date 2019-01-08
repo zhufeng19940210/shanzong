@@ -196,8 +196,26 @@
     }else{
         self.buyUrl = model.activityid;
     }
-
 }
+
+//-(void)getUrl2:(GoodsModel *)model{
+//    if(model.platformId == 1){
+//        ShareInfo *request = [ShareInfo Request];
+//        request.itemId = model.itemId;
+//        request.PATH = @"/mobile/jd/ios/shareInf";
+//        @weakify(self);
+//        [[ActionSceneModel sharedInstance] doRequest:request success:^{
+//            @strongify(self);
+//            self.buyUrl = request.output[@"data"];
+//        } error:^{
+//            
+//        }];
+//    }else{
+//        self.buyUrl = model.activityid;
+//    }
+//    
+//}
+
 
 -(void)rightButtonTouch{
     FavScene *scene = [[FavScene alloc]init];
@@ -225,9 +243,9 @@
 
 
 -(void)shareAction{
-    NSLog(@"1111");
     if(!self.mUrlArray) return;
     ShareScene *share = [[ShareScene alloc]init];
+    share.isCircle = NO;
     share.model = self.model;
     share.mUrlArray = self.mUrlArray;
     [self.navigationController pushViewController:share animated:YES];
@@ -258,6 +276,7 @@
     if (self.model.platformId == 1) {
         [self tbPage:_buyUrl];
     }else {
+        NSLog(@"_buyUrl:%@",_buyUrl);
         [self jdPage:_buyUrl];
     }
 }

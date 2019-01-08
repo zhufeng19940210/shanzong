@@ -4,6 +4,7 @@
 //  Copyright © 2018 zhuchao. All rights reserved.
 #import "Scene.h"
 @interface SortSearchScene : Scene
+@property(nonatomic,copy)NSString *myword;
 @property(nonatomic,copy)NSString *keyword;
 @property(nonatomic,assign)NSInteger cid;
 @end

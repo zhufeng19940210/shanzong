@@ -7,10 +7,10 @@
 
 @interface DetailSizeModel : NSObject
 
-@property (nonatomic,assign) CGFloat zf_hight;
+@property (nonatomic,copy) NSString  *img;
 
-@property (nonatomic,assign) CGFloat zf_width;
+@property (nonatomic,copy) NSString  *Height;
 
-@property (nonatomic,assign) CGFloat zf_all_hight;
+@property (nonatomic,copy) NSString  *Width;
 
 @end

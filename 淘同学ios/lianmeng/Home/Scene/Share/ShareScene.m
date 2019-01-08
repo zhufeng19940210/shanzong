@@ -1,11 +1,7 @@
-//
 //  ShareScene.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/6/7.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
 #import "ShareScene.h"
 #import <Masonry/Masonry.h>
 #import "NavLeftView.h"
@@ -18,9 +14,8 @@
 #import "ShareItemInfoRequest.h"
 #import "UpdatecountRequest.h"
 #import "ShareUrlRequest.h"
-
 #import <UMShare/UMShare.h>
-
+#import "ShareDataModel.h"
 @interface ShareScene ()<ShareDelegate>
 @property(nonatomic,retain)SceneScrollView *scrollView;
 @property(nonatomic,retain)ImageShowView *imageShowView;
@@ -35,7 +30,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *shareurltag = [NSString stringWithFormat:@"%lu",(unsigned long)self.model.platformId];
+    NSString *shareurltag  = nil;
+    if (self.isCircle == YES) {
+        shareurltag = [NSString stringWithFormat:@"%lu",(unsigned long)self.circlemodel.platformId];
+    }else{
+        shareurltag = [NSString stringWithFormat:@"%lu",(unsigned long)self.model.platformId];
+    }
     [[NSUserDefaults standardUserDefaults]setValue:shareurltag forKey:ShareUrl];
     [[NSUserDefaults standardUserDefaults]synchronize];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -59,8 +59,8 @@
         make.top.equalTo(self.navBar.mas_bottom);
     }];
     [_scrollView addContentView];
-
-
+    
+    
     UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc]init];
     flow.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     flow.minimumLineSpacing = 10;//行间距
@@ -74,7 +74,7 @@
     [_imageShowView reloadImages:self.mUrlArray];
     
     [_imageShowView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.top.equalTo(self.scrollView.contentView).offset(12.5f);
+        make.top.equalTo(self.scrollView.contentView).offset(12.5f);
         make.left.equalTo(self.scrollView.contentView).offset(20.0f);
         make.right.equalTo(self.scrollView.contentView);
         make.height.equalTo(@78.0f);
@@ -84,18 +84,21 @@
     [_scrollView.contentView addSubview:_detailView];
     
     [_detailView mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.right.bottom.equalTo(self.scrollView.contentView);
+        make.left.right.bottom.equalTo(self.scrollView.contentView);
         make.top.equalTo(self.imageShowView.mas_bottom);
     }];
-    
-    [_detailView reloadData:self.model];
-    
+    if (self.isCircle == YES) {
+        [_detailView reloadDataCircle:self.circlemodel];
+        //[_detailView reloadData:self.model];
+    }else{
+        [_detailView reloadData:self.model];
+    }
     _bottomView = [[ShareBottomView alloc]init];
     _bottomView.delegate = self;
     [self.view addSubview:_bottomView];
     
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-       make.left.right.bottom.equalTo(self.view);
+        make.left.right.bottom.equalTo(self.view);
         make.top.equalTo(self.scrollView.mas_bottom);
         make.height.equalTo(@(80.0f+kBottomSafeHeight));
     }];
@@ -108,7 +111,11 @@
 
 -(void)copyText{
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = _model.itemDesc;
+    if (self.isCircle == YES) {
+        pasteboard.string = _circlemodel.goodsDesc;
+    }else{
+        pasteboard.string = _model.itemDesc;
+    }
     [DialogUtil showMessage:@"文案已复制！"];
 }
 
@@ -123,13 +130,20 @@
 -(void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType{
     [self loadHudInKeyWindow];
     [self showHudIndeterminate:@"数据加载中..."];
-    self.model.itemPic = [self.imageShowView getSelectedImage];
-    [ShareUrlRequest getShareInfo:@[self.model] callBack:^(NSArray *imageList) {
-        [self shareImageAndTextToPlatformType:platformType withImage:imageList[0]];
-        [self hideHud];
-    }];
+    if (self.isCircle == YES) {
+        self.circlemodel.logo = [self.imageShowView getSelectedImage];
+        ShareDataItemModel *model = [[ShareDataItemModel alloc]init];
+        model.model = self.circlemodel;
+        [self shareImageAndTextToPlatformType:platformType withImage:[model genImage2]];
+       [self hideHud];
+    }else{
+        self.model.itemPic = [self.imageShowView getSelectedImage];
+        [ShareUrlRequest getShareInfo:@[self.model] callBack:^(NSArray *imageList) {
+            [self shareImageAndTextToPlatformType:platformType withImage:imageList[0]];
+            [self hideHud];
+        }];
+    }
 }
-
 - (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType withImage:(UIImage *)image
 {
     //创建分享消息对象
@@ -160,6 +174,16 @@
             }];
             [DialogUtil showMessage:@"分享成功"];
             NSLog(@"response data is %@",data);
+            if (self.isCircle == YES) {
+                NSLog(@"self.circlemodel.id:%@",self.circlemodel.id);
+                UpdatecountRequest *request = [UpdatecountRequest Request];
+                request.wechatInfoId = self.circlemodel.id;
+                [[ActionSceneModel sharedInstance] doRequest:request success:^{
+                    NSLog(@"shareSuccess");
+                } error:^{
+                    NSLog(@"shareError");
+                }];
+            }
         }
     }];
 }
@@ -167,7 +191,7 @@
     ShareItemInfoRequest *request = [ShareItemInfoRequest Request];
     request.platformId = @(platformId);
     request.itemId = itemId;
-
+    
     @weakify(self);
     [[ActionSceneModel sharedInstance] doRequest:request success:^{
         @strongify(self);
@@ -175,7 +199,7 @@
         self.model = [[GoodsModel alloc]initWithDictionary:[request.output objectForKey:@"data"] error:&error];
         [self.detailView reloadData:self.model];
     } error:^{
-
+        
     }];
 }
 

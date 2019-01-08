@@ -16,7 +16,19 @@
 
 @implementation ShareDataItemModel
 
-
+-(UIImage *)genImage2
+{
+    NSLog(@"过来了吗");
+    UIGraphicsBeginImageContext(CGSizeMake(ScreenW,ScreenH));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    NSString *pic = self.model.logo;
+    NSLog(@"pic:%@",pic);
+    UIImage *image = [UIImage imageWithUrl:pic];
+    CGContextDrawImage(context, CGRectMake(0,10,ScreenW,ScreenH),image.CGImage);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
+}
 -(UIImage *)genImage{
     
     NSLog(@"过来了吗");

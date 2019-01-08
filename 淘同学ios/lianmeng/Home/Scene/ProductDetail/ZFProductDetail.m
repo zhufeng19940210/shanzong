@@ -46,7 +46,7 @@
         NSError *error; 
         NSDictionary *responsedic = request.output;
         if ([[responsedic valueForKey:@"status"] intValue] == 200) {
-            [self.collectionview reloadDetailWithDic:responsedic];
+           // [self.collectionview reloadDetailWithDic:responsedic];
         }
     } error:^{
         NSLog(@"暂无数据");

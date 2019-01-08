@@ -9,10 +9,13 @@
 #import "JSONModel.h"
 #import "GoodsListModel.h"
 #import <UIKit/UIKit.h>
+#import "CircleListModel.h"
 @interface ShareDataItemModel : JSONModel
+@property(nonatomic,retain)CircleModel *model;
 @property(nonatomic,retain)GoodsModel *itmeInfo;
 @property(nonatomic,copy)NSString *shareUrl;
 -(UIImage *)genImage;
+-(UIImage *)genImage2;
 @end
 
 @protocol ShareDataItemModel

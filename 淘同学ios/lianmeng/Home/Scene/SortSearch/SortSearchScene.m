@@ -29,7 +29,7 @@
     _topView.backgroundColor = [UIColor redColor];
     _topView.titlelab.textColor = [UIColor whiteColor];
     [self.view addSubview:_topView];
-    [_topView.titlelab setText:self.keyword];
+    [_topView.titlelab setText:self.myword];
     [_topView.leftButton addTarget:self action:@selector(leftButtonTouch) forControlEvents:UIControlEventTouchUpInside];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);

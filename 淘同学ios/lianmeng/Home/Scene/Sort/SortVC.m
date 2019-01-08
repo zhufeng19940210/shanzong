@@ -209,6 +209,7 @@ static float kCollectionViewMargin = 3.f;
     SortTypenextModel *nextmodel = typemodel.data[indexPath.section];
     SortInfoModel *info = nextmodel.info[indexPath.row];
     SortSearchScene *sortsearchsence = [[SortSearchScene alloc]init];
+    sortsearchsence.myword = info.son_name;
     sortsearchsence.keyword = [NSString stringWithFormat:@"%@%@",info.son_name,typemodel.main_name];
     sortsearchsence.cid  = [typemodel.cid integerValue];
     [self.navigationController pushViewController:sortsearchsence animated:YES];

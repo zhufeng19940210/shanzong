@@ -182,6 +182,7 @@
 		F0A252F021C4E8AC000439B1 /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E621C4E8AC000439B1 /* ZJScrollSegmentView.m */; };
 		F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252E721C4E8AC000439B1 /* ZJScrollPageView.m */; };
 		F0A252F421C554A5000439B1 /* OtherScene.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A252F321C554A5000439B1 /* OtherScene.m */; };
+		F0A8C97921E4FB9D00E9BFBB /* JDShareInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A8C97821E4FB9D00E9BFBB /* JDShareInfo.m */; };
 		F0B1B63121D0BC4E004219F3 /* MainScrollview.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1B63021D0BC4E004219F3 /* MainScrollview.m */; };
 		F0F2E86B21C6901B00EFDA17 /* SortSceence.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F2E86A21C6901B00EFDA17 /* SortSceence.m */; };
 		F0F2E87121C6949A00EFDA17 /* MainItem.json in Resources */ = {isa = PBXBuildFile; fileRef = F0F2E87021C6949A00EFDA17 /* MainItem.json */; };
@@ -584,6 +585,8 @@
 		F0A252E921C4E8AC000439B1 /* ZJTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleView.h; sourceTree = "<group>"; };
 		F0A252F221C554A5000439B1 /* OtherScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherScene.h; sourceTree = "<group>"; };
 		F0A252F321C554A5000439B1 /* OtherScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherScene.m; sourceTree = "<group>"; };
+		F0A8C97721E4FB9D00E9BFBB /* JDShareInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JDShareInfo.h; sourceTree = "<group>"; };
+		F0A8C97821E4FB9D00E9BFBB /* JDShareInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JDShareInfo.m; sourceTree = "<group>"; };
 		F0B1B62F21D0BC4E004219F3 /* MainScrollview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainScrollview.h; sourceTree = "<group>"; };
 		F0B1B63021D0BC4E004219F3 /* MainScrollview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainScrollview.m; sourceTree = "<group>"; };
 		F0F2E86921C6901B00EFDA17 /* SortSceence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortSceence.h; sourceTree = "<group>"; };
@@ -1232,6 +1235,8 @@
 				5BCDCB682116F680005F46DF /* CardCodeRequest.m */,
 				5BCDCB6A2118858E005F46DF /* PosterRequest.h */,
 				5BCDCB6B2118858E005F46DF /* PosterRequest.m */,
+				F0A8C97721E4FB9D00E9BFBB /* JDShareInfo.h */,
+				F0A8C97821E4FB9D00E9BFBB /* JDShareInfo.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1792,6 +1797,7 @@
 				F0A252F121C4E8AC000439B1 /* ZJScrollPageView.m in Sources */,
 				5BDD0E5721109FEA00DD2AEA /* XianShiCell.m in Sources */,
 				5B29A4FA20E9279F00903E89 /* OrderNoticeListReuest.m in Sources */,
+				F0A8C97921E4FB9D00E9BFBB /* JDShareInfo.m in Sources */,
 				F0FAC8C521DF959800A9E882 /* ProductHeaderReusableView.m in Sources */,
 				5B1D536C20D79A2C0065400E /* VideoController.m in Sources */,
 				5BBD27AF20E3CC9500EC7D3A /* ShareBottomView.m in Sources */,
@@ -2141,7 +2147,7 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2180,7 +2186,7 @@
 				);
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
-				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn2;
+				PRODUCT_BUNDLE_IDENTIFIER = jc.taotongxue.cn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

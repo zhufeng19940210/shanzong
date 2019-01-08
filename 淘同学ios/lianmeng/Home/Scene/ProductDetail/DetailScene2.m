@@ -1,11 +1,7 @@
-//
 //  DetailScene.m
 //  lianmeng
-//
 //  Created by zhuchao on 2018/5/29.
 //  Copyright © 2018年 zhuchao. All rights reserved.
-//
-
 #import "DetailScene2.h"
 #import "Scene+NavBar.h"
 #import <Masonry/Masonry.h>
@@ -31,6 +27,7 @@
 #import "UserCenter.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
 #import "DetailSizeModel.h"
+#import <MJExtension.h>
 @interface DetailScene2 ()<DetailDelegate,ProductBottomViewDelegate>
 @property (nonatomic,strong)ProductDetailScrollView *collectionview;
 @property (nonatomic,retain)DetailBottomView *bottomView;
@@ -39,8 +36,16 @@
 @property (nonatomic,retain)NSString *buyUrl;
 @property (nonatomic,strong)NSDictionary *responseDict;
 @property (nonatomic,strong)NSMutableArray *detailArray;
+@property (nonatomic,strong)NSMutableArray *imageaArray;
 @end
 @implementation DetailScene2
+-(NSMutableArray *)imageaArray
+{
+    if (!_imageaArray) {
+        _imageaArray = [NSMutableArray array];
+    }
+    return _imageaArray;
+}
 -(NSMutableArray *)detailArray
 {
     if (!_detailArray) {
@@ -59,6 +64,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.detailArray removeAllObjects];
+    [self.imageaArray removeAllObjects];
     self.view.backgroundColor = [UIColor whiteColor];
     UIButton *leftButton = [[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"fanhui"] forState:UIControlStateNormal];
@@ -80,33 +87,36 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-//    _bottomView = [[DetailBottomView alloc]init];
-//    _bottomView.frame = CGRectMake(0, ScreenH-50, ScreenW, 50);
-//    _bottomView.delegate = self;
-//    [self.view addSubview:_bottomView];
     self.bottomview = [ProductBottomView filterView];
     self.bottomview.frame = CGRectMake(0, ScreenH-50, ScreenW, 50);
     self.bottomview.delegate = self;
     [self.view addSubview:self.bottomview];
     [SVProgressHUD show];
+    
+    self.bottomview.middle_price_lab.text = [NSString stringWithFormat:@"￥%.2f",self.model.tkMoney.floatValue];
+    self.bottomview.last_price_lab.text  = [NSString stringWithFormat:@"￥%.2f", self.model.couponPrice.floatValue];
     ProdcutRequest *request = [ProdcutRequest Request];
+    NSLog(@"plat:%lu",(unsigned long)self.model.platformId);
+    NSLog(@"model:%@",self.model);
     NSString *imteid = [NSString stringWithFormat:@"%@",self.model.itemId];
     if (imteid.length !=0) {
         request.itemId = imteid;
     }else{
-      request.itemId = self.itemId;
+        request.itemId = self.itemId;
     }
+    NSLog(@"itemId:%@",request.itemId);
     @weakify(self);
     [[ActionSceneModel sharedInstance] doRequest:request success:^{
         @strongify(self);
         [SVProgressHUD dismiss];
         self.responseDict = request.output;
-        self.bottomview.middle_price_lab.text = [NSString stringWithFormat:@"￥%.2f",[self.responseDict[@"data"][@"iteminfo"][@"tkMoney"]floatValue]] ;
-        self.bottomview.last_price_lab.text  = [NSString stringWithFormat:@"￥%.2f",[self.responseDict[@"data"][@"iteminfo"][@"couponPrice"]floatValue]];
-        self.detailArray = self.responseDict[@"data"][@"images"];
+        
+        self.detailArray =  [DetailSizeModel mj_objectArrayWithKeyValuesArray:self.responseDict[@"data"][@"images"]];
+        for (DetailSizeModel *model in self.detailArray) {
+            [self.imageaArray addObject:model.img];
+        }
         if ([[self.responseDict valueForKey:@"status"] intValue] == 200) {
-            [self.collectionview reloadDetailWithDic:self.responseDict];
-            //[self setupReloadMethodWithDict:self.responseDict];
+            [self.collectionview reloadDetailWithDic:self.responseDict withModel:self.model];
         }
     } error:^{
         [SVProgressHUD dismiss];
@@ -120,6 +130,7 @@
 #pragma mark -- actionBackBtn
 -(void)actionBackBtn
 {
+    [SVProgressHUD dismiss];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -182,15 +193,16 @@
     }
 }
 -(void)myshareAction{
-    if(!self.detailArray) return;
+    if(!self.imageaArray) return;
     ShareScene *share = [[ShareScene alloc]init];
+    share.isCircle = NO;
     share.model = self.model;
-    share.mUrlArray = self.detailArray;
+    share.mUrlArray = self.imageaArray;
     [self.navigationController pushViewController:share animated:YES];
 }
 -(void)taobaobuy2{
     ShareInfo *request = [ShareInfo Request];
-    request.itemId = self.responseDict[@"data"][@"iteminfo"][@"itemId"];
+    request.itemId = self.model.itemId;
     NSLog(@"request.itemId:%@",request.itemId);
     request.PATH = @"/mobile/taobao/clickUrl";
     @weakify(self);
@@ -203,10 +215,8 @@
     }];
 }
 -(void)mybuyAction{
-   
     [self tbPage:self.buyUrl];
 }
-
 -(void)tbPage:(NSString *)url{
     id<AlibcTradeService> tradeService = [[AlibcTradeSDK sharedInstance] tradeService];
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
@@ -218,7 +228,6 @@
     taoKeParams.pid= @"mm_132592094_0_0"; //
     //打开商品详情页
     id<AlibcTradePage> page = [AlibcTradePageFactory page: url];
-    
     [tradeService show:self page:page showParams:showParam taoKeParams:taoKeParams trackParam:nil tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
         NSLog(@"%@",result);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {

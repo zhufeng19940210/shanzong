@@ -16,6 +16,7 @@
 #import "LMNavigationController.h"
 #import "WechatLoginScene.h"
 #import "PictureDetailVC.h"
+#import "ShareScene.h"
 @interface ShareButton : UIView
 @property(nonatomic,retain)UILabel *shareLabel;
 @end
@@ -62,11 +63,18 @@
 @property(nonatomic,retain)UILabel *contentLabel;
 @property(nonatomic,retain)UIView *imageWrapView;
 @property(nonatomic,retain)UIView *splitView;
-
 @property(nonatomic,retain)CircleModel *dataModel;
+@property(nonatomic,strong)NSMutableArray  *imageArray;
 @end
 
 @implementation CircleCell
+-(NSMutableArray *)imageArray
+{
+    if (!_imageArray) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -172,36 +180,42 @@
         [[URLNavigation navigation].currentViewController presentViewController:alert animated:YES completion:nil];
         return;
     }
-    
-    UIViewController *vc = [URLNavigation navigation].currentViewController;
-    [vc loadHudInKeyWindow];
-    
-    [vc showHudIndeterminate:@"数据加载中..."];
-    
-    ShareUrlRequest *req = [ShareUrlRequest Request];
-    req.wechatInfoId = _dataModel.id;
-    @weakify(self);
-    [[ActionSceneModel sharedInstance] doRequest:req success:^{
-        @strongify(self);
-        NSError *error;
-        ShareDataModel *model = [[ShareDataModel alloc]initWithDictionary:[req.output objectForKey:@"data"] error:&error];
-        
-        NSArray *imageList = [model.item map:^UIImage*(ShareDataItemModel *item) {
-            return [item genImage];
-        }];
-        
-        [vc hideHud];
-        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-        pasteboard.string = self.dataModel.goodsDesc;
-        [DialogUtil showMessage:@"文案已复制！"];
-        [self shareItems:imageList wechatInfoId:self.dataModel.id];
-        
-    } error:^{
-        [vc hideHudFailed:@"分享数据获取失败"];
-    }];
+    if(!self.imageArray) return;
+    ShareScene *share = [[ShareScene alloc]init];
+    share.isCircle = YES;
+    share.circlemodel = self.dataModel;
+    share.mUrlArray = self.imageArray;
+    [[URLNavigation navigation].currentNavigationViewController pushViewController:share animated:YES];
+    //    UIViewController *vc = [URLNavigation navigation].currentViewController;
+    //    [vc loadHudInKeyWindow];
+    //
+    //    [vc showHudIndeterminate:@"数据加载中..."];
+    //
+    //    ShareUrlRequest *req = [ShareUrlRequest Request];
+    //    req.wechatInfoId = _dataModel.id;
+    //    @weakify(self);
+    //    [[ActionSceneModel sharedInstance] doRequest:req success:^{
+    //        @strongify(self);
+    //        NSError *error;
+    //        ShareDataModel *model = [[ShareDataModel alloc]initWithDictionary:[req.output objectForKey:@"data"] error:&error];
+    //
+    //        NSArray *imageList = [model.item map:^UIImage*(ShareDataItemModel *item) {
+    //            return [item genImage];
+    //        }];
+    //
+    //        [vc hideHud];
+    //        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    //        pasteboard.string = self.dataModel.goodsDesc;
+    //        [DialogUtil showMessage:@"文案已复制！"];
+    //        [self shareItems:imageList wechatInfoId:self.dataModel.id];
+    //
+    //    } error:^{
+    //        [vc hideHudFailed:@"分享数据获取失败"];
+    //    }];
 }
 
 -(void)setModel:(CircleModel *)model{
+    [self.imageArray removeAllObjects];
     _dataModel = model;
     [_avatarView sd_setImageWithURL:[NSURL URLWithString:model.logo]];
     _nameLabel.text = model.title;
@@ -210,7 +224,7 @@
     if (model.shareCount) {
         _shareButton.shareLabel.text = [NSString stringWithFormat:@"%ld",(long)model.shareCount.integerValue];
     }
-    
+    [self.imageArray addObjectsFromArray:model.pictures];
     NSArray *imageList = model.pictures;
     [self setImageList:imageList money:nil items:nil platformId:model.platformId];
 }
@@ -262,10 +276,10 @@
                 bigDetailvc.imageArray =(NSMutableArray *)imageList;
                 bigDetailvc.position =(int)idx;
                 [[URLNavigation navigation].currentNavigationViewController pushViewController:bigDetailvc animated:YES];
-//                DetailScene *scene = [[DetailScene alloc]init];
-//                scene.itemId = [itemIds safeObjectAtIndex:idx];
-//                scene.platformId = platformId;
-//                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
+                //                DetailScene *scene = [[DetailScene alloc]init];
+                //                scene.itemId = [itemIds safeObjectAtIndex:idx];
+                //                scene.platformId = platformId;
+                //                [[URLNavigation navigation].currentNavigationViewController pushViewController:scene animated:YES];
             }];
         }
         
@@ -279,8 +293,6 @@
         }];
     }
 }
-
-
 /**
  九宫格布局（不限于九宫格，可以是N个格子），每个格子给定高（cellHeight）宽（cellWidth），
  每行格子数量（numPerRow），格子总数量（totalNum），格子与边界距离（viewPadding），格

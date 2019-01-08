@@ -212,5 +212,47 @@
         _icon.image = [UIImage imageNamed:@"jingdong-share"];
     }
 }
+
+-(void)reloadDataCircle:(CircleModel *)model
+{
+    if(!model) return;
+    
+    _title.text = model.goodsDesc;
+    //    if(model.couponPrice){
+    //        _youhuiquan.text = [NSString stringWithFormat:@"%.0f元优惠券",model.couponPrice.floatValue];
+    //
+    //        NSString *price =[NSString stringWithFormat:@"￥%.2f",model.itemPrice.floatValue];
+    //        NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:price];
+    //        [attri addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, price.length)];
+    //        [attri addAttribute:NSStrikethroughColorAttributeName value:_originPrice.textColor range:NSMakeRange(0, price.length)];
+    //        [_originPrice setAttributedText:attri];
+    //
+    //        _price.text = [NSString stringWithFormat:@"￥%.2f",model.itemPrice.floatValue - model.couponPrice.floatValue];
+    //    }else{
+    //        _youhuiquanbg.hidden = YES;
+    //        _youhuiquan.hidden = YES;
+    //        _originPrice.hidden = YES;
+    //        _price.text = [NSString stringWithFormat:@"￥%.2f",model.itemPrice.floatValue];
+    //    }
+    //
+    _shareText.text = model.goodsDesc;
+    
+    //    if(model.tkMoney){
+    //        _yujizhuan.text = [NSString stringWithFormat:@"预计赚%.2f元",model.tkMoney.floatValue];
+    //    }else{
+    //        _yujizhuan.text = @"预计赚0.66元";
+    //        _yujizhuan.hidden = YES;
+    //        _yujizhuanbg.hidden = YES;
+    //    }
+    //
+    //    _sale.text = [NSString stringWithFormat:@"销量 %ld",(long)model.itemSale.integerValue];
+    
+    if (model.platformId == 1) {
+        _icon.image = [UIImage imageNamed:@"taobao-share"];
+    }else{
+        _icon.image = [UIImage imageNamed:@"jingdong-share"];
+    }
+}
+
 @end
 
